@@ -1,14 +1,11 @@
 <style>
-
-  body {
-    font-family: Ubuntu;
+  .main {
+    font-family: Ubuntu, monospace;
     background: #1c1c1e;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    padding: 20px;
     color: #333;
     flex-direction: column;
   }
@@ -26,6 +23,7 @@
   }
 
   .buttons {
+    font-family: Ubuntu, monospace;
     display: flex;
     gap: 5px;
     margin-top: 5px;
@@ -41,8 +39,7 @@
     background: #1c1c1e;
     background-size: 200% 200%;
     color: #ffffff;
-    transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s;
-    font-family: Ubuntu;
+    transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s, background-color 0.3s;
   }
 
   button:hover {
@@ -80,8 +77,6 @@
 </style>
 
 <main class="main">
-  <title>NetWork</title>
-  <body>
   <h1>NetWork</h1>
   <h2>Connect. Share. Work.</h2>
   <div class="buttons">
@@ -92,7 +87,6 @@
     <br> Public Administration<br> Sustainability <br>and Many More.</div>
   <div class="background-text2">Find Jobs<br> Publish Articles<br> Connect with People
     <br> Create Workspaces <br> Explore <br> Learn</div>
-  </body>
 </main>
 
 <router-outlet />
