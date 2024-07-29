@@ -1,87 +1,10 @@
-<style>
-  .main {
-    font-family: Ubuntu, monospace;
-    background: #1c1c1e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #333;
-    flex-direction: column;
-  }
-
-  h1 {
-    font-size: 3em;
-    color: #00a3ff;
-    margin: 0;
-    transition: text-shadow 0.3s;
-    text-align: center;
-  }
-
-  h1:hover {
-    text-shadow: 0 0 10px #1f97f3, 0 0 20px #102b65, 0 0 30px #2a8bc6; /* Glow effect */
-  }
-
-  .buttons {
-    font-family: Ubuntu, monospace;
-    display: flex;
-    gap: 5px;
-    margin-top: 5px;
-    justify-content: center;
-  }
-
-  button {
-    padding: 4px 10px;
-    font-size: 18px;
-    cursor: pointer;
-    border: 2px solid #00a3ff;
-    border-radius: 7px; /* Rounded corners */
-    background: #1c1c1e;
-    background-size: 200% 200%;
-    color: #ffffff;
-    transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-  }
-
-  button:hover {
-    background-color: #00a3ff;
-    color: #ffffff;
-    background-position: center;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  h2 {
-    margin-top: 10px;
-    text-align: center;
-    color: #9c9c9c;
-  }
-
-  .background-text {
-    position: absolute;
-    left: 0;
-    white-space: nowrap;
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.1);
-    line-height: 1.5;
-  }
-
-  .background-text2 {
-    position: absolute;
-    right: 0;
-    white-space: nowrap;
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.1);
-    line-height: 1.5;
-    text-align: right;
-  }
-
-</style>
 
 <main class="main">
   <h1>NetWork</h1>
   <h2>Connect. Share. Work.</h2>
   <div class="buttons">
+    <button routerLink="sign-in">Sign In</button>
     <button>Sign Up</button>
-    <button>Sign In</button>
   </div>
   <div class="background-text">Computer Science<br> Human Resources<br> Marketing
     <br> Public Administration<br> Sustainability <br>and Many More.</div>
