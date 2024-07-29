@@ -1,1 +1,36 @@
-<p>sign-up works!</p>
+<main>
+  <div class="sign-in-container">
+    <h2>NetWork</h2>
+    <form action="/login" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="name" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="surname">Surname:</label>
+        <input type="surname" id="surname" name="surname" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+      </div>
+      <div class="upload-container">
+        <label for="imageUpload">Upload an Image:</label>
+        <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+</main>

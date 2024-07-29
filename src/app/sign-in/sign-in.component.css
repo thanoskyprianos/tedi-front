@@ -4,13 +4,13 @@ main {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(to top right, #005377, rgb(3, 25, 73), #000920);
+  background: linear-gradient(to top right, #0833a1, rgb(3, 25, 73), #000920, #0833a1);
   color: #ffffff;
 }
 
 .sign-in-container {
   border: 1px solid #00b4ff;
-  background: linear-gradient(to top, #040d12, #132839, #092539, #04171e);
+  background: #191818;
   padding: 35px;
   border-radius: 10px;
   text-align: center;
