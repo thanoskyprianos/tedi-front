@@ -1,5 +1,4 @@
-body {
-  font-family: 'Roboto';
+main {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,4 @@
-import {Component, Input} from '@angular/core';
-import { SignIn } from '../sign-in';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,5 +9,4 @@ import { SignIn } from '../sign-in';
 })
 
 export class SignInComponent {
-  @Input() signIn! : SignIn
 }
