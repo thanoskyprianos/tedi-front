@@ -1,10 +1,15 @@
+.logo {
+  width: 150px; /* Adjust the size as needed */
+  margin-bottom: 20px; /* Adjust the spacing as needed */
+}
+
 .main {
-  background: linear-gradient(to top right, #0833a1, rgb(3, 25, 73), #000920, #0833a1);
+  background: linear-gradient(to top right, #00b4ff, #102b65);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #333;
+  color: #0e0d0d;
   flex-direction: column;
   position: relative;
   overflow: hidden;
@@ -59,7 +64,7 @@ h2 {
   left: 0;
   white-space: nowrap;
   font-size: 2rem;
-  color: rgb(110, 107, 107);
+  color: rgb(35, 33, 33);
   line-height: 1.5;
 }
 
@@ -68,7 +73,7 @@ h2 {
   right: 0;
   white-space: nowrap;
   font-size: 2rem;
-  color: rgb(110, 107, 107);
+  color: rgb(35, 33, 33);
   line-height: 1.5;
   text-align: right;
 }
