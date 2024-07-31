@@ -1,4 +1,5 @@
 main {
+  font-family: 'Roboto', serif;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -8,19 +9,122 @@ main {
   color: #ffffff;
 }
 
+.logo-button {
+  width: 60px;
+  height: 40px;
+  background: #222121;
+  margin-top: 3px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.logo-button:hover {
+  background: linear-gradient(to right, #3a3b3e, #373c3e);
+  box-shadow: 0 0 10px rgba(95, 97, 97, 0.5);
+}
+
+.logo {
+  width: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.home-page-container .nav-button {
+  font-family: 'Roboto';
+  width: 120px;
+  height: 40px;
+  margin-top: 3px;
+  text-align: center;
+}
+
 .home-page-container {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100vh;
-  flex-direction: column;
+  height: 5vh;
+  width: 1000vh;
+  flex-direction: row;
   padding: 20px;
+  background: linear-gradient(to bottom, #2a2a2b, #2a2a2b calc(100% - 2px), #403f3f 2px);
+}
+
+.main-home-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.main-home-container .nav-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #102b65;
+  background: linear-gradient(to top right, #00b4ff, #1f709f);
+}
+
+.main-home-container .nav-profile {
+  width: 160px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #102b65;
+  background: linear-gradient(to top right, #00b4ff, #1f709f);
+}
+
+.main-home-container .search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top right, #d56e42, #d84606);
+}
+
+.main-home-container .search-container:hover {
+  background: linear-gradient(to top right, #cd714a, #973303);
+  box-shadow: 0 0 10px rgb(216, 70, 6);
+}
+
+.main-home-container .nav-button:hover {
+  background: linear-gradient(to top right, #216f8f, #102b65);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
+}
+
+.main-home-container .nav-profile:hover {
+  background: linear-gradient(to top right, #216f8f, #102b65);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
 }
 
 .nav-button {
   width: 200px;
-  height: 50px;
-  margin: 2px;
+  height: 35px;
+  margin: 1px;
+  cursor: pointer;
+  background: linear-gradient(to top right, #d56e42, #d84606);
+  color: #000405;
+  border: none;
+  border-radius: 2px;
+  font-size: 18px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.search-container {
+  width: 40px;
+  height: 40px;
+  margin: 1px;
   cursor: pointer;
   background: #1c1c1e;
   color: white;
@@ -31,7 +135,22 @@ main {
   text-align: left;
 }
 
+.nav-profile {
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  cursor: pointer;
+  background: #1c1c1e;
+  color: #0b0a0a;
+  border: none;
+  border-radius: 2px;
+  font-size: 15px;
+  gap: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
 .nav-button:hover {
-  background: linear-gradient(to top right, #00b4ff, #102b65);
-  box-shadow: 0 0 10px rgba(0, 91, 187, 0.5);
+  background: linear-gradient(to top right, #cd714a, #973303);
+  box-shadow: 0 0 10px rgb(216, 70, 6);
 }

@@ -8,6 +8,11 @@ main {
   color: #ffffff;
 }
 
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
 .sign-in-container {
   border: 1px solid #00b4ff;
   background: #191818;
