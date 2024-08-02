@@ -122,17 +122,27 @@ main {
 }
 
 .search-container {
-  width: 40px;
+  width: 260px;
   height: 40px;
   margin: 1px;
   cursor: pointer;
-  background: #1c1c1e;
+  background: #7e7e83;
   color: white;
   border: none;
   border-radius: 2px;
   font-size: 18px;
   transition: background-color 0.3s, box-shadow 0.3s;
   text-align: left;
+}
+
+.search-input {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: max-content;
+  height: 30px;
+  margin: 7px;
 }
 
 .nav-profile {

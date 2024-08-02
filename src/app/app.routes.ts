@@ -10,11 +10,11 @@ export const routes: Routes = [
   { path: 'sign-in', component: SignInComponent, title: 'Sign In'},
   { path: 'sign-up', component: SignUpComponent, title: 'Sign Up'},
   { path: 'home-page', component: HomePageComponent, title: 'Home Page' },
-  { path: 'profile', component: ProfileComponent, title: 'Profile'}
+  { path: 'profile-page', component: ProfileComponent, title: 'Profile'} ,
 ];
 
 export default routes;
 
-/* Όταν συνδέσουμε back-front θα πρέπει 
+/* Όταν συνδέσουμε back-front θα πρέπει
 να δημιουργηθούν ξεχωριστά URL βάσει του id
 οπότε αλλαγή των routes */

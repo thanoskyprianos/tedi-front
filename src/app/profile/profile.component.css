@@ -1,0 +1,30 @@
+main {
+  font-family: 'Roboto', serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  margin: 0;
+  background: #1c1c1e;
+  color: #ffffff;
+}
+
+.logo-button {
+  width: 60px;
+  height: 40px;
+  background: #222121;
+  margin-top: 3px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.logo-button {
+  width: 60px;
+  height: 40px;
+  background: #222121;
+  margin-top: 3px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
