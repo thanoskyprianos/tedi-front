@@ -9,22 +9,18 @@ main {
   color: #ffffff;
 }
 
-.logo-button {
-  width: 60px;
-  height: 40px;
-  background: #222121;
-  margin-top: 3px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #1f709f;
+  object-fit: cover;
+  align-items: center;
+  margin-top: 100px;
+  margin-left: 100px;
 }
 
-.logo-button {
-  width: 60px;
-  height: 40px;
-  background: #222121;
-  margin-top: 3px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+h1 {
+  margin-left: 10px;
+  margin-top: 130px;
 }
