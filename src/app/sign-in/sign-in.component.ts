@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {UserAuthService} from "../user-auth.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -9,4 +10,11 @@ import {Component} from '@angular/core';
 })
 
 export class SignInComponent {
+  constructor(private userAuthService: UserAuthService) {
+
+  }
+
+  login() {
+    this.userAuthService.isLoggedIn = true;
+  }
 }

@@ -9,12 +9,13 @@ import {MessagesComponent} from "./messages/messages.component";
 import {NotificationsComponent} from "./notifications/notifications.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {AdsComponent} from "./ads/ads.component";
+import {UserAuthService} from "./user-auth.service";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork' },
   { path: 'sign-in', component: SignInComponent, title: 'Sign In' },
   { path: 'sign-up', component: SignUpComponent, title: 'Sign Up' },
-  { path: 'home-page', component: HomePageComponent, title: 'Home Page' },
+  { path: 'home-page', component: HomePageComponent, title: 'Home Page', canActivate: [UserAuthService] },
 
   { path: 'profile-page', component: ProfileComponent, title: 'Profile' } ,
   { path: 'network-page', component: NetworkComponent, title: 'Network' } ,
