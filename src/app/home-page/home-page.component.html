@@ -1,12 +1,13 @@
 <main>
+
   <div class="home-page-container">
     <button type="button" class="logo-button">
       <img src="resource/network-favicon-color.png" alt="NetWork Logo" class="logo">
     </button>
-    <button routerLink="profile-page" class="nav-button">Home Page</button>
-    <button routerLink="" class="nav-button">Network</button>
-    <button routerLink="" class="nav-button">Settings</button>
-    <button routerLink="" class="nav-button">Job Offers</button>
+    <button routerLink="/home-page" class="nav-button">Home Page</button>
+    <button routerLink="/network-page" class="nav-button">Network</button>
+    <button routerLink="/settings-page" class="nav-button">Settings</button>
+    <button routerLink="/ads-page" class="nav-button">Job Offers</button>
   </div>
 
   <div class="main-home-container">
@@ -15,15 +16,15 @@
       <input class="search-input" type="search" placeholder="Search">
     </button>
 
-    <button type="button" class="nav-button">
+    <button routerLink="/messages-page" class="nav-button">
       <img src="resource/email.png" alt="Messages" class="button-icon">
     </button>
 
-    <button type="button" class="nav-button">
+    <button routerLink="/notifications-page" class="nav-button">
       <img src="resource/notification.png" alt="Notifications" class="button-icon">
     </button>
 
-    <button type="button" class="nav-profile">
+    <button routerLink="/profile-page" class="nav-profile">
       <img src="resource/user.png" alt="Profile" class="button-icon">
       Damianos Poulias
     </button>
