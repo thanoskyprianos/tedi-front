@@ -1,20 +1,26 @@
-import {Component} from '@angular/core';
-import {UserAuthService} from "../user-auth.service";
+import {Component, Input} from '@angular/core';
+import {FormsModule} from "@angular/forms";
+import {LoginService} from "./login.service";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css'
 })
 
 export class SignInComponent {
-  constructor(private userAuthService: UserAuthService) {
+  @Input() email: string = '';
+  @Input() password: string = '';
+
+  constructor(private loginService: LoginService) {
 
   }
 
-  login() {
-    this.userAuthService.isLoggedIn = true;
+  onSubmit() {
+    this.loginService.login(this.email, this.password);
   }
 }

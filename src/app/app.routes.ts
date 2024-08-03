@@ -9,7 +9,7 @@ import {MessagesComponent} from "./messages/messages.component";
 import {NotificationsComponent} from "./notifications/notifications.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {AdsComponent} from "./ads/ads.component";
-import {UserAuthService} from "./user-auth.service";
+import {UserAuthService} from "./user/user-auth.service";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork' },
