@@ -2,33 +2,34 @@
   <div class="sign-in-container">
     <img src="resource/network-high-resolution-logo-transparent.png" alt="NetWork Logo" class="logo">
     <form action="/login" method="post">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="name" id="name" name="name" required>
+      <div class="form-group grid-group">
+        <label for="name" id="nameLabel">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="surname" id="surnameLabel">Surname</label>
+        <input type="text" id="surname" name="surname" required>
       </div>
       <div class="form-group">
-        <label for="surname">Surname:</label>
-        <input type="surname" id="surname" name="surname" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
+        <label for="email" id="emailLabel">Email</label>
         <input type="email" id="email" name="email" required>
       </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
+      <div class="form-group grid-group">
+        <label for="password" id="pLabel">Password</label>
         <input type="password" id="password" name="password" required>
-      </div>
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password:</label>
+
+        <label for="confirmPassword" id="cLabel">Confirm Password</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
       </div>
       <div class="form-group">
-        <label for="phoneNumber">Phone Number:</label>
+        <label for="phoneNumber">Phone Number</label>
         <input type="tel" id="phoneNumber" name="phoneNumber" required>
       </div>
       <div class="upload-container">
-        <label for="imageUpload">Upload an Image:</label>
-        <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+        <label for="imageUpload">Upload an Image</label>
+        <span id="avatar-input" onclick="document.getElementById('imageUpload').click()">
+          <img src="" alt="avatar">
+          <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+        </span>
       </div>
       <button type="submit">Sign Up</button>
     </form>

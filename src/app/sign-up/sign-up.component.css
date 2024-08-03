@@ -19,10 +19,37 @@ main {
   padding: 35px;
   border-radius: 10px;
   text-align: center;
+
+  width: 400px;
 }
 
 .form-group {
   margin-bottom: 15px;
+}
+
+#pLabel, #nameLabel {
+  grid-area: aLabel;
+}
+
+#cLabel, #surnameLabel {
+  grid-area: bLabel;
+}
+
+#password, #name {
+  grid-area: aInput;
+}
+
+#confirmPassword, #surname {
+  grid-area: bInput;
+}
+
+.grid-group {
+  display: grid;
+  grid-template:
+    "aLabel bLabel" auto
+    "aInput bInput" auto;
+
+  column-gap: 25px;
 }
 
 label {
@@ -31,10 +58,24 @@ label {
 }
 
 input {
+  outline: none;
+
+  color: #ffffff;
+
   width: 100%;
+  height: 25px;
+
   padding: 5px;
-  border: none;
+  border: 1px solid #00b4ff;
+
+  background-color: transparent;
   border-radius: 5px;
+
+  transition: border 0.15s;
+}
+
+input:focus {
+  border: 1px solid #102b65;
 }
 
 button {
@@ -66,6 +107,42 @@ h2:hover {
 }
 
 .upload-container {
-  margin-top: 30px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#avatar-input {
+  border: 1px solid #00b4ff;
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+
+  transition: background-color 0.3s;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#avatar-input > img {
+  object-fit: cover;
+  height: 100px;
+
+  overflow: hidden;
+}
+
+#avatar-input:hover {
+  background-color: rgba(0, 180, 255, 0.15);
+  cursor: pointer;
+}
+
+
+#imageUpload {
+  display: none;
 }
