@@ -1,4 +1,25 @@
 <main class="main">
-  <img src="resource/maxresdefault.jpg" alt="NetWork Logo" class="profile-pic">
-  <h1>{{session.user.firstName}} {{session.user.lastName}}</h1>
+  <body>
+    <div class="profile-bar">
+
+        <div class="main-prof">
+          <img src="resource/user.png" alt="NetWork Logo" class="profile-pic">
+        </div>
+
+        <button class="name-button">
+          {{session.user.firstName}} {{session.user.lastName}}
+        </button>
+        
+      <div class="options">
+        <button class="add-post">Add Post</button>
+        <button class="add-personal-info">Add Personal Information</button>
+        <button class="about-me">
+          About Me
+        </button>  
+      </div>
+
+
+    </div>
+
+  </body>
 </main>

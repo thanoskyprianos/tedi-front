@@ -9,6 +9,7 @@ import {UserSessionService} from "../../services/user-session.service";
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-  constructor(protected session: UserSessionService) {
-  }
+  profilePicUrl: string | null = null;
+
+  constructor(protected session: UserSessionService) { }
 }

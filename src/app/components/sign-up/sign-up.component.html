@@ -1,28 +1,28 @@
 <main>
   <div class="sign-in-container">
     <img src="resource/network-high-resolution-logo-transparent.png" alt="NetWork Logo" class="logo">
-    <form action="/login" method="post">
+    <form (ngSubmit)="onSubmit()" >
       <div class="form-group grid-group">
         <label for="name" id="nameLabel">Name</label>
-        <input type="text" id="name" name="name" required>
+        <input [(ngModel)]="name" type="text" id="name" name="name" required>
 
         <label for="surname" id="surnameLabel">Surname</label>
-        <input type="text" id="surname" name="surname" required>
+        <input [(ngModel)]="surname" type="text" id="surname" name="surname" required>
       </div>
       <div class="form-group">
         <label for="email" id="emailLabel">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input [(ngModel)]="email" type="email" id="email" name="email" required>
       </div>
       <div class="form-group grid-group">
         <label for="password" id="pLabel">Password</label>
-        <input type="password" id="password" name="password" required>
+        <input [(ngModel)]="password" type="password" id="password" name="password" required>
 
         <label for="confirmPassword" id="cLabel">Confirm Password</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <input [(ngModel)]="confirmPassword" type="password" id="confirmPassword" name="confirmPassword" required>
       </div>
       <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        <input [(ngModel)]="phoneNumber" type="tel" id="phoneNumber" name="phoneNumber" required>
       </div>
       <div class="upload-container">
         <label for="imageUpload">Upload an Image</label>
