@@ -8,6 +8,7 @@ import {UserSessionService} from "../../services/user-session.service";
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
+
 export class ProfileComponent {
   profilePicUrl: string | null = null;
 

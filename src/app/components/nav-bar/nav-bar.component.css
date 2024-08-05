@@ -5,6 +5,7 @@
   z-index: 1000;
   background-color: white;
   padding-top: 60px;
+  
 }
 
 .logo-button {
@@ -41,8 +42,8 @@
   align-items: flex-start;
   height: 5vh;
   flex-direction: row;
-  padding: 20px;
-  background: linear-gradient(to bottom, #2a2a2b, #2a2a2b calc(100% - 2px), #403f3f 2px);
+  padding: 15px;
+  background: linear-gradient(to bottom, #2a2a2b, #2a2a2b calc(100% - 2px), #24adf7 5px);
 }
 
 .main-home-container {
@@ -53,7 +54,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
-  padding: 20px;
+  padding: 16px;
 }
 
 .button-icon {
@@ -111,7 +112,7 @@
   background: linear-gradient(to top right, #d56e42, #d84606);
   color: #000405;
   border: none;
-  border-radius: 2px;
+  border-radius: 1px;
   font-size: 18px;
   transition: background-color 0.3s, box-shadow 0.3s;
   text-align: left;
