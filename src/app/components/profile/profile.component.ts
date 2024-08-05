@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UserSessionService} from "../../services/user-session.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-
+  constructor(protected session: UserSessionService) {
+  }
 }

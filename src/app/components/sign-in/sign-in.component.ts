@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {LoginService} from "./login.service";
+import {UserSessionService} from "../../services/user-session.service";
 
 @Component({
   selector: 'app-sign-in',
@@ -16,11 +16,12 @@ export class SignInComponent {
   @Input() email: string = '';
   @Input() password: string = '';
 
-  constructor(private loginService: LoginService) {
-
+  constructor(private session: UserSessionService) {
   }
 
   onSubmit() {
-    this.loginService.login(this.email, this.password);
+    if (this.email && this.password) {
+      this.session.login(this.email, this.password)
+    }
   }
 }

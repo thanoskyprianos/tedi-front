@@ -4,6 +4,6 @@ export class UserModule {
     public lastName: string,
     public email: string,
     public phoneNumber: string,
-    public links: any[]) {
+    public _links: any[]) {
   }
 }

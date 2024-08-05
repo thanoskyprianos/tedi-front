@@ -20,13 +20,13 @@
       <img src="resource/email.png" alt="Messages" class="button-icon">
     </button>
 
-    <button routerLink="/notifications-page" class="nav-button">
+    <button routerLink="/notification-page" class="nav-button">
       <img src="resource/notification.png" alt="Notifications" class="button-icon">
     </button>
 
     <button routerLink="/profile-page" class="nav-profile">
       <img src="resource/user.png" alt="Profile" class="button-icon">
-      Damianos Poulias
+      {{session.user.firstName}} {{session.user.lastName}}
     </button>
   </div>
 

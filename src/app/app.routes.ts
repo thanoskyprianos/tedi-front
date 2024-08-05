@@ -1,29 +1,35 @@
 import { Routes } from '@angular/router';
-import {SignInComponent} from './sign-in/sign-in.component';
-import {WelcomeComponent} from "./welcome/welcome.component";
-import {SignUpComponent} from "./sign-up/sign-up.component";
-import { HomePageComponent } from "./home-page/home-page.component";
-import { ProfileComponent } from "./profile/profile.component";
-import {NetworkComponent} from "./network/network.component";
-import {MessagesComponent} from "./messages/messages.component";
-import {NotificationsComponent} from "./notifications/notifications.component";
-import {SettingsComponent} from "./settings/settings.component";
-import {AdsComponent} from "./ads/ads.component";
-import {UserAuthService} from "./user/user-auth.service";
+import {WelcomeComponent} from "./components/welcome/welcome.component";
+import {SignInComponent} from "./components/sign-in/sign-in.component";
+import {SignUpComponent} from "./components/sign-up/sign-up.component";
+import {HomePageComponent} from "./components/home-page/home-page.component";
+import {ErrorComponent} from "./components/error/error.component";
+import {ProfileComponent} from "./components/profile/profile.component";
+import {NetworkComponent} from "./components/network/network.component";
+import {MessagesComponent} from "./components/messages/messages.component";
+import {NotificationsComponent} from "./components/notifications/notifications.component";
+import {SettingsComponent} from "./components/settings/settings.component";
+import {AdsComponent} from "./components/ads/ads.component";
+import {IsLoggedInGuardService} from "./guards/is-logged-in-guard.service";
+import {IsLoggedOutService} from "./guards/is-logged-out.service";
 
 export const routes: Routes = [
-  { path: '', component: WelcomeComponent, title: 'NetWork' },
-  { path: 'sign-in', component: SignInComponent, title: 'Sign In' },
-  { path: 'sign-up', component: SignUpComponent, title: 'Sign Up' },
-  { path: 'home-page', component: HomePageComponent, title: 'Home Page', canActivate: [UserAuthService] },
+  { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },
+  { path: 'sign-in', component: SignInComponent, title: 'Sign In', canActivate: [IsLoggedOutService] },
+  { path: 'sign-up', component: SignUpComponent, title: 'Sign Up', canActivate: [IsLoggedOutService] },
+  { path: 'home-page', component: HomePageComponent, title: 'Home Page', canActivate: [IsLoggedInGuardService] },
 
-  { path: 'profile-page', component: ProfileComponent, title: 'Profile' } ,
-  { path: 'network-page', component: NetworkComponent, title: 'Network' } ,
-  { path: 'messages-page', component: MessagesComponent, title: 'Messages' } ,
-  { path: 'notification-page', component: NotificationsComponent, title: 'Notifications' } ,
-  { path: 'settings-page', component: SettingsComponent, title: 'Settings' } ,
-  { path: 'profile-page', component: ProfileComponent, title: 'Profile' } ,
-  { path: 'ads-page', component: AdsComponent, title: 'Ads' } ,
+  { path: 'error', component: ErrorComponent, title: 'Error', canActivate: [IsLoggedInGuardService] },
+
+  { path: 'profile-page', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'network-page', component: NetworkComponent, title: 'Network', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'messages-page', component: MessagesComponent, title: 'Messages', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'notification-page', component: NotificationsComponent, title: 'Notifications', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'settings-page', component: SettingsComponent, title: 'Settings', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'profile-page', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'ads-page', component: AdsComponent, title: 'Ads', canActivate: [IsLoggedInGuardService] } ,
+
+  { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];
 
 export default routes;
