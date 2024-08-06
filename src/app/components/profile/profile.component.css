@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  
+
 }
 
 .profile-bar .main-prof .profile-pic {
@@ -38,7 +38,6 @@ h1 {
   flex-direction: column;
   position: relative;
   width: 1200px;
-  border-bottom: 1px solid #444;
   background: rgb(60, 60, 60);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
   padding: 20px;

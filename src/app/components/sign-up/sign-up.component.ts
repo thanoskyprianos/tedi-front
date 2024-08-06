@@ -13,14 +13,23 @@ import {UserSessionService} from "../../services/user-session.service";
 export class SignUpComponent {
   @Input() email: string = '';
   @Input() password: string = '';
-  @Input() name: string = '';
-  @Input() surname: string = '';
+  @Input() firstName: string = '';
+  @Input() lastName: string = '';
   @Input() confirmPassword: string = '';
   @Input() phoneNumber: number = 0;
 
   constructor(private session: UserSessionService) { }
 
   onSubmit() {
+    
+    if (this.password !== this.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    this.session.signup(this.email, this.password, this.firstName,
+      this.lastName, this.confirmPassword, this.phoneNumber);
+
   }
   
 }

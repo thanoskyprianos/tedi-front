@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserSessionService {
   token: string = '';
   user!: UserModule;
@@ -25,21 +26,21 @@ export class UserSessionService {
     }
   }
 
-  signup(email: string, password: string, name: string, surname: string,
+  signup(email: string, password: string, firstName: string, lastName: string,
     confirmPassword: string, phoneNumber: number) {
-    
+
       const signUpData = {
         email, password,
-        name, surname,
+        firstName, lastName,
         confirmPassword, phoneNumber
       };
 
       this.http.post(properties.endpoint + '/users/signup',
         signUpData, { observe: 'response' })
-      
+
       .subscribe((response: any) => {
         if (response.status === 201) {
-          
+
           this.token = response.body.jwt.token;
           localStorage.setItem('token', this.token);
 
