@@ -1,0 +1,37 @@
+main {
+    background-color: #1c1c1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; 
+}
+
+main input {
+    padding: 10px;
+    font-size: 16px;
+    border: 4px solid;
+    border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+    border-radius: 4px;
+    width: 400px;
+    height: 500px;
+    box-sizing: border-box;
+    text-align: left;
+    vertical-align: top;
+}
+
+main .update-about-me {
+    font-size: 1.1em;
+    margin-top: 10px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: 3px solid;
+    border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+main .update-about-me:hover {
+    background: linear-gradient(to right, #ff7701, #248eff);
+    box-shadow: 0 0 10px rgb(24, 89, 129);
+}

@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {NgIf} from "@angular/common";
 import {NavBarComponent} from "./components/nav-bar/nav-bar.component";
+import { MatCardModule } from '@angular/material/card';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NavBarComponent, NgIf, NavBarComponent],
+  imports: [RouterOutlet, RouterLink, NavBarComponent, NgIf, NavBarComponent, MatCardModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

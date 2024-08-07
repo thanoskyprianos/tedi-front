@@ -6,18 +6,16 @@
           <img [src]="profilePicUrl || 'resource/user.png'" alt="Profile Picture" class="profile-pic">
         </div>
 
-        <button class="name-button">
+        <button routerLink="/profle" class="name-button" (click)="refreshPage()">
           {{session.user.firstName}} {{session.user.lastName}}
         </button>
-        
-      <div class="options">
-        <button class="add-post">Add Post</button>
-        <button class="add-personal-info">Add Personal Information</button>
-        <button class="about-me">
-          About Me
-        </button>  
-      </div>
 
+      <div class="options">
+        <button routerLink="/add-post" class="add-post">Add Post</button>
+        <button routerLink="/about-me" class="about-me" >
+          About Me
+        </button>
+      </div>
 
     </div>
 

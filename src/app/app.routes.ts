@@ -12,6 +12,8 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {AdsComponent} from "./components/ads/ads.component";
 import {IsLoggedInGuardService} from "./guards/is-logged-in-guard.service";
 import {IsLoggedOutService} from "./guards/is-logged-out.service";
+import { AboutMeComponent } from './components/profile/about-me/about-me.component';
+import { AddPostComponent } from "./components/profile/add-post/add-post.component";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },
@@ -28,12 +30,10 @@ export const routes: Routes = [
   { path: 'settings-page', component: SettingsComponent, title: 'Settings', canActivate: [IsLoggedInGuardService] } ,
   { path: 'profile-page', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] } ,
   { path: 'ads-page', component: AdsComponent, title: 'Ads', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'about-me', component: AboutMeComponent, title: 'About Me', canActivate: [IsLoggedInGuardService]} ,
+  {path: 'add-post', component: AddPostComponent, title: 'Add Post', canActivate: [IsLoggedInGuardService]},
 
   { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];
 
 export default routes;
-
-/* Όταν συνδέσουμε back-front θα πρέπει
-να δημιουργηθούν ξεχωριστά URL βάσει του id
-οπότε αλλαγή των routes */

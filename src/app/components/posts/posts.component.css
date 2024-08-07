@@ -1,0 +1,12 @@
+.option-item {
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.post-card {
+  width: 200px;
+  height: 200px;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, #ff7701, #248eff);
+}
