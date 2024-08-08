@@ -26,6 +26,18 @@ export class UserSessionService {
     }
   }
 
+  updateAboutMe()
+  {
+
+  }
+
+  uploadImage(avatarUrl: string, file: File)
+  {
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    this.http.post(avatarUrl, formData);
+  }
+
   signup(email: string, password: string, firstName: string, lastName: string,
     confirmPassword: string, phoneNumber: number) {
 
@@ -50,9 +62,7 @@ export class UserSessionService {
           this.router.navigate(['/home-page']);
 
         } else {
-
           throw new Error(response.statusText);
-
         }
       });
 

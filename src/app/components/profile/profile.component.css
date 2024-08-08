@@ -2,6 +2,7 @@ main {
   font-family: 'Roboto', serif;
   background: #1c1c1e;
   color: #ffffff;
+  box-sizing: border-box;
 }
 
 body {
@@ -54,7 +55,7 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 1.3em;
-  width: 210px;
+  width: 250px;
   height: 40px;
   padding: 0;
   border: 2px solid;
@@ -74,57 +75,36 @@ h1 {
 }
 
 .options .add-post {
-  background: linear-gradient(to top right, #7a7877, #504e4c);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
+  background-color: #3e3e42;
+  color: #ffffff;
+  font-size: 1em;
+  width: 120px;
   height: 40px;
-  padding: 0;
-  border: none;
-  border-radius: 2px;
   cursor: pointer;
+  border: 3px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .options .add-post:hover {
-  background: linear-gradient(to top right, #cd714a, #973303);
-  box-shadow: 0 0 10px rgb(216, 70, 6);
-}
-
-.options .add-personal-info {
-  background: linear-gradient(to top right, #71706f, #504e4c);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 40px;
-  padding: 0;
-  margin-left: 5px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.options .add-personal-info:hover {
-  background: linear-gradient(to top right, #cd714a, #973303);
-  box-shadow: 0 0 10px rgb(216, 70, 6);
+  background: linear-gradient(to right, #ff7701, #248eff);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
 }
 
 .options .about-me {
-  background: linear-gradient(to top right, #ff7701, #248eff);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
+  background-color: #3e3e42;
+  color: #ffffff;
+  font-size: 1em;
+  margin-left: 10px;
+  width: 120px;
   height: 40px;
-  padding: 0;
-  margin-left: 5px;
-  border: none;
-  border-radius: 2px;
   cursor: pointer;
+  border: 3px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .options .about-me:hover {
-  background: linear-gradient(to top right, #a34d01, #0069da);
-  box-shadow: 0 0 10px rgb(26, 112, 174);
+  background: linear-gradient(to right, #ff7701, #248eff);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
 }
