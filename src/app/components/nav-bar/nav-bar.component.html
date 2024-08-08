@@ -26,7 +26,7 @@
 
     <button routerLink="/profile-page" class="nav-profile">
       <img src="resource/user.png" alt="Profile" class="button-icon">
-      {{session.user.firstName}} {{session.user.lastName}}
+        {{session.user?.firstName}} {{session.user?.lastName}}
     </button>
   </div>
 

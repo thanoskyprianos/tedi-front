@@ -27,19 +27,19 @@ main {
   margin-bottom: 15px;
 }
 
-#pLabel, #nameLabel {
+#pLabel, #firstNameLabel {
   grid-area: aLabel;
 }
 
-#cLabel, #surnameLabel {
+#cLabel, #lastNameLabel {
   grid-area: bLabel;
 }
 
-#password, #name {
+#password, #firstName {
   grid-area: aInput;
 }
 
-#confirmPassword, #surname {
+#confirmPassword, #lastName {
   grid-area: bInput;
 }
 
@@ -121,28 +121,55 @@ h2:hover {
 
   border-radius: 50%;
 
-  transition: background-color 0.3s;
-
   overflow: hidden;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
-#avatar-input > img {
+#avatar-display {
   object-fit: cover;
   height: 100px;
 
   overflow: hidden;
 }
 
-#avatar-input:hover {
-  background-color: rgba(0, 180, 255, 0.15);
+#avatar-input::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  top: 0;
+  left: 0;
+
+  background: rgba(0, 180, 255, 0.3);
+  opacity: 0;
+
+  transition: opacity 0.3s;
+}
+
+#avatar-input:hover::after {
+  opacity: 1;
   cursor: pointer;
 }
 
+#avatar-label-wrapper {
+  display: flex;
+}
 
-#imageUpload {
+#avatar-label-wrapper > label {
+  margin-right: 4px;
+}
+
+#avatar-label-wrapper > a {
+  text-decoration: underline white;
+}
+
+#avatar-label-wrapper > a:hover {
+  color: #cacaca;
+  cursor: pointer;
+}
+
+#image-upload {
   display: none;
 }

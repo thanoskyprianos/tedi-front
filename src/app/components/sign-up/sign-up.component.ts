@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {UserSessionService} from "../../services/user-session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
@@ -16,10 +17,13 @@ export class SignUpComponent {
   @Input() firstName: string = '';
   @Input() lastName: string = '';
   @Input() confirmPassword: string = '';
-  @Input() phoneNumber: number = 0;
+  @Input() phoneNumber: string = '';
   selectedFile: File | null = null;
 
-  constructor(private session: UserSessionService) { }
+  constructor(
+    private session: UserSessionService,
+    private router: Router
+  ) { }
 
   onSubmit() {
 
@@ -28,18 +32,49 @@ export class SignUpComponent {
       return;
     }
 
-    if (this.selectedFile) {
-        this.session.signup(this.email, this.password, this.firstName, this.lastName, this.confirmPassword, this.phoneNumber);
-    } else {
-      this.session.signup(this.email, this.password, this.firstName, this.lastName, this.confirmPassword, this.phoneNumber);
-    }
+    this.session.register(
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.phoneNumber
+    ).subscribe((res: any) => {
+      this.session.setToken(res.body.token);
+      this.session.setUser(res.body);
 
-    let avatarUrl = this.session.user._links[1];
-    if (this.selectedFile)
-    {
-      this.session.uploadImage(avatarUrl, this.selectedFile);
-    }
+      let avatarUrl = this.session.user.links.find(
+        (element) => element.rel === 'avatar');
 
+      if (this.selectedFile) {
+        this.session.uploadImage(avatarUrl.href, this.selectedFile).subscribe(() => {
+          this.router.navigate(['/home-page']);
+        });
+      }
+    });
   }
 
+  avatarSet(event: any) {
+    const reader = new FileReader();
+    const avatarDisplay = document.querySelector("#avatar-display");
+
+    if (avatarDisplay) {
+      reader.onloadend = (event) => {
+        if (event.target && typeof event.target.result === "string") {
+          avatarDisplay.setAttribute('src', event.target.result);
+        }
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedFile = event.target.files[0];
+    }
+  }
+
+  avatarClear() {
+    const avatarDisplay = document.querySelector("#avatar-display");
+
+    if (avatarDisplay) {
+      avatarDisplay.setAttribute('src', 'resource/user.png');
+      this.selectedFile = null;
+    }
+  }
 }

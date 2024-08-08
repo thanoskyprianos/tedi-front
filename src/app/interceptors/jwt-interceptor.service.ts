@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
-import {UserSessionService} from "./user-session.service";
+import {Observable} from "rxjs";
+import {UserSessionService} from "../services/user-session.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,6 @@ export class JwtInterceptorService implements HttpInterceptor {
       })
     }
 
-    return next.handle(req)
-      .pipe(catchError((error: any) =>
-        throwError(() =>
-          new Error(error.message))));
+    return next.handle(req); // error interceptor will handle this
   }
 }

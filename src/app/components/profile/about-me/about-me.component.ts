@@ -18,7 +18,7 @@ export class AboutMeComponent {
   constructor(private session: UserSessionService) { }
 
   onSubmit() {
-    let aboutMe = this.session.user._links[2];
+    let aboutMe = this.session.user.links[2];
   }
 
 }

@@ -13,5 +13,4 @@ import {PostsComponent} from "../posts/posts.component";
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-
 }

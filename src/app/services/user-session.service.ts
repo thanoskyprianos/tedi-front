@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {UserModule} from "../modules/user/user.module";
 import {HttpClient} from "@angular/common/http";
-import {properties} from "../properties.file";
-import {Router} from "@angular/router";
+import {properties} from "../config/properties.file";
+import {UserFetcherService} from "./user-fetcher.service";
+import {mockUser} from "../config/mock.user";
 
 @Injectable({
   providedIn: 'root'
@@ -14,89 +15,81 @@ export class UserSessionService {
 
   constructor(
     private http: HttpClient,
-    private router: Router) {
+    private fetcher: UserFetcherService
+  ) {
     let token = localStorage.getItem("token");
     if (token) {
       this.token = token;
 
-      let user = localStorage.getItem("user");
-      if (user) {
-        this.user = JSON.parse(user) as UserModule;
-      }
+      // todo: delete in prod
+      this.setUser(mockUser);
+
+      setTimeout(() =>
+      this.fetcher.self().subscribe(
+        (res: any) => {
+          this.setUser(res.body);
+        }
+      ))
     }
   }
 
-  updateAboutMe()
-  {
-
+  updateAboutMe() {
   }
 
-  uploadImage(avatarUrl: string, file: File)
-  {
+  uploadImage(avatarUrl: string, file: File) {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    this.http.post(avatarUrl, formData);
+    return this.http.post(avatarUrl, formData);
   }
 
-  signup(email: string, password: string, firstName: string, lastName: string,
-    confirmPassword: string, phoneNumber: number) {
-
-      const signUpData = {
-        email, password,
-        firstName, lastName,
-        confirmPassword, phoneNumber
+  register(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    phoneNumber: string
+  ) {
+      const registerBody = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        phoneNumber: phoneNumber
       };
 
-      this.http.post(properties.endpoint + '/users/signup',
-        signUpData, { observe: 'response' })
-
-      .subscribe((response: any) => {
-        if (response.status === 201) {
-
-          this.token = response.body.jwt.token;
-          localStorage.setItem('token', this.token);
-
-          this.user = response.body.user as UserModule;
-          localStorage.setItem('user', JSON.stringify(this.user));
-
-          this.router.navigate(['/home-page']);
-
-        } else {
-          throw new Error(response.statusText);
-        }
-      });
-
-    }
+      return this.http.post(properties.register, registerBody, { observe: 'response' });
+  }
 
   login(email: string, password: string) {
-    this.http.post(properties.endpoint + '/users/login',
-      {email: email, password: password},
-      { observe: 'response'})
-      .subscribe((response: any) => {
-          if (response.status === 200) {
-            this.token = response.body.jwt.token;
-            localStorage.setItem('token', this.token);
+    const loginBody = {
+      email: email,
+      password: password
+    }
 
-            this.user = response.body.user as UserModule;
-            localStorage.setItem('user', JSON.stringify(this.user));
-
-            this.router.navigate(['/home-page']);
-          } else {
-            throw new Error(response.statusText);
-          }
-        }
-      )
-
-    return true;
+    return this.http.post(properties.endpoint + '/users/login', loginBody, { observe: 'response'});
   }
 
   logout() {
-    this.http.post(properties.endpoint + '/users/logout', null, { observe: 'response'})
-    .subscribe((response: any) => {
-      if (response.status === 200) {
-        localStorage.removeItem('token');
-        location.reload();
-      }
-    })
+    return this.http.get(properties.endpoint + '/users/logout',  { observe: 'response'});
+  }
+
+  setToken(token: string) {
+    this.token = token;
+    localStorage.setItem('token', this.token);
+  }
+
+  removeToken() {
+    this.token = '';
+    localStorage.removeItem('token');
+  }
+
+  setUser(userObj: any) {
+    this.user = new UserModule(
+      userObj.firstName,
+      userObj.lastName,
+      userObj.email,
+      userObj.phoneNumber,
+      userObj.links
+    )
   }
 }
