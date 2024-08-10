@@ -3,14 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 96vh;
+  height: 100vh;
   flex-direction: column;
   vertical-align: top;
   box-sizing: border-box;
 }
 
 .gradient-text {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
   background: linear-gradient(to right, #ff7701, #248eff);
   -webkit-background-clip: text;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {PostsComponent} from "../posts/posts.component";
+import {PostsComponent, posted} from "../posts/posts.component";
 
 @Component({
   selector: 'app-home-page',
@@ -12,5 +12,7 @@ import {PostsComponent} from "../posts/posts.component";
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
+
 export class HomePageComponent {
+  posts: posted[] = [];
 }

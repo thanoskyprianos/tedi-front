@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
-import {MatIcon} from "@angular/material/icon";
+import { PostService, posted } from '../../services/post.service';
+import { UserSessionService } from '../../services/user-session.service';
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [
-    MatCardTitle,
-    MatCardHeader,
-    MatCard,
-    MatCardContent,
-    MatCardActions,
-    MatIcon
-  ],
+  imports: [FormsModule],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.css'
 })
+
 export class PostsComponent {
+  posts: posted[] = [];
+
+  constructor(
+    private postService: PostService,
+    protected session: UserSessionService)
+    { }
 
 }

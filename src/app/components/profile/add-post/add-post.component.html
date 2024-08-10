@@ -1,9 +1,7 @@
 <main>
-  <input type="text" placeholder="NetWork it!">
-  <input type="file" accept="image/*" id="add-photo" class="add-photo">
-  <label for="add-photo">Upload Photo</label>
-
-  <button class="add-post">Create Post</button>
+  <form (ngSubmit)="onSubmitPost()">
+    <input type="text" [(ngModel)]="newlyposted.author" name="description" placeholder="description" required>
+    <input type="text" [(ngModel)]="newlyposted.media" name="media" placeholder="Media URL" required>
+    <button type="submit">Submit Post</button>
+  </form>
 </main>
-
-

@@ -1,12 +1,48 @@
-.option-item {
-  margin-left: 2px;
-  cursor: pointer;
+* {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  vertical-align: top;
+  box-sizing: border-box;
 }
 
-.post-card {
-  width: 200px;
-  height: 200px;
-  border: 3px solid;
+.post .gradient-text {
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff7701, #248eff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.post {
+  width: 500px;
+  height: 300px;
+  border: 2px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, #ff7701, #248eff);
+}
+
+.actions .icons {
+  height: 25px;
+  width: 25px;
+}
+
+.actions {
+  color: #000000;
+  background: #1c1c1e;
+  font-size: 1em;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.actions:hover {
+  background: linear-gradient(to right, #ff3c01, #248eff);
+  box-shadow: 0 0 10px rgb(24, 54, 129);
 }
