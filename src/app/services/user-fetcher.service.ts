@@ -20,6 +20,6 @@ export class UserFetcherService {
   }
 
   avatar(url: string) {
-    return this.http.get(url, {observe: 'response'});
+    return this.http.get(url, {observe: 'response', responseType: 'blob'});
   }
 }

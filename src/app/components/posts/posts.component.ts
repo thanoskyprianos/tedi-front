@@ -19,4 +19,7 @@ export class PostsComponent {
     protected session: UserSessionService)
     { }
 
+  getPosts() {
+
+  }
 }

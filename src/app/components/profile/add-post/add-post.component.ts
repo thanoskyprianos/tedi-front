@@ -1,25 +1,23 @@
-import { Component } from '@angular/core';
-import { PostService, posted } from '../../../services/post.service';
+import {Component, Input} from '@angular/core';
+import { PostService } from '../../../services/post.service';
 import { UserSessionService } from '../../../services/user-session.service';
 import { FormsModule } from '@angular/forms';
+import {PostModule} from "../../../modules/post.module";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-add-post',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.css']
 })
 
 export class AddPostComponent {
-  newlyposted: posted = {
-    post_id: 0,
-    description: '',
-    author: '',
-    media: '',
-    likes: 0,
-    comments: 0
-  };
+  @Input() text: string = '';
+  selectedFiles!: File[];
+
+  showSuccessMessage: boolean = false;
 
   constructor(
     private postService: PostService,
@@ -27,12 +25,49 @@ export class AddPostComponent {
     { }
 
   onSubmitPost() {
-    this.newlyposted.author = this.session.user.firstName;
-    let postUrl = this.session.user.links.find(
-        (element) => element.rel === 'posts');
-
-    if (postUrl) {
-      this.postService.addPost(postUrl.href, this.newlyposted);
+    let post = {
+      "text": this.text
     }
+
+    this.postService.addPost(this.session.user.id, post).subscribe(
+      (res: any) => {
+        const post = new PostModule(res.body.text, res.body.links);
+
+        const addMediaUrl = post.links.find((element) => element.rel === 'add_media');
+        if (addMediaUrl) {
+          this.addMedia(addMediaUrl);
+        }
+      }
+    )
+
+    if (this.selectedFiles.length === 0) {
+      this.showSuccess();
+    }
+  }
+
+  addMedia(addMediaUrl: any) {
+    Array.from(this.selectedFiles).forEach((file, idx) => {
+      this.postService.addMedia(addMediaUrl.href, file).subscribe((_res) => {
+        if (idx === this.selectedFiles.length - 1) {
+          this.showSuccess();
+          this.clearForm();
+        }
+      });
+    });
+  }
+
+  getMedia(event: any) {
+    this.selectedFiles = event.target.files;
+  }
+
+  showSuccess() {
+    this.showSuccessMessage = true;
+    setTimeout(() => this.showSuccessMessage = false, 2000);
+  }
+
+  clearForm() {
+    const form = document.forms[0];
+    if (form)
+      form.reset();
   }
 }

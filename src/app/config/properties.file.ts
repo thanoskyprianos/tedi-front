@@ -7,3 +7,7 @@ export const properties = {
   user: 'http://localhost:8080/users/',
   self: 'http://localhost:8080/users/self',
 }
+
+export const posts = (userId: number) => {
+  return `${properties.user}${userId}/posts`
+}

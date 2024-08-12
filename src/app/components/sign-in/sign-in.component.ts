@@ -27,10 +27,9 @@ export class SignInComponent {
     if (this.email && this.password) {
       this.session.login(this.email, this.password).subscribe(
         (res: any) => {
-          console.log(res.body)
-
           this.session.setToken(res.body.token);
           this.session.setUser(res.body);
+          this.session.subj.next('ok');
 
           this.router.navigate(['/home-page']);
         }

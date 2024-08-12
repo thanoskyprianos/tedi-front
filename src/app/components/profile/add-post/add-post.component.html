@@ -1,7 +1,17 @@
 <main>
+
   <form (ngSubmit)="onSubmitPost()">
-    <input type="text" [(ngModel)]="newlyposted.author" name="description" placeholder="description" required>
-    <input type="text" [(ngModel)]="newlyposted.media" name="media" placeholder="Media URL" required>
-    <button type="submit">Submit Post</button>
+    <div id="success">{{ showSuccessMessage ? 'Post created!' : '&nbsp;'}}</div>
+
+    <textarea
+      type="text"
+      id="post-text"
+      name="description"
+      [(ngModel)]="text"
+      placeholder="Description" required></textarea>
+
+    <input type="file" id="media-upload" accept="image/*, video/*" multiple (change)="getMedia($event)">
+
+    <button type="submit" id="submit-button">Submit Post</button>
   </form>
 </main>

@@ -2,34 +2,51 @@
   box-sizing: border-box;
 }
 
-main {
+form {
   background-color: #1c1c1e;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
+
+  height: 92.3vh;
 }
 
-main input {
+form > * {
+  margin-bottom: 10px;
+}
+
+#success {
+  color: lawngreen;
+}
+
+#post-text, #media-upload {
   padding: 10px;
   font-size: 16px;
   border: 4px solid;
   border-image: linear-gradient(to right, #ff7701, #248eff) 1;
   border-radius: 4px;
   width: 400px;
-  height: 500px;
+  /*height: 500px;*/
   box-sizing: border-box;
   text-align: left;
   vertical-align: top;
   word-wrap: break-word;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
+  resize: both;
 }
 
-main .add-post {
-  background-color: #ceceda;
-  font-size: 1.1em;
-  margin-top: 10px;
+#post-text {
+  height: 150px;
+  min-height: 150px;
+  resize: vertical;
+}
+
+#submit-button {
+  background-color: #3e3e42;
+  color: #ffffff;
+  font-size: 1em;
+  margin-left: 10px;
   width: 120px;
   height: 40px;
   cursor: pointer;
@@ -38,33 +55,46 @@ main .add-post {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-main .add-post:hover {
+#submit-button:hover {
   background: linear-gradient(to right, #ff7701, #248eff);
   box-shadow: 0 0 10px rgb(24, 89, 129);
 }
 
-input[type="file"] {
-  display: none;
-}
+/*main .add-post {*/
+/*  background-color: #ceceda;*/
+/*  font-size: 1.1em;*/
+/*  margin-top: 10px;*/
+/*  width: 120px;*/
+/*  height: 40px;*/
+/*  cursor: pointer;*/
+/*  border: 3px solid;*/
+/*  border-image: linear-gradient(to right, #ff7701, #248eff) 1;*/
+/*  transition: background-color 0.3s, box-shadow 0.3s;*/
+/*}*/
 
-label{
-  background-color: #ceceda;
-  display: inline-block;
-  cursor: pointer;
-  font-size: 1.1em;
-  margin-top: 10px;
-  width: 120px;
-  height: 40px;
-  cursor: pointer;
-  border: 3px solid;
-  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  display: inline-block;
-  text-align: center;
-  line-height: 34px;
-}
+/*main .add-post:hover {*/
+/*  background: linear-gradient(to right, #ff7701, #248eff);*/
+/*  box-shadow: 0 0 10px rgb(24, 89, 129);*/
+/*}*/
 
-label:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
+/*label{*/
+/*  background-color: #ceceda;*/
+/*  display: inline-block;*/
+/*  cursor: pointer;*/
+/*  font-size: 1.1em;*/
+/*  margin-top: 10px;*/
+/*  width: 120px;*/
+/*  height: 40px;*/
+/*  cursor: pointer;*/
+/*  border: 3px solid;*/
+/*  border-image: linear-gradient(to right, #ff7701, #248eff) 1;*/
+/*  transition: background-color 0.3s, box-shadow 0.3s;*/
+/*  display: inline-block;*/
+/*  text-align: center;*/
+/*  line-height: 34px;*/
+/*}*/
+
+/*label:hover {*/
+/*  background: linear-gradient(to right, #ff7701, #248eff);*/
+/*  box-shadow: 0 0 10px rgb(24, 89, 129);*/
+/*}*/

@@ -3,7 +3,7 @@
     <div class="profile-bar">
 
         <div class="main-prof">
-          <img src="resource/user.png" alt="Profile Picture" class="profile-pic">
+          <img [src]="avatarUrl || 'resource/user.png' " alt="Profile Picture" class="profile-pic">
         </div>
 
         <button routerLink="/profle" class="name-button" (click)="refreshPage()">

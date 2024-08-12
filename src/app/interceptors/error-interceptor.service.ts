@@ -15,8 +15,10 @@ export class ErrorInterceptorService implements HttpInterceptor {
       console.log(error)
 
       if (error.status === 401 || error.status === 403) {
-        this.session.logout();
-        location.reload();
+        this.session.logout().subscribe((res) => {
+          this.session.logout().subscribe();
+          location.reload();
+        });
       }
 
       return throwError(() =>

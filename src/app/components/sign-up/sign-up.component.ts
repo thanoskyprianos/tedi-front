@@ -41,6 +41,7 @@ export class SignUpComponent {
     ).subscribe((res: any) => {
       this.session.setToken(res.body.token);
       this.session.setUser(res.body);
+      this.session.subj.next('ok');
 
       let avatarUrl = this.session.user.links.find(
         (element) => element.rel === 'avatar');
@@ -49,6 +50,8 @@ export class SignUpComponent {
         this.session.uploadImage(avatarUrl.href, this.selectedFile).subscribe(() => {
           this.router.navigate(['/home-page']);
         });
+      } else {
+        this.router.navigate(['/home-page']);
       }
     });
   }

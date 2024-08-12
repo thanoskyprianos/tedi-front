@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
-import {UserModule} from "../modules/user/user.module";
+import {UserModule} from "../modules/user.module";
 import {HttpClient} from "@angular/common/http";
 import {properties} from "../config/properties.file";
 import {UserFetcherService} from "./user-fetcher.service";
 import {mockUser} from "../config/mock.user";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,9 @@ import {mockUser} from "../config/mock.user";
 export class UserSessionService {
   token: string = '';
   user!: UserModule;
+
+  subj = new BehaviorSubject('');
+  userObs = this.subj.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -28,6 +32,7 @@ export class UserSessionService {
       this.fetcher.self().subscribe(
         (res: any) => {
           this.setUser(res.body);
+          this.subj.next('ok');
         }
       ))
     }
@@ -70,6 +75,7 @@ export class UserSessionService {
   }
 
   logout() {
+    this.removeToken()
     return this.http.get(properties.endpoint + '/users/logout',  { observe: 'response'});
   }
 
@@ -85,6 +91,7 @@ export class UserSessionService {
 
   setUser(userObj: any) {
     this.user = new UserModule(
+      userObj.id,
       userObj.firstName,
       userObj.lastName,
       userObj.email,
