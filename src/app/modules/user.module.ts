@@ -7,4 +7,14 @@ export class UserModule {
     public phoneNumber: string,
     public links: any[]) {
   }
+
+  hideInformation(aboutMeToHide: string) : void {
+
+    if (this.hasOwnProperty(aboutMeToHide))
+    {
+      (this as any)[aboutMeToHide] = null;
+    }
+
+  }
+
 }

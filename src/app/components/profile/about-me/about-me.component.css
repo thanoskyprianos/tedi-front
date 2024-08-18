@@ -1,23 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
 main {
     background-color: #1c1c1e;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
-main input {
-    padding: 10px;
-    font-size: 16px;
-    border: 4px solid;
-    border-image: linear-gradient(to right, #ff7701, #248eff) 1;
-    border-radius: 4px;
-    width: 400px;
-    height: 500px;
-    box-sizing: border-box;
-    text-align: left;
-    vertical-align: top;
+form {
+  background-color: #1c1c1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 92.3vh;
+}
+
+form > * {
+  margin-bottom: 10px;
+}
+
+#xpinfo-text, #edinfo-text, #skinfo-text {
+  padding: 10px;
+  font-size: 16px;
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  border-radius: 4px;
+  width: 400px;
+  box-sizing: border-box;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  resize: both;
 }
 
 main .update-about-me {

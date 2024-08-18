@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import { UserSessionService} from "../../../services/user-session.service";
 
@@ -12,13 +12,21 @@ import { UserSessionService} from "../../../services/user-session.service";
 })
 
 export class AboutMeComponent {
-  aboutMeText: string = '';
-  profileText: string = '';
+  @Input() InXpInfo: string = '';
+  @Input() InEdInfo: string = '';
+  @Input() InSkInfo: string = '';
+  showSuccessMessage: boolean = false;
 
-  constructor(private session: UserSessionService) { }
+  constructor(protected session: UserSessionService) { }
 
-  onSubmit() {
-    let aboutMe = this.session.user.links[2];
+  onSubmitAboutMe() {
+    const aboutMeInfo = {
+      xpInfo: this.InXpInfo,
+      edInfo: this.InEdInfo,
+      skInfo: this.InSkInfo
+    };
+
+    this.session.updateAboutMe(this.session.user.id, aboutMeInfo);
+ 
   }
-
 }

@@ -38,7 +38,8 @@ export class UserSessionService {
     }
   }
 
-  updateAboutMe() {
+  updateAboutMe(userId: number, aboutMetext: any) {
+    return this.http.post(`${properties.user}${userId}/about-me`, aboutMetext);
   }
 
   uploadImage(avatarUrl: string, file: File) {

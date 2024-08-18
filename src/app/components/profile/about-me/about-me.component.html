@@ -1,9 +1,32 @@
 <main>
-    
-    <form>
-        <input type="text" placeholder="About me">
-        <button class="update-about-me">Update</button>
-       <p> Add about me that is being saved to server</p> 
-    </form>
+    <form (ngSubmit)="onSubmitAboutMe()">
+        <div id="success">{{ showSuccessMessage ? 'About me got updated!' : '&nbsp;'}}</div>
 
+        <textarea
+            type="text"
+            id="xpinfo-text"
+            name="xpinfo"
+            [(ngModel)]="InXpInfo"
+            placeholder="Experience Info" required>
+        </textarea>
+
+        <textarea
+            type="text"
+            id="edinfo-text"
+            name="edinfo"
+            [(ngModel)]="InEdInfo"
+            placeholder="Education Info" required>
+        </textarea>
+
+        <textarea
+            type="text"
+            id="skinfo-text"
+            name="skinfo"
+            [(ngModel)]="InSkInfo"
+            placeholder="Skills Info" required>
+        </textarea>
+
+        <button class="update-about-me">Update</button>
+
+    </form>
 </main>
