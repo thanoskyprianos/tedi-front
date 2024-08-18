@@ -97,6 +97,9 @@ export class UserSessionService {
       userObj.lastName,
       userObj.email,
       userObj.phoneNumber,
+      userObj.xpInfo ,
+      userObj.edInfo ,
+      userObj.skInfo ,
       userObj.links
     )
   }

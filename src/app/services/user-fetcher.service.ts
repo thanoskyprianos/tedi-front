@@ -22,4 +22,10 @@ export class UserFetcherService {
   avatar(url: string) {
     return this.http.get(url, {observe: 'response', responseType: 'blob'});
   }
+
+  aboutMe(url: string)
+  {
+    return this.http.get(url, {observe: 'response'});
+  }
+
 }

@@ -17,7 +17,9 @@ export class AboutMeComponent {
   @Input() InSkInfo: string = '';
   showSuccessMessage: boolean = false;
 
-  constructor(protected session: UserSessionService) { }
+  constructor(
+    protected session: UserSessionService     
+  ) { }
 
   onSubmitAboutMe() {
     const aboutMeInfo = {

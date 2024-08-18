@@ -36,6 +36,11 @@ export class ProfileComponent {
     })
   }
 
+  stringSaveAboutMe() : void 
+  {
+    this.userFetcher.aboutMe();
+  }
+
   refreshPage(): void {
     window.location.reload();
   }
