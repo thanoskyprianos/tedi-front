@@ -100,7 +100,7 @@ export class UserSessionService {
       userObj.xpInfo ,
       userObj.edInfo ,
       userObj.skInfo ,
-      userObj.links
+      userObj._links
     )
   }
 }

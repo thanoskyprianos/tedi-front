@@ -1,11 +1,13 @@
-export const properties = {
-  endpoint: 'http://localhost:8080',
-  login: 'http://localhost:8080/users/login',
-  register: 'http://localhost:8080/users/register',
-  logout: 'http://localhost:8080/users/logout',
+export const endpoint = 'http://localhost:8080';
 
-  user: 'http://localhost:8080/users/',
-  self: 'http://localhost:8080/users/self',
+export const properties = {
+  endpoint: endpoint,
+  login: `${endpoint}/users/login`,
+  register: `${endpoint}/users/register`,
+  logout: `${endpoint}/users/logout`,
+
+  user: `${endpoint}/users/`,
+  self: `${endpoint}/users/self`,
 }
 
 export const posts = (userId: number) => {

@@ -20,8 +20,7 @@ export class ProfileComponent {
   ) {
     this.session.userObs.subscribe((x) => {
       if (x == 'ok') {
-        const avatarUrl = this.session.user.links.find(
-          (element) => element.rel === 'avatar');
+        const avatarUrl = this.session.user._links.avatar;
 
         if (avatarUrl) {
           this.fetcher.avatar(avatarUrl.href).subscribe(
@@ -36,9 +35,9 @@ export class ProfileComponent {
     })
   }
 
-  stringSaveAboutMe() : void 
+  stringSaveAboutMe() : void
   {
-    this.userFetcher.aboutMe();
+    // this.fetcher.aboutMe();
   }
 
   refreshPage(): void {

@@ -8,7 +8,7 @@ export class UserModule {
     public xpInfo : string,
     public edInfo : string,
     public skInfo : string,
-    public links: any[]) {
+    public _links: any) {
   }
 
 
