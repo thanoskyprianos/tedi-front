@@ -45,7 +45,7 @@ export class UserSessionService {
   uploadImage(avatarUrl: string, file: File) {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post(avatarUrl, formData);
+    return this.http.put(avatarUrl, formData);
   }
 
   register(
@@ -97,9 +97,6 @@ export class UserSessionService {
       userObj.lastName,
       userObj.email,
       userObj.phoneNumber,
-      userObj.xpInfo ,
-      userObj.edInfo ,
-      userObj.skInfo ,
       userObj._links
     )
   }

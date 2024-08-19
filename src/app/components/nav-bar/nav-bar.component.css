@@ -171,10 +171,13 @@
 .network-page .nav-profile,
 .messages-page .nav-profile,
 .network-page .search-container,
-.messages-page .search-container,
+.messages-page .search-container {
+  background: #4d4df0;
+}
+
 .messages-page .logo-button,
 .network-page .logo-button {
-  background: #4d4df0;
+  background: #1a1a55;
 }
 
 .network-page .nav-button:hover,

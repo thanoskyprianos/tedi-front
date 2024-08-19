@@ -34,23 +34,12 @@ export class AboutMeComponent {
     };
 
     this.session.updateAboutMe(this.session.user.id, aboutMeInfo);
- 
-  }
-
-  avatarSet(event: any) {
-    const reader = new FileReader();
-    const avatarDisplay = document.querySelector("#avatar-display");
-
-    if (avatarDisplay) {
-      reader.onloadend = (event) => {
-        if (event.target && typeof event.target.result === "string") {
-          avatarDisplay.setAttribute('src', event.target.result);
-        }
-      }
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedFile = event.target.files[0];
+    let avatarUrl = this.session.user._links.avatar;
+    
+    if (this.selectedFile)
+    {
+      this.session.uploadImage(avatarUrl.href, this.selectedFile)
     }
   }
-
 
 }

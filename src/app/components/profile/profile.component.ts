@@ -1,7 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {UserSessionService} from "../../services/user-session.service";
 import { RouterModule } from '@angular/router';
 import {UserFetcherService} from "../../services/user-fetcher.service";
+
+interface ProfileData {
+  professionalPosition: string | null;
+  employmentAgency: string | null;
+  experience: string | null;
+  education: string | null;
+  skills: string | null;
+}
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +19,12 @@ import {UserFetcherService} from "../../services/user-fetcher.service";
   styleUrl: './profile.component.css'
 })
 
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  professionalPosition: string | null = null;
+  employmentAgency: string | null = null;
+  experience: string | null = null;
+  education: string | null = null;
+  skills: string | null = null;
   avatarUrl!: string;
 
   constructor(
@@ -35,9 +48,22 @@ export class ProfileComponent {
     })
   }
 
-  stringSaveAboutMe() : void
+  ngOnInit(): void {
+    this.GetAboutMe();
+  }
+
+  GetAboutMe() : void
   {
-    // this.fetcher.aboutMe();
+    const infoURL = this.session.user._links.href;
+    this.fetcher.aboutMe(infoURL)
+    .subscribe(res => {
+      const profileData = res.body as ProfileData;
+      this.professionalPosition = profileData.professionalPosition;
+      this.employmentAgency = profileData.employmentAgency;
+      this.experience = profileData.experience;
+      this.education = profileData.education;
+      this.skills = profileData.skills;
+    });
   }
 
   refreshPage(): void {
