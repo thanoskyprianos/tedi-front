@@ -1,15 +1,15 @@
 <main>
+  <form (ngSubmit)="onSubmitSettings()">
+    <div class="gradient-text">Settings</div>
 
-  <div class="gradient-text">Settings</div>
+    <div class="email">
+    <input type="text" placeholder="enter new email">
+    <button>Change Email</button>
+    </div>
 
-  <div class="email">
-  <input type="text" placeholder="enter new email">
-  <button>Change Email</button>
-  </div>
-
-  <div class="password">
-    <input type="text" placeholder="enter new password">
-    <button>Change Password</button>
-  </div>
-
+    <div class="password">
+      <input type="text" placeholder="enter new password">
+      <button>Change Password</button>
+    </div>
+  </form>
 </main>
