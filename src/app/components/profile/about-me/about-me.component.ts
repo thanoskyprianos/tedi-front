@@ -16,7 +16,7 @@ export class AboutMeComponent {
   @Input() InEdInfo: string = '';
   @Input() InSkInfo: string = '';
   showSuccessMessage: boolean = false;
-  selectedFiles!: File[];
+  selectedFile: File | null = null;
 
   showXpInfo: boolean = true;
   showEdInfo: boolean = true;
@@ -33,13 +33,23 @@ export class AboutMeComponent {
       skInfo: this.InSkInfo
     };
 
-    /* const addMediaUrl = post._links.add_media;
-    if (addMediaUrl) {
-      this.addMedia(addMediaUrl);
-    } */
-
     this.session.updateAboutMe(this.session.user.id, aboutMeInfo);
  
+  }
+
+  avatarSet(event: any) {
+    const reader = new FileReader();
+    const avatarDisplay = document.querySelector("#avatar-display");
+
+    if (avatarDisplay) {
+      reader.onloadend = (event) => {
+        if (event.target && typeof event.target.result === "string") {
+          avatarDisplay.setAttribute('src', event.target.result);
+        }
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedFile = event.target.files[0];
+    }
   }
 
 
