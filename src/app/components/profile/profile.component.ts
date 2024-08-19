@@ -20,12 +20,12 @@ interface ProfileData {
 })
 
 export class ProfileComponent implements OnInit {
-  professionalPosition: string | null = null;
+  professionalPosition: string | null = 'Software Engineer';
   employmentAgency: string | null = null;
-  experience: string | null = null;
-  education: string | null = null;
-  skills: string | null = null;
-  avatarUrl!: string;
+  experience: string | null = '5 years in software development';
+  education: string | null = 'Computer Science';
+  skills: string | null = 'JavaScript, TypeScript, Angular';
+  avatarUrl: string = 'https://randomuser.me/api/portraits/lego/1.jpg';
 
   constructor(
     protected session: UserSessionService,
