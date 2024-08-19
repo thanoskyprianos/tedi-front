@@ -1,6 +1,7 @@
 <main>
 
   <form (ngSubmit)="onSubmitPost()">
+    <div class="gradient-text">Add New Post</div>
     <div id="success">{{ showSuccessMessage ? 'Post created!' : '&nbsp;'}}</div>
 
     <textarea
@@ -11,6 +12,7 @@
       placeholder="Description" required>
     </textarea>
 
+    <label for="media-upload" id="media-upload-label">Upload Media</label>
     <input type="file" id="media-upload" accept="image/*, video/*" multiple (change)="getMedia($event)">
 
     <button type="submit" id="submit-button">Submit Post</button>

@@ -1,6 +1,8 @@
 <main>
     <form (ngSubmit)="onSubmitAboutMe()">
         <div id="success">{{ showSuccessMessage ? 'About me got updated!' : '&nbsp;'}}</div>
+        
+        <div class="gradient-text">Update About Me information</div>
 
         <textarea
             type="text"
@@ -25,6 +27,28 @@
             [(ngModel)]="InSkInfo"
             placeholder="Skills Info" required>
         </textarea>
+
+        <div class="gradient-text">Preferences</div>
+
+        <div>
+            <input type="checkbox" id="xpinfo-checkbox" [(ngModel)]="showXpInfo" name="showXpInfo">
+            <label for="xpinfo-checkbox">Show Experience Info</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="edinfo-checkbox" [(ngModel)]="showEdInfo" name="showEdInfo">
+            <label for="edinfo-checkbox">Show Education Info</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="skinfo-checkbox" [(ngModel)]="showSkInfo" name="showSkInfo">
+            <label for="skinfo-checkbox">Show Skills Info</label>
+        </div>
+
+        <div class="gradient-text">New Profile Picture</div>
+
+        <label for="media-upload" id="media-upload-label">Upload New Profile Picture</label>
+        <input type="file" id="media-upload" accept="image/* multiple (change)="getMedia($event)">
 
         <button class="update-about-me">Update</button>
 

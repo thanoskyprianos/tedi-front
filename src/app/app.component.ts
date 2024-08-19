@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {NgIf} from "@angular/common";
 import {NavBarComponent} from "./components/nav-bar/nav-bar.component";
@@ -11,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, RouterLink, NavBarComponent, NgIf, NavBarComponent, MatCardModule,
-              MatIconModule, MatDialogModule],
+              MatIconModule, MatDialogModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

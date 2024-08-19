@@ -20,7 +20,7 @@ form > * {
   color: lawngreen;
 }
 
-#post-text, #media-upload {
+#post-text{
   padding: 10px;
   font-size: 16px;
   border: 4px solid;
@@ -40,6 +40,51 @@ form > * {
   height: 150px;
   min-height: 150px;
   resize: vertical;
+}
+
+.gradient-text {
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff7701, #248eff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+#media-upload {
+  padding: 10px;
+  font-size: 16px;
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  border-radius: 4px;
+  width: 400px;
+  box-sizing: border-box;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  resize: both;
+  display: none;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+#media-upload-label {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #ff7701, #248eff);
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#media-upload-label:hover {
+  background: linear-gradient(to right, #ff7701, #248eff);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
 }
 
 #submit-button {

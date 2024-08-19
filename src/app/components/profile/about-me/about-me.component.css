@@ -3,12 +3,34 @@
 }
 
 main {
-    background-color: #1c1c1e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+  background-color: #1c1c1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 40px;
+  accent-color: #ff7701;
+  display: inline-block;
+  position: relative;
+}
+
+label {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] + label {
+  display: flex;
+  align-items: center;
 }
 
 form {
@@ -17,12 +39,19 @@ form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   height: 92.3vh;
 }
 
 form > * {
   margin-bottom: 10px;
+}
+
+.gradient-text {
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff7701, #248eff);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 #xpinfo-text, #edinfo-text, #skinfo-text {
@@ -54,4 +83,39 @@ main .update-about-me {
 main .update-about-me:hover {
     background: linear-gradient(to right, #ff7701, #248eff);
     box-shadow: 0 0 10px rgb(24, 89, 129);
+}
+
+#media-upload {
+  padding: 10px;
+  font-size: 16px;
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  border-radius: 4px;
+  width: 400px;
+  box-sizing: border-box;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  resize: both;
+  display: none;
+}
+
+#media-upload-label {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #ff7701, #248eff);
+  border: 4px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#media-upload-label:hover {
+  background: linear-gradient(to right, #ff7701, #248eff);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
 }

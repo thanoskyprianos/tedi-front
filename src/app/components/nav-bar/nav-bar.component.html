@@ -1,13 +1,17 @@
-<main>
+<main [ngClass]="{'network-page': isNetworkPage, 'messages-page': isMessagesPage
+  , 'settings-page': isSettingsPage, 'ads-page' : isAdsPage,
+  'home-page': isHomePage, 'notification-page': isNotificationPage,
+  'profile-page': isProfilePage
+}">
 
   <div class="home-page-container">
     <button type="button" class="logo-button">
       <img src="resource/network-favicon-color.png" alt="NetWork Logo" class="logo">
     </button>
-    <button routerLink="/home-page" class="nav-button">Home Page</button>
-    <button routerLink="/network-page" class="nav-button">Network</button>
-    <button routerLink="/settings-page" class="nav-button">Settings</button>
-    <button routerLink="/ads-page" class="nav-button">Job Offers</button>
+    <button routerLink="/home-page" class="nav-button" id="home">Home Page</button>
+    <button routerLink="/network-page" class="nav-button" id="net">Network</button>
+    <button routerLink="/settings-page" class="nav-button" id="set">Settings</button>
+    <button routerLink="/ads-page" class="nav-button" id="ad">Job Offers</button>
   </div>
 
   <div class="main-home-container">
@@ -16,15 +20,15 @@
       <input class="search-input" type="search" placeholder="Search">
     </button>
 
-    <button routerLink="/messages-page" class="nav-button">
+    <button routerLink="/messages-page" class="nav-button" id="net">
       <img src="resource/email.png" alt="Messages" class="button-icon">
     </button>
 
-    <button routerLink="/notification-page" class="nav-button">
+    <button routerLink="/notification-page" class="nav-button" id="not">
       <img src="resource/notification.png" alt="Notifications" class="button-icon">
     </button>
 
-    <button routerLink="/profile-page" class="nav-profile">
+    <button routerLink="/profile-page" class="nav-profile" id="prof">
       <img src="resource/user.png" alt="Profile" class="button-icon">
         {{session.user?.firstName}} {{session.user?.lastName}}
     </button>

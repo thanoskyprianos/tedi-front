@@ -16,7 +16,12 @@ export class AboutMeComponent {
   @Input() InEdInfo: string = '';
   @Input() InSkInfo: string = '';
   showSuccessMessage: boolean = false;
+  selectedFiles!: File[];
 
+  showXpInfo: boolean = true;
+  showEdInfo: boolean = true;
+  showSkInfo: boolean = true;
+  
   constructor(
     protected session: UserSessionService     
   ) { }
@@ -28,7 +33,14 @@ export class AboutMeComponent {
       skInfo: this.InSkInfo
     };
 
+    /* const addMediaUrl = post._links.add_media;
+    if (addMediaUrl) {
+      this.addMedia(addMediaUrl);
+    } */
+
     this.session.updateAboutMe(this.session.user.id, aboutMeInfo);
  
   }
+
+
 }
