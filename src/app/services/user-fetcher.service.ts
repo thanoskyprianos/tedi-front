@@ -23,8 +23,7 @@ export class UserFetcherService {
     return this.http.get(url, {observe: 'response', responseType: 'blob'});
   }
 
-  aboutMe(url: string)
-  {
+  aboutMe(url: string) {
     return this.http.get(url, {observe: 'response'});
   }
 

@@ -2,29 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import {UserSessionService} from "../../services/user-session.service";
 import { RouterModule } from '@angular/router';
 import {UserFetcherService} from "../../services/user-fetcher.service";
-
-interface ProfileData {
-  professionalPosition: string | null;
-  employmentAgency: string | null;
-  experience: string | null;
-  education: string | null;
-  skills: string | null;
-}
+import {ProfileData} from "../../modules/user.module";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, NgIf],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 
-export class ProfileComponent implements OnInit {
-  professionalPosition: string | null = 'Software Engineer';
-  employmentAgency: string | null = null;
-  experience: string | null = '5 years in software development';
-  education: string | null = 'Computer Science';
-  skills: string | null = 'JavaScript, TypeScript, Angular';
+export class ProfileComponent {
+  aboutMe: ProfileData = new ProfileData (
+    'Software Engineer',
+    null,
+    '5 years in software development',
+    'Computer Science',
+    'JavaScript, TypeScript, Angular'
+  )
   avatarUrl: string = 'https://randomuser.me/api/portraits/lego/1.jpg';
 
   constructor(
@@ -33,41 +29,44 @@ export class ProfileComponent implements OnInit {
   ) {
     this.session.userObs.subscribe((x) => {
       if (x == 'ok') {
-        const avatarUrl = this.session.user._links.avatar;
-
-        if (avatarUrl) {
-          this.fetcher.avatar(avatarUrl.href).subscribe(
-            (res: any) => {
-              if (res.status === 200) {
-                this.avatarSet(res.body);
-              }
-            }
-          );
-        }
+        this.getAvatar();
+        this.getAboutMe();
       }
     })
   }
 
-  ngOnInit(): void {
-    this.GetAboutMe();
+  getAboutMe() {
+    const infoUrl = this.session.user._links.info;
+    if (infoUrl) {
+      this.fetcher.aboutMe(infoUrl.href).subscribe(
+        (res: any) => {
+          if (res.status === 200) {
+            this.aboutMeSet(res.body)
+          }
+        }
+      )
+    }
   }
 
-  GetAboutMe() : void
-  {
-    const infoURL = this.session.user._links.href;
-    this.fetcher.aboutMe(infoURL)
-    .subscribe(res => {
-      const profileData = res.body as ProfileData;
-      this.professionalPosition = profileData.professionalPosition;
-      this.employmentAgency = profileData.employmentAgency;
-      this.experience = profileData.experience;
-      this.education = profileData.education;
-      this.skills = profileData.skills;
-    });
+  aboutMeSet(info: any) {
+    this.aboutMe.professionalPosition = info.professionalPosition;
+    this.aboutMe.employmentAgency = info.employmentAgency;
+    this.aboutMe.experience = info.experience;
+    this.aboutMe.education = info.education;
+    this.aboutMe.skills = info.skills;
   }
 
-  refreshPage(): void {
-    window.location.reload();
+  getAvatar() {
+    const avatarUrl = this.session.user._links.avatar;
+    if (avatarUrl) {
+      this.fetcher.avatar(avatarUrl.href).subscribe(
+        (res: any) => {
+          if (res.status === 200) {
+            this.avatarSet(res.body);
+          }
+        }
+      );
+    }
   }
 
   avatarSet(file: Blob) {
@@ -83,5 +82,9 @@ export class ProfileComponent implements OnInit {
 
       reader.readAsDataURL(file);
     }
+  }
+
+  refreshPage(): void {
+    window.location.reload();
   }
 }
