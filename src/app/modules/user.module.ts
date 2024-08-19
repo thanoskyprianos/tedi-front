@@ -10,6 +10,4 @@ export class UserModule {
     public skInfo : string,
     public _links: any) {
   }
-
-
 }

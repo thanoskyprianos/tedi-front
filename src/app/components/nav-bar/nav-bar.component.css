@@ -69,8 +69,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #102b65;
-  background: #248eff;
+  background-color: #575757;
 }
 
 .main-home-container .nav-profile {
@@ -79,15 +78,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #102b65;
-  background: #248eff;
+  background-color: #575757;
 }
 
 .main-home-container .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ff7701;
+  background-color: #575757;
 }
 
 .main-home-container .search-container:hover {
@@ -110,7 +108,7 @@
   height: 35px;
   margin: 1px;
   cursor: pointer;
-  background: #ff8316;
+  background-color: #575757;
   color: #000405;
   border: none;
   border-radius: 1px;
@@ -124,7 +122,7 @@
   height: 40px;
   margin: 1px;
   cursor: pointer;
-  background: #7e7e83;
+  background-color: #575757;
   color: white;
   border: none;
   border-radius: 2px;
@@ -148,7 +146,7 @@
   height: 40px;
   margin: 1px;
   cursor: pointer;
-  background: #1c1c1e;
+  background-color: #575757;
   color: #0b0a0a;
   border: none;
   border-radius: 2px;
@@ -176,7 +174,7 @@
 .messages-page .search-container,
 .messages-page .logo-button,
 .network-page .logo-button {
-  background: linear-gradient(to right, #83b4ec, #546eff);
+  background: #4d4df0;
 }
 
 .network-page .nav-button:hover,
@@ -187,8 +185,8 @@
 .messages-page .search-container:hover,
 .messages-page .logo-button:hover,
 .network-page .logo-button:hover {
-  background: linear-gradient(to right, #8489eb, #8553d6);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
+  background: linear-gradient(to right, #4d4df0, #7171de);
+  box-shadow: 0 0 10px #3d3de2;
 }
 
 .network-page #net,
@@ -207,7 +205,7 @@
   padding: 15px;
   background: linear-gradient(to bottom, #1a1a55, #121247);
   border-bottom: 4px solid;
-  border-image: linear-gradient(to right, #8e68ee, #52a8ff) 1;
+  border-image: linear-gradient(to right, #8e68ee, #4d4df0) 1;
 }
 
 .settings-page #set {
