@@ -20,9 +20,11 @@
 
 
       <div class="display-about-me">
-        <p><strong>Experience:</strong> {{experience}} </p>
-        <p><strong>Education: </strong> {{education}} </p>
-        <p><strong>Skills:    </strong> {{skills}} </p>
+        <p *ngIf="aboutMe.professionalPosition"><strong>Professional Position: </strong>{{aboutMe.professionalPosition}}</p>
+        <p *ngIf="aboutMe.employmentAgency"><strong>Employment Agency: </strong>{{aboutMe.employmentAgency}}</p>
+        <p *ngIf="aboutMe.experience"><strong>Experience: </strong>{{aboutMe.experience}}</p>
+        <p *ngIf="aboutMe.education"><strong>Education: </strong>{{aboutMe.education}}</p>
+        <p *ngIf="aboutMe.skills"><strong>Skills: </strong>{{aboutMe.skills}}</p>
       </div>
 
     </div>
