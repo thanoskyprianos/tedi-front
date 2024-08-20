@@ -1,17 +1,5 @@
-<main>
-  <section class="uploaded-data" *ngFor="let post of getPosts()">
-    <img class="listed-photo" [src]="post.media" alt="No Photo Included">
-    <h2 class="gradient-text">{{ post.author }}</h2>
+<main class="posts">
+  <section *ngFor="let post of posts">
+    <app-post [post]="post" />
   </section>
-
-  <section class="post">
-    <div class="gradient-text">Damianos P.</div>
-    <button class="actions">
-      <img src="resource/heart.png" class="icons">
-    </button>
-    <button class="actions">
-      <img src="resource/chat-bubble.png" class="icons">
-    </button>
-  </section>
-
 </main>

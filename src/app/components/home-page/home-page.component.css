@@ -1,5 +1,4 @@
 main {
-  font-family: 'Roboto', serif;
-  background: #1c1c1e;
-  color: #ffffff;
+  background: var(--darkest-grey);
+  min-height: var(--height-minus-nav-bar);
 }

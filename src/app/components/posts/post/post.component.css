@@ -1,0 +1,52 @@
+.post-wrapper {
+
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  border: 5px solid white;
+  border-image: var(--orange-blue) 1;
+
+  margin: 15px 0;
+
+  /*height: 65vh;*/
+  width: 45%;
+}
+
+p {
+  color: white;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  padding: 20px 15px 0 15px;
+  margin: 0;
+}
+
+p:hover {
+  text-overflow: initial;
+  white-space: initial;
+
+}
+
+.media-wrapper {
+  height: inherit;
+  display: flex;
+
+  margin: 0;
+  padding: 10px;
+}
+
+.media {
+  margin: 0;
+  padding: 0;
+}
+
+video, img {
+  height: 320px;
+  padding-right: 10px;
+}
+
+.image {
+  cursor: zoom-in;
+}

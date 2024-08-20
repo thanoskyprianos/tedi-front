@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {posts} from "../config/properties.file";
+import {postsFor, postsOf} from "../config/properties.file";
 
 export interface posted {
   post_id: number;
@@ -23,12 +23,16 @@ export class PostService {
   ) { }
 
 
-  getPosts(postUrl: string) {
-    return this.http.get<posted[]>(postUrl);
+  getPosts(id: number) {
+    return this.http.get(postsFor(id), {observe: 'response'});
   }
 
   addPost(userId: number, postText: any): Observable<any> {
-    return this.http.post(posts(userId), postText, {observe: 'response'});
+    return this.http.post(postsOf(userId), postText, {observe: 'response'});
+  }
+
+  getMedia(mediaUrl: string) {
+    return this.http.get(mediaUrl, {observe: 'response', responseType: 'blob'});
   }
 
   addMedia(addMediaUrl: string, media: File) {

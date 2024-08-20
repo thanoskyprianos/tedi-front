@@ -1,4 +1,4 @@
-export const endpoint = 'http://localhost:8080';
+export const endpoint = 'https://localhost:8080';
 
 export const properties = {
   endpoint: endpoint,
@@ -10,6 +10,10 @@ export const properties = {
   self: `${endpoint}/users/self`,
 }
 
-export const posts = (userId: number) => {
+export const postsOf = (userId: number) => {
   return `${properties.user}${userId}/posts`
+}
+
+export const postsFor = (userId: number) => {
+  return `${postsOf(userId)}/for`
 }

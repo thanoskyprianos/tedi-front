@@ -1,0 +1,27 @@
+.network-page, .messages-page {
+  background: var(--dark-purple-blue);
+  border-image: var(--purple-magenta) 1;
+
+  button {
+    background: var(--purple);
+  }
+
+  .logo-button {
+    background: var(--dark-purple);
+  }
+
+  button:hover {
+    background: var(--purple-magenta);
+    box-shadow: 0 0 10px var(--purple-magenta-shadow);
+  }
+
+  #net, #mes {
+    background: var(--gold-orange);
+    box-shadow: 0 0 100px var(--gold-orange-shadow);
+  }
+}
+
+#net:hover, #mes:hover {
+  background: var(--gold-orange);
+  box-shadow: 0 0 10px var(--gold-orange-shadow);
+}

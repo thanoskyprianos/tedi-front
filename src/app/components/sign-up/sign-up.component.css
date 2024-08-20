@@ -178,7 +178,9 @@ h2:hover {
 }
 
 #errorMsg {
-  color: purple;
-  text-shadow: 0 1px 25px white;
+  background-image: linear-gradient(to right, #ff7701, #248eff);
+  color: transparent;
+  background-clip: text;
+
   margin-bottom: 5px;
 }

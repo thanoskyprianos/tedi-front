@@ -20,7 +20,7 @@
       <input class="search-input" type="search" placeholder="Search">
     </button>
 
-    <button routerLink="/messages-page" class="nav-button" id="net">
+    <button routerLink="/messages-page" class="nav-button" id="mes">
       <img src="resource/email.png" alt="Messages" class="button-icon">
     </button>
 
@@ -30,7 +30,7 @@
 
     <button routerLink="/profile-page" class="nav-profile" id="prof">
       <img src="resource/user.png" alt="Profile" class="button-icon">
-        {{session.user?.firstName}} {{session.user?.lastName}}
+      <p> {{session.user?.firstName}} {{session.user?.lastName}} sdfsdfs lo </p>
     </button>
 
     <button (click)="logout()" class="nav-button" id="prof">

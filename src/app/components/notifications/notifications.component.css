@@ -1,10 +1,11 @@
-* {
-    background-color: #1c1c1e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    vertical-align: top;
-    box-sizing: border-box;
+main {
+  background-color: var(--darkest-grey);
+  height: var(--height-minus-nav-bar);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  vertical-align: top;
+  box-sizing: border-box;
 }

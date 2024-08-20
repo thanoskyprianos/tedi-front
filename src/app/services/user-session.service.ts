@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
 import {UserModule} from "../modules/user.module";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpContext, HttpContextToken} from "@angular/common/http";
 import {properties} from "../config/properties.file";
 import {UserFetcherService} from "./user-fetcher.service";
 import {mockUser} from "../config/mock.user";
 import {BehaviorSubject} from "rxjs";
 import { Router } from '@angular/router';
 
+// ability to ignore auth errors (checked by interceptor)
+export const IGNORE_AUTH = new HttpContextToken(() => false)
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class UserSessionService {
   token: string = '';
   user!: UserModule;
@@ -90,7 +92,11 @@ export class UserSessionService {
       password: password
     }
 
-    return this.http.post(properties.endpoint + '/users/login', loginBody, { observe: 'response'});
+    return this.http.post(
+      properties.endpoint + '/users/login', loginBody, {
+        observe: 'response',
+        context: new HttpContext().set(IGNORE_AUTH, true)
+      });
   }
 
   logout() {

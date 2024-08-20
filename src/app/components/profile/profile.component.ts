@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {UserSessionService} from "../../services/user-session.service";
 import { RouterModule } from '@angular/router';
 import {UserFetcherService} from "../../services/user-fetcher.service";
@@ -28,7 +28,7 @@ export class ProfileComponent {
     private fetcher: UserFetcherService
   ) {
     this.session.userObs.subscribe((x) => {
-      if (x == 'ok') {
+      if (x === 'ok') {
         this.getAvatar();
         this.getAboutMe();
       }

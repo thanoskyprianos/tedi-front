@@ -17,6 +17,8 @@ export class SignInComponent {
   @Input() email: string = '';
   @Input() password: string = '';
 
+  errorMsg: string | null = null;
+
   constructor(
     private session: UserSessionService,
     private router: Router
@@ -24,16 +26,31 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    if (this.email && this.password) {
-      this.session.login(this.email, this.password).subscribe(
-        (res: any) => {
-          this.session.setToken(res.body.token);
-          this.session.setUser(res.body);
-          this.session.subj.next('ok');
-
-          this.router.navigate(['/home-page']);
-        }
-      )
+    if (!(this.email && this.password)) {
+      this.errorIndication('Please, fill out all input fields')
+      return;
     }
+
+    this.session.login(this.email, this.password).subscribe({
+      next: (res: any) => {
+        this.session.setToken(res.body.token);
+        this.session.setUser(res.body);
+        this.session.subj.next('ok');
+
+        this.router.navigate(['/home-page']);
+      },
+      error: (err) => {
+        this.errorIndication(err.error.message);
+
+        if (err.status === 401) {
+          document.forms[0].reset();
+        }
+      }
+    });
+  }
+
+  private errorIndication(errorMsg: string) {
+    this.errorMsg = errorMsg;
+    setTimeout(() => this.errorMsg = null, 2000);
   }
 }

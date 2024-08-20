@@ -1,15 +1,15 @@
-* {
-    background-color: #0e0e35;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+main {
+  background-color: var(--darker-purple);
+  height: var(--height-minus-nav-bar);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .profile-bar {
     cursor: pointer;
-    margin-top: 0px;
+    margin-top: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -19,20 +19,20 @@
     height: 100px;
     background: #070719;
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 8px var(--black);
     padding: 20px;
     border: 5px solid;
-    border-image: linear-gradient(to right, #ffdf88, #ffa203) 1;
+    border-image: var(--gold-orange) 1;
 }
 
 .profile-bar:hover {
-    background: linear-gradient(to right, #ffdf88, #ffa203);
+    background: var(--gold-orange);
     color: transparent;
-}   
+}
 
 .profile-bar:hover::before {
     content: attr(data-name);
-    color: black;
+    color: var(--black);
     font-size: 2em;
     font-weight: bold;
     position: absolute;

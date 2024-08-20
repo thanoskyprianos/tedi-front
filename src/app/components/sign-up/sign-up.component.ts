@@ -28,9 +28,20 @@ export class SignUpComponent {
   ) { }
 
   onSubmit() {
+    if (!(
+      this.email &&
+      this.password &&
+      this.firstName &&
+      this.lastName &&
+      this.confirmPassword &&
+      this.phoneNumber
+    )) {
+      this.errorIndication('Please, fill out all input fields');
+      return;
+    }
+
     if (this.password !== this.confirmPassword) {
-      this.errorMsg = 'Passwords do not match';
-      setTimeout(() => this.errorMsg = null, 2000);
+      this.errorIndication('Passwords do not match');
       return;
     }
 
@@ -56,13 +67,13 @@ export class SignUpComponent {
           this.router.navigate(['/home-page']);
         }
       },
-      error: err => {
-        if (err.status === 409) {
-          this.errorMsg = err.error.message;
-          setTimeout(() => this.errorMsg = null, 2000);
-        }
-      }
-    }).add(() => document.forms[0].reset());
+      error: err => { if (err.status === 409) this.errorIndication(err.error.message); }
+    }).add(() => document.forms[0].reset()); // reset form on duplicate email
+  }
+
+  private errorIndication(errorMsg: string) {
+    this.errorMsg = errorMsg;
+    setTimeout(() => this.errorMsg = null, 2000);
   }
 
   avatarSet(event: any) {

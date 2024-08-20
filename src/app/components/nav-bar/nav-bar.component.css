@@ -1,237 +1,124 @@
-.main {
-  position: fixed;
+* {
+  font-size: 16px;
+}
+
+main {
+  position: sticky;
   top: 0;
+
   width: 100%;
-  z-index: 1000;
-  background-color: #494949;
-  padding-top: 60px;
-}
+  border-bottom: 5px solid;
 
-.logo-button {
-  width: 60px;
-  height: 40px;
-  background: #222121;
-  margin-top: 3px;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.logo-button:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
-
-.logo {
-  width: 40px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.home-page-container .nav-button {
-  width: 120px;
-  height: 40px;
-  margin-top: 3px;
-  text-align: center;
-}
-
-.home-page-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 4vh;
-  flex-direction: row;
-  padding: 15px;
-  background: linear-gradient(to bottom, #2a2a2b, #2a2a2b);
-  border-bottom: 4px solid;
-  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  border-image: var(--orange-blue) 1;
+  background: var(--dark-grey);
 }
 
-.main-home-container {
-  position: absolute;
-  top: 0;
-  right: 0;
+.home-page-container, .main-home-container {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
   padding: 16px;
+}
+
+
+button {
+  height: 40px;
+  margin: 1px;
+  cursor: pointer;
+  background-color: var(--light-grey);
+  color: var(--black);
+  border: none;
+
+  transition: box-shadow 0.3s ease-out;
+}
+
+button:hover {
+  background: var(--orange-blue);
+  box-shadow: 0 0 10px var(--orange-blue-shadow);
 }
 
 .button-icon {
   width: 20px;
-  height: 20px;
+}
+
+.logo-button {
+  width: 60px;
+  padding: 0;
+  border: none;
+  background: var(--darker-grey);
+
+  .logo {
+    height: inherit;
+    width: auto;
+  }
+}
+
+.home-page-container .nav-button {
+  width: 120px;
 }
 
 .main-home-container .nav-button {
   width: 40px;
-  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #575757;
-}
-
-.main-home-container .nav-profile {
-  width: 160px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #575757;
-}
-
-.main-home-container .search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #575757;
-}
-
-.main-home-container .search-container:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
-
-.main-home-container .nav-button:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
-
-.main-home-container .nav-profile:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
-
-.nav-button {
-  width: 200px;
-  height: 35px;
-  margin: 1px;
-  cursor: pointer;
-  background-color: #575757;
-  color: #000405;
-  border: none;
-  border-radius: 1px;
-  font-size: 18px;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  text-align: left;
 }
 
 .search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 260px;
-  height: 40px;
-  margin: 1px;
-  cursor: pointer;
-  background-color: #575757;
-  color: white;
-  border: none;
-  border-radius: 2px;
-  font-size: 18px;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  text-align: left;
 }
 
 .search-input {
-  font-size: 16px;
   border: none;
   outline: none;
   background: transparent;
   width: max-content;
-  height: 30px;
-  margin: 7px;
+  margin-left: 14px;
+
 }
 
 .nav-profile {
-  width: 40px;
-  height: 40px;
-  margin: 1px;
-  cursor: pointer;
-  background-color: #575757;
-  color: #0b0a0a;
-  border: none;
-  border-radius: 2px;
-  font-size: 15px;
-  gap: 5px;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  text-align: left;
-}
-
-.nav-button:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
-
-#net:hover {
-  background: linear-gradient(to right, #ffecb8, #ffb12a);
-  box-shadow: 0 0 10px rgb(216, 214, 139);
-}
-
-.network-page .nav-button,
-.messages-page .nav-button,
-.network-page .nav-profile,
-.messages-page .nav-profile,
-.network-page .search-container,
-.messages-page .search-container {
-  background: #4d4df0;
-}
-
-.messages-page .logo-button,
-.network-page .logo-button {
-  background: #1a1a55;
-}
-
-.network-page .nav-button:hover,
-.messages-page .nav-button:hover,
-.network-page .nav-profile:hover,
-.messages-page .nav-profile:hover,
-.network-page .search-container:hover,
-.messages-page .search-container:hover,
-.messages-page .logo-button:hover,
-.network-page .logo-button:hover {
-  background: linear-gradient(to right, #4d4df0, #7171de);
-  box-shadow: 0 0 10px #3d3de2;
-}
-
-.network-page #net,
-.messages-page #net {
-  background: linear-gradient(to right, #ffdf88, #ffa203);
-  box-shadow: 0 0 100px rgb(243, 239, 126);
-}
-
-.network-page .home-page-container,
-.messages-page .home-page-container  {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 4vh;
-  flex-direction: row;
-  padding: 15px;
-  background: linear-gradient(to bottom, #1a1a55, #121247);
-  border-bottom: 4px solid;
-  border-image: linear-gradient(to right, #8e68ee, #4d4df0) 1;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  width: 160px;
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 .settings-page #set {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 100px rgb(0, 151, 245);
+  background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .ads-page #ad {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 100px rgb(0, 151, 245);
+  background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .home-page #home {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 100px rgb(0, 151, 245);
+  background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .notification-page #not {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 100px rgb(0, 151, 245);
+  background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .profile-page #prof {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 100px rgb(0, 151, 245);
+  background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
+

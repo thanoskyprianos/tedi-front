@@ -2,6 +2,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   margin: 0;
   background: #2f2f32;
@@ -74,4 +75,12 @@ h2 {
 
 h2:hover {
   text-shadow: 0 0 10px #00b4ff, 0 0 20px #102b65, 0 0 30px #00b4ff; /* Glow effect */
+}
+
+#errorMsg {
+  background-image: linear-gradient(to right, #ff7701, #248eff);
+  color: transparent;
+  background-clip: text;
+
+  margin-bottom: 5px;
 }

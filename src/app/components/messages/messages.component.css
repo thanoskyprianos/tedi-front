@@ -1,14 +1,10 @@
-* {
-    background-color: #0e0e35;
-    display: flex;
-    justify-content: center;  
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+main {
+  height: var(--height-minus-nav-bar);
+  background-color: var(--darker-purple);
 }
 
 .message-navigation {
-    margin-left: 15px;
-    margin-top: 15px;
-    color: white;
+  margin-left: 15px;
+  margin-top: 15px;
+  color: white;
 }
