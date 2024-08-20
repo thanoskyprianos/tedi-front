@@ -2,6 +2,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   margin: 0;
   background: linear-gradient(to top right, #00b4ff, #102b65);
@@ -172,4 +173,10 @@ h2:hover {
 
 #image-upload {
   display: none;
+}
+
+#errorMsg {
+  color: purple;
+  text-shadow: 0 1px 25px white;
+  margin-bottom: 5px;
 }

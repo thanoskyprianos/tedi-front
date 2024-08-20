@@ -18,7 +18,9 @@ export class SignUpComponent {
   @Input() lastName: string = '';
   @Input() confirmPassword: string = '';
   @Input() phoneNumber: string = '';
+
   selectedFile: File | null = null;
+  errorMsg: string | null = null;
 
   constructor(
     private session: UserSessionService,
@@ -26,9 +28,9 @@ export class SignUpComponent {
   ) { }
 
   onSubmit() {
-
     if (this.password !== this.confirmPassword) {
-      alert('Passwords do not match');
+      this.errorMsg = 'Passwords do not match';
+      setTimeout(() => this.errorMsg = null, 2000);
       return;
     }
 
@@ -38,21 +40,29 @@ export class SignUpComponent {
       this.email,
       this.password,
       this.phoneNumber
-    ).subscribe((res: any) => {
-      this.session.setToken(res.body.token);
-      this.session.setUser(res.body);
-      this.session.subj.next('ok');
+    ).subscribe({
+      next: (res: any) => {
+        this.session.setToken(res.body.token);
+        this.session.setUser(res.body);
+        this.session.subj.next('ok');
 
-      let avatarUrl = this.session.user._links.avatar;
+        let avatarUrl = this.session.user._links.avatar;
 
-      if (this.selectedFile) {
-        this.session.uploadImage(avatarUrl.href, this.selectedFile).subscribe(() => {
+        if (this.selectedFile) {
+          this.session.uploadImage(avatarUrl.href, this.selectedFile).subscribe(() => {
+            this.router.navigate(['/home-page']);
+          });
+        } else {
           this.router.navigate(['/home-page']);
-        });
-      } else {
-        this.router.navigate(['/home-page']);
+        }
+      },
+      error: err => {
+        if (err.status === 409) {
+          this.errorMsg = err.error.message;
+          setTimeout(() => this.errorMsg = null, 2000);
+        }
       }
-    });
+    }).add(() => document.forms[0].reset());
   }
 
   avatarSet(event: any) {
