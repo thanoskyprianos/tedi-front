@@ -11,17 +11,18 @@
           {{session.user.firstName}} {{session.user.lastName}}
         </button>
 
-        <div class="display-about-me">
-          <p><strong>Experience:</strong> {{experience}} </p>
-          <p><strong>Education: </strong> {{education}} </p>
-          <p><strong>Skills:    </strong> {{skills}} </p>
-        </div>
-
       <div class="options">
         <button routerLink="/add-post" class="add-post">Add Post</button>
         <button routerLink="/about-me" class="about-me" >
           About Me
         </button>
+      </div>
+
+
+      <div class="display-about-me">
+        <p><strong>Experience:</strong> {{experience}} </p>
+        <p><strong>Education: </strong> {{education}} </p>
+        <p><strong>Skills:    </strong> {{skills}} </p>
       </div>
 
     </div>
