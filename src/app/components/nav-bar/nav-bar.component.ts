@@ -29,6 +29,10 @@ export class NavBarComponent {
     ,private router: Router
   ) {}
 
+  logout() {
+    this.session.logout();
+  }
+
   ngOnInit(): void {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

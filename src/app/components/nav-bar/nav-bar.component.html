@@ -32,6 +32,10 @@
       <img src="resource/user.png" alt="Profile" class="button-icon">
         {{session.user?.firstName}} {{session.user?.lastName}}
     </button>
+
+    <button (click)="logout()" class="nav-button" id="prof">
+      <img src="resource/power.png" alt="Profile" class="button-icon">
+    </button>
   </div>
 
 </main>
