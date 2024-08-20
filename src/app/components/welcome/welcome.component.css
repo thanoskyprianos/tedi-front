@@ -4,7 +4,7 @@
 }
 
 .main {
-  background: #1c1c1e;
+  background: #2f2f32;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,24 +32,24 @@ h1:hover {
   gap: 5px;
   margin-top: 5px;
   justify-content: center;
+  
 }
 
 button {
   padding: 4px 10px;
   font-size: 18px;
   cursor: pointer;
-  border: 2px solid #00b4ff;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
   border-radius: 7px; /* Rounded corners */
   background: #1c1c1e;
   background-size: 200% 200%;
   color: #ffffff;
-  transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 button:hover {
-  background-color: #00b4ff;
+  border-image: linear-gradient(to right, #ffdf88, #ffa203) 1;
   color: #ffffff;
-  background-position: center;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -64,7 +64,7 @@ h2 {
   left: 0;
   white-space: nowrap;
   font-size: 2rem;
-  color: #00b4ff;
+  color: #ff7701;
   line-height: 1.5;
 }
 
@@ -73,7 +73,7 @@ h2 {
   right: 0;
   white-space: nowrap;
   font-size: 2rem;
-  color: #00b4ff;
+  color: #248eff;
   line-height: 1.5;
   text-align: right;
 }

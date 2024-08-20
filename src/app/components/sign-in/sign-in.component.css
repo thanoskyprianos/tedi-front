@@ -4,7 +4,7 @@ main {
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(to top right, #00b4ff, #102b65);
+  background: #2f2f32;
   color: #ffffff;
 }
 
@@ -14,8 +14,9 @@ main {
 }
 
 .sign-in-container {
-  border: 1px solid #00b4ff;
-  background: #191818;
+  border: 5px solid;
+  background-color: #1c1c1e;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
   padding: 35px;
   border-radius: 10px;
   text-align: center;
@@ -37,24 +38,22 @@ input {
 
   color: #ffffff;
   padding: 5px;
-  border: 1px solid #00b4ff;
-
-  border-radius: 5px;
-
+  border: 1px solid #248eff;
+  border-radius: 0;
   background-color: transparent;
-
   transition: border 0.15s;
 }
 
 input:focus {
-  border: 1px solid #102b65;
+  border: 1px solid #ff7701;
 }
 
 button {
   padding: 8px 15px;
-  border-radius: 5px;
+  border-radius: 1px;
   font-size: 18px;
-  border: 2px solid #00b4ff;
+  border: 2px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
   background-color: #1c1c1e;
   color: #ffffff;
   cursor: pointer;
@@ -62,7 +61,7 @@ button {
 }
 
 button:hover {
-  background-color: #00b4ff;
+  background: linear-gradient(to right, #ff7701, #248eff);
 }
 
 h2 {
