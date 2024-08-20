@@ -30,7 +30,7 @@ export class NavBarComponent {
   ) {}
 
   logout() {
-    this.session.logout();
+    this.session.logout().subscribe(() => location.reload());
   }
 
   ngOnInit(): void {
