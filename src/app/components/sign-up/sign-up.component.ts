@@ -21,6 +21,7 @@ export class SignUpComponent {
 
   selectedFile: File | null = null;
   errorMsg: string | null = null;
+  showSuccessMessage: boolean = false;
 
   constructor(
     private session: UserSessionService,
@@ -61,9 +62,11 @@ export class SignUpComponent {
 
         if (this.selectedFile) {
           this.session.uploadImage(avatarUrl.href, this.selectedFile).subscribe(() => {
+            this.showSuccess();
             this.router.navigate(['/home-page']);
           });
         } else {
+          this.showSuccess();
           this.router.navigate(['/home-page']);
         }
       },
@@ -90,6 +93,11 @@ export class SignUpComponent {
       reader.readAsDataURL(event.target.files[0]);
       this.selectedFile = event.target.files[0];
     }
+  }
+
+  showSuccess() {
+    this.showSuccessMessage = true;
+    setTimeout(() => this.showSuccessMessage = false, 2000);
   }
 
   avatarClear() {
