@@ -1,77 +1,104 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {PostModule} from "../../../modules/post.module";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {PostService} from "../../../services/post.service";
-import {lastValueFrom} from "rxjs";
+import {UserModule} from "../../../modules/user.module";
+import {UserFetcherService} from "../../../services/user-fetcher.service";
+import {NavigationExtras, Router} from "@angular/router";
+import {UserSessionService} from "../../../services/user-session.service";
 
 @Component({
   selector: 'app-post',
   standalone: true,
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    NgOptimizedImage
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
 })
 export class PostComponent implements OnChanges {
   @Input() post: PostModule | undefined;
+  user: UserModule | undefined;
 
-  media: {url: string, file: File}[] = [];
+  media: {url: string, type: string}[] = [];
+  avatarUrl: string = '';
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private host: ElementRef,
+    protected session: UserSessionService,
+    private postService: PostService,
+    private fetcher: UserFetcherService,
+    private router: Router
+    ) { }
 
-  async ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes['post'].firstChange && this.post) {
-      await this.getMedia();
-      this.displayMedia();
+      this.getUser();
+      this.getMedia();
     }
   }
 
-  async getMedia() {
+  getMedia() {
     const mediaUrls: any | any[] | undefined = this.post!._links.media;
 
     if (mediaUrls === undefined) { return; }
 
     if (mediaUrls instanceof Array)
       for (const link of mediaUrls) {
-        await this.getFile(link)
+        this.getFile(link.href)
       }
     else
-      await this.getFile(mediaUrls);
+      this.getFile(mediaUrls.href);
   }
 
-  async getFile(url: any) {
-    await lastValueFrom(
-      this.postService
-          .getMedia(url.href))
-          .then((res) => {
-            this.addFile(res)
-          });
-  }
-
-  addFile(res: any) {
-    if (res.status === 200) {
-      this.media.push({url: '', file: res.body});
-    }
-  }
-
-  displayMedia() {
-    console.log(this.media);
-
-    this.media.forEach((file, idx) => {
-      const reader = new FileReader();
-
-      console.log("HEY")
-
-      reader.onloadend = (event) => {
-        if (event.target && typeof event.target.result === "string") {
-          this.media[idx].url = event.target.result;
-        }
+  getUser() {
+    this.fetcher.userByUrl(this.post!._links.author.href).subscribe({
+      next: (res: any) => {
+        this.user = res.body as UserModule;
+        this.setAvatar();
       }
+    });
+  }
 
-      reader.readAsDataURL(file.file);
+  setAvatar() {
+    this.fetcher.avatar(this.user!._links.avatar.href).subscribe({
+      next: (res) => {
+        if (!res.body) return;
+
+        const reader = new FileReader();
+
+        reader.onloadend = (event) => {
+          if (event.target && typeof event.target.result === "string") {
+            this.avatarUrl = event.target.result;
+          }
+        }
+
+        reader.readAsDataURL(res.body);
+      }
     })
+  }
+
+  getFile(url: any) {
+    this.postService.getMedia(url).subscribe({
+      next: (res) => {
+        if (!res.body) return;
+        this.displayMedia(res.body);
+      }
+    })
+  }
+
+  displayMedia(file: Blob) {
+    const reader = new FileReader();
+
+    reader.onloadend = (event) => {
+      if (event.target && typeof event.target.result === "string") {
+        this.media.push({url: event.target.result, type: file.type});
+      }
+    }
+
+    reader.readAsDataURL(file);
   }
 
   viewImage(event: any) {
@@ -87,10 +114,52 @@ export class PostComponent implements OnChanges {
             justify-content: center;
             background-color: #1c1c1e"
         >
-          <img style="height: 100vh" src="${event.target.src}" />
+          <img style="height: 100vh" src="${event.target.src}" alt="image"/>
         </body>
     `);
 
-    w.stop();
+    // causes firefox to not load without timeout
+    setTimeout(() => {w.stop()}, 0);
+  }
+
+  scrollBack(event: any) {
+    this.scrollMedia(-1);
+  }
+
+  scrollFront(event: any) {
+    this.scrollMedia(1);
+  }
+
+  scrollMedia(sign: -1 | 1) {
+    const mediaWrapper = document.querySelector(`.media-wrapper.id${this.post!.id}`);
+    if (!mediaWrapper) { return; }
+
+    mediaWrapper.scroll({
+      left: mediaWrapper.scrollLeft + 250 * sign,
+      behavior: 'smooth'
+    })
+  }
+
+  checkOverflow(wrapper: any) {
+    return wrapper.offsetWidth < wrapper.scrollWidth;
+  }
+
+  goToUser(event: any) {
+    const selectedUser: NavigationExtras = {
+      state: {
+        data: this.user
+      }
+    };
+
+    this.router.navigate(['/profile-page', this.user!.id], selectedUser);
+  }
+
+  deletePost() {
+    this.postService.deletePost(this.post!._links.delete.href).subscribe({
+      next: (res) => {
+        this.host.nativeElement.remove();
+      },
+      error: (err: any) => {console.error(err)}
+    })
   }
 }

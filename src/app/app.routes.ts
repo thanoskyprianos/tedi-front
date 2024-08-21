@@ -28,10 +28,10 @@ export const routes: Routes = [
   { path: 'messages-page', component: MessagesComponent, title: 'Messages', canActivate: [IsLoggedInGuardService] } ,
   { path: 'notification-page', component: NotificationsComponent, title: 'Notifications', canActivate: [IsLoggedInGuardService] } ,
   { path: 'settings-page', component: SettingsComponent, title: 'Settings', canActivate: [IsLoggedInGuardService] } ,
-  { path: 'profile-page', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'profile-page/:id', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] },
   { path: 'ads-page', component: AdsComponent, title: 'Ads', canActivate: [IsLoggedInGuardService] } ,
   { path: 'about-me', component: AboutMeComponent, title: 'About Me', canActivate: [IsLoggedInGuardService]} ,
-  {path: 'add-post', component: AddPostComponent, title: 'Add Post', canActivate: [IsLoggedInGuardService]},
+  { path: 'add-post', component: AddPostComponent, title: 'Add Post', canActivate: [IsLoggedInGuardService]},
 
   { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];

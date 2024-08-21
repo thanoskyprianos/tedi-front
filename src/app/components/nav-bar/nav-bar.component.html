@@ -28,12 +28,12 @@
       <img src="resource/notification.png" alt="Notifications" class="button-icon">
     </button>
 
-    <button routerLink="/profile-page" class="nav-profile" id="prof">
+    <button [routerLink]="'/profile-page/' + session.user.id" class="nav-profile" id="prof">
       <img src="resource/user.png" alt="Profile" class="button-icon">
       <p> {{session.user?.firstName}} {{session.user?.lastName}} sdfsdfs lo </p>
     </button>
 
-    <button (click)="logout()" class="nav-button" id="prof">
+    <button (click)="logout()" class="nav-button" id="logout">
       <img src="resource/power.png" alt="Profile" class="button-icon">
     </button>
   </div>

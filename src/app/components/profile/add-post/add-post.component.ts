@@ -29,13 +29,14 @@ export class AddPostComponent {
       "text": this.text
     }
 
-    this.postService.addPost(this.session.user.id, post).subscribe(
-      (res: any) => {
-        const post = new PostModule(res.body.text, res.body._links);
+    this.postService.addPost(this.session.user.id, post).subscribe({
+        next: (res: any) => {
+          const post = new PostModule(0, res.body.text, res.body._links);
 
-        const addMediaUrl = post._links.add_media;
-        if (addMediaUrl) {
-          this.addMedia(addMediaUrl);
+          const addMediaUrl = post._links.add_media;
+          if (addMediaUrl) {
+            this.addMedia(addMediaUrl);
+          }
         }
       }
     )

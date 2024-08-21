@@ -1,38 +1,49 @@
-<!--<section class="post">-->
-<!--  <div class="gradient-text">{{post.text}}</div>-->
-<!--  <button class="actions">-->
-<!--    <img src="resource/heart.png" class="icons">-->
-<!--  </button>-->
-<!--  <button class="actions">-->
-<!--    <img src="resource/chat-bubble.png" class="icons">-->
-<!--  </button>-->
-<!--</section>-->
-
 <main class="post-wrapper" *ngIf="post">
-  <p>
-    {{ post.text }}
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aperiam architecto aut commodi cupiditate doloremque doloribus ex facere harum neque, non officiis, qui quibusdam, quidem quod reiciendis saepe sit tempora.
-  </p>
-  <div class="media-wrapper">
-    <div class="media" *ngFor="let file of media; index as i">
-
-<!--      <div class="image-container" *ngIf="file.file.type.startsWith('image')">-->
-<!--        <label>-->
-<!--          <input type="checkbox">-->
-<!--          <div class="image-wrapper">-->
-<!--          </div>-->
-<!--        </label>-->
-<!--      </div>-->
-
-      <img
-        [src]="file.url"
-        class="image"
-        alt="image"
-        *ngIf="file.file.type.startsWith('image')"
-        (click)="viewImage($event)"
-      />
-
-      <video [src]="file.url" *ngIf="file.file.type.startsWith('video')" controls></video>
+  <div class="top-bar" *ngIf="user">
+    <div class="user-details" (click)="goToUser($event)">
+      <div class="avatar-wrapper">
+        <img [src]="avatarUrl || 'resource/user.png'" class="avatar" alt="avatar" />
+      </div>
+      <p>{{user.firstName}} {{user.lastName}}</p>
     </div>
+    <div
+      class="delete"
+      *ngIf="user.id === session.user.id"
+      title="Delete" (click)="deletePost()">
+        <img src="/resource/trash-2.svg" alt="delete" >
+    </div>
+  </div>
+
+  <p>{{ post.text }}</p>
+
+  <div class="media-and-buttons">
+    <div [class]="'media-wrapper id' + post.id" #wrapper>
+
+      <div class="media" *ngFor="let file of media">
+        <img
+          [src]="file.url"
+          class="image"
+          alt="image"
+          *ngIf="file.type.startsWith('image')"
+          (click)="viewImage($event)"
+          loading="lazy"
+        />
+
+        <video
+          [src]="file.url"
+          *ngIf="file.type.startsWith('video')"
+          preload="metadata"
+          controls
+        ></video>
+      </div>
+    </div>
+
+    <button *ngIf="checkOverflow(wrapper)" class="back" (click)="scrollBack($event)">
+      <img src="/resource/arrow-left.svg" alt="<-">
+    </button>
+
+    <button *ngIf="checkOverflow(wrapper)" class="front" (click)="scrollFront($event)">
+      <img src="/resource/arrow-right.svg" alt="->">
+    </button>
   </div>
 </main>

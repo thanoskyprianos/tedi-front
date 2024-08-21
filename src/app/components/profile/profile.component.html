@@ -1,23 +1,29 @@
-<main class="main">
-  <body>
+<main *ngIf="user">
     <div class="profile-bar">
-
-
-        <div class="main-prof">
-          <img [src]="avatarUrl || 'resource/user.png' " alt="Profile Picture" class="profile-pic">
-        </div>
-
-        <button routerLink="/profle" class="name-button" (click)="refreshPage()">
-          {{session.user.firstName}} {{session.user.lastName}}
-        </button>
-
-      <div class="options">
-        <button routerLink="/add-post" class="add-post">Add Post</button>
-        <button routerLink="/about-me" class="about-me" >
-          About Me
-        </button>
+      <div class="main-prof">
+        <img [src]="avatarUrl || 'resource/user.png' " alt="Profile Picture" class="profile-pic">
       </div>
 
+      <p class="name-display">
+        {{user.firstName}} {{user.lastName}}
+      </p>
+
+      <div *ngIf="user.id === session.user.id" class="self-options">
+        <button routerLink="/add-post" class="add-post">Add Post</button>
+        <button routerLink="/about-me" class="about-me" >About Me</button>
+      </div>
+
+      <div *ngIf="user.id !== session.user.id" class="others-options">
+        <button *ngIf="!connected"
+                class="add-friend"
+                (click)="addFriend()">Add Friend</button>
+        <button *ngIf="connected"
+                class="remove-friend"
+                (click)="removeFriend()">Remove Friend</button>
+        <button *ngIf="connected"
+                class="message"
+                (click)="removeFriend()">Message</button>
+      </div>
 
       <div class="display-about-me">
         <p *ngIf="aboutMe.professionalPosition"><strong>Professional Position: </strong>{{aboutMe.professionalPosition}}</p>
@@ -26,8 +32,9 @@
         <p *ngIf="aboutMe.education"><strong>Education: </strong>{{aboutMe.education}}</p>
         <p *ngIf="aboutMe.skills"><strong>Skills: </strong>{{aboutMe.skills}}</p>
       </div>
-
     </div>
 
-  </body>
+    <div *ngIf="user.id === session.user.id || connected" class="posts">
+      <app-posts type="of" [id] ="user.id"></app-posts>
+    </div>
 </main>

@@ -22,9 +22,12 @@ export class PostService {
     private http: HttpClient,
   ) { }
 
-
-  getPosts(id: number) {
+  getPostsFor(id: number) {
     return this.http.get(postsFor(id), {observe: 'response'});
+  }
+
+  getPostsOf(id: number) {
+    return this.http.get(postsOf(id), {observe: 'response'});
   }
 
   addPost(userId: number, postText: any): Observable<any> {
@@ -40,5 +43,9 @@ export class PostService {
     formData.append('file', media, media.name);
 
     return this.http.post(addMediaUrl, formData, {observe: 'response'});
+  }
+
+  deletePost(deleteUrl: string) {
+    return this.http.delete(deleteUrl, {observe: 'response'});
   }
 }

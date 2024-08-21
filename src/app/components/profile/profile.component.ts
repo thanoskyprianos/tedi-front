@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserSessionService} from "../../services/user-session.service";
-import { RouterModule } from '@angular/router';
+import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {UserFetcherService} from "../../services/user-fetcher.service";
-import {ProfileData} from "../../modules/user.module";
+import {ProfileData, UserModule} from "../../modules/user.module";
 import {NgIf} from "@angular/common";
+import {PostsComponent} from "../posts/posts.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterModule, NgIf],
+  imports: [RouterModule, NgIf, PostsComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
   aboutMe: ProfileData = new ProfileData (
     'Software Engineer',
     null,
@@ -23,20 +24,52 @@ export class ProfileComponent {
   )
   avatarUrl: string = 'https://randomuser.me/api/portraits/lego/1.jpg';
 
+  user: UserModule | undefined;
+  connected: boolean | undefined;
+
   constructor(
     protected session: UserSessionService,
-    private fetcher: UserFetcherService
+    private fetcher: UserFetcherService,
+    private router: Router
   ) {
+    const id
+      = parseInt(this.router.url.substring(this.router.url.lastIndexOf('/') + 1));
+
     this.session.userObs.subscribe((x) => {
       if (x === 'ok') {
-        this.getAvatar();
-        this.getAboutMe();
+        if (id === this.session.user.id) {
+          this.user = this.session.user;
+          this.setDetails(this.user);
+        } else {
+          this.fetcher.userById(id).subscribe({
+            next: (res: any) => {
+              this.user = res.body as UserModule;
+              this.setDetails(this.user);
+            },
+            error: (err: any) => { this.router.navigate(['/error']); }
+          })
+        }
       }
     })
   }
 
-  getAboutMe() {
-    const infoUrl = this.session.user._links.info;
+  // mainly used to reload if user clicks on their profile
+  // while being on a different one
+  ngOnInit() {
+    this.router.events.subscribe((x) => {
+      if (x instanceof NavigationEnd) {
+        location.reload();
+      }
+    })
+  }
+
+  setDetails(user: UserModule) {
+    this.getAboutMe(user);
+    this.getAvatar(user);
+  }
+
+  getAboutMe(user: UserModule) {
+    const infoUrl = user._links.info;
     if (infoUrl) {
       this.fetcher.aboutMe(infoUrl.href).subscribe(
         (res: any) => {
@@ -56,8 +89,8 @@ export class ProfileComponent {
     this.aboutMe.skills = info.skills;
   }
 
-  getAvatar() {
-    const avatarUrl = this.session.user._links.avatar;
+  getAvatar(user: UserModule) {
+    const avatarUrl = user._links.avatar;
     if (avatarUrl) {
       this.fetcher.avatar(avatarUrl.href).subscribe(
         (res: any) => {
@@ -84,7 +117,11 @@ export class ProfileComponent {
     }
   }
 
-  refreshPage(): void {
-    window.location.reload();
+  addFriend() {
+
+  }
+
+  removeFriend() {
+
   }
 }

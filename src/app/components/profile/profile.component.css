@@ -1,71 +1,54 @@
 main {
-  font-family: 'Roboto', serif;
-  background: #1c1c1e;
-  color: #ffffff;
-  box-sizing: border-box;
-}
+  background: var(--darkest-grey);
+  color: white;
 
-body {
-  height: 100vh;
+  padding-top: 15px;
+  min-height: calc(var(--height-minus-nav-bar) - 15px);
+  width: 100%;
+
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.profile-bar .main-prof .profile-pic {
+.main-prof {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 4px solid #222323;
-  object-fit: cover;
-  align-items: center;
-  margin-top: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
+  border: 4px solid var(--orange-blue-shadow);
+  overflow: hidden;
 
-h1 {
-  margin-top: 3px;
-  font-size: 2em;
-  color: #ffffff;
-  margin-bottom: 1px;
+  .profile-pic {
+    height: inherit;
+    object-fit: cover;
+  }
 }
 
 .display-about-me {
   text-align: center;
-  color:rgb(214, 214, 214);
 }
 
 .profile-bar {
-  margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
-  position: relative;
-  width: 750px;
-  background: #494949;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
-  padding: 20px;
+
+  padding: 15px 0;
+  width: 800px;
+
+  background: var(--dark-grey);
   border: 5px solid;
   border-image: linear-gradient(to right, #ff7701, #248eff) 1;
 }
 
-.profile-bar .main-prof {
-  margin-bottom: 5px;
+@media (max-width: 800px) {
+  .profile-bar {
+    width: 95vw;
+  }
 }
 
-.profile-bar .name-button {
-  background: #494949;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3em;
-  width: 1000px;
-  height: 40px;
-  padding: 0;
-  border: 0 solid;
-  cursor: pointer;
-  color: rgb(0, 0, 0);
+.name-display {
   font-size: 2em;
   font-weight: bold;
   background: linear-gradient(to right, #ff7701, #248eff);
@@ -73,31 +56,18 @@ h1 {
   color: transparent;
 }
 
-.options {
+.name-display {
+  padding: 10px;
+  margin: 0;
+}
+
+.self-options {
   margin-top: 10px;
   display: flex;
-  flex-direction: row;
 }
 
-.options .add-post {
-  background-color: #3e3e42;
-  color: #ffffff;
-  font-size: 1em;
-  width: 120px;
-  height: 40px;
-  cursor: pointer;
-  border: 3px solid;
-  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.options .add-post:hover {
-  background: linear-gradient(to right, #ff7701, #248eff);
-  box-shadow: 0 0 10px rgb(24, 89, 129);
-}
-
-.options .about-me {
-  background-color: #3e3e42;
+button {
+  background-color: transparent;
   color: #ffffff;
   font-size: 1em;
   margin-left: 10px;
@@ -109,7 +79,7 @@ h1 {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.options .about-me:hover {
+button:hover {
   background: linear-gradient(to right, #ff7701, #248eff);
   box-shadow: 0 0 10px rgb(24, 89, 129);
 }

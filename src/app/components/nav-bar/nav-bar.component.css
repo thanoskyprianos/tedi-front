@@ -11,18 +11,22 @@ main {
   border-bottom: 5px solid;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 
   border-image: var(--orange-blue) 1;
   background: var(--dark-grey);
+}
+/* only keep bars space-between until they don't fit
+  then center them */
+@media (min-width: 1200px) {
+  main { justify-content: space-between; }
 }
 
 .home-page-container, .main-home-container {
   display: flex;
   padding: 16px;
 }
-
 
 button {
   height: 40px;

@@ -15,8 +15,12 @@ export class UserFetcherService {
     return this.http.get(properties.self, {observe: 'response'});
   }
 
-  user(id: number) {
+  userById(id: number) {
     return this.http.get(properties.user + id, {observe: 'response'});
+  }
+
+  userByUrl(url: string) {
+    return this.http.get(url, {observe: 'response'});
   }
 
   avatar(url: string) {
