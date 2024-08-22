@@ -56,11 +56,15 @@ export class ProfileComponent implements OnInit{
   // mainly used to reload if user clicks on their profile
   // while being on a different one
   ngOnInit() {
-    this.router.events.subscribe((x) => {
-      if (x instanceof NavigationEnd) {
-        location.reload();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    }
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
       }
-    })
+    });
   }
 
   setDetails(user: UserModule) {
