@@ -16,13 +16,13 @@ import {PostsComponent} from "../posts/posts.component";
 
 export class ProfileComponent implements OnInit{
   aboutMe: ProfileData = new ProfileData (
-    'Software Engineer',
     null,
-    '5 years in software development',
-    'Computer Science',
-    'JavaScript, TypeScript, Angular'
+    null,
+    null,
+    null,
+    null
   )
-  avatarUrl: string = 'https://randomuser.me/api/portraits/lego/1.jpg';
+  avatarUrl: string = '';
 
   user: UserModule | undefined;
   connected: boolean | undefined;

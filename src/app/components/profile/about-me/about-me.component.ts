@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import { UserSessionService} from "../../../services/user-session.service";
+import { UserModule } from '../../../modules/user.module';
 
 // @ts-ignore
 @Component({
@@ -33,7 +34,16 @@ export class AboutMeComponent {
       skInfo: this.InSkInfo
     };
 
-    this.session.updateAboutMe(this.session.user.id, aboutMeInfo);
+    this.session.updateAboutMe(this.session.user.id, aboutMeInfo).subscribe({
+      next: () => {
+        this.showSuccessMessage = true;
+      },
+      error: (err) => {
+        console.error('Error while updating about me', err);
+        this.showSuccessMessage = false;
+      }
+    });
+
     let avatarUrl = this.session.user._links.avatar;
     
     if (this.selectedFile)

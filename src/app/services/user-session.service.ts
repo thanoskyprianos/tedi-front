@@ -44,13 +44,13 @@ export class UserSessionService {
   }
 
   updateAboutMe(userId: number, aboutMetext: any) {
-    return this.http.put(`${properties.user}${userId}/about-me`, aboutMetext);
+    return this.http.put(`${properties.user}${userId}/about-me`, aboutMetext, {observe: 'response'});
   }
 
   uploadImage(avatarUrl: string, file: File) {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.put(avatarUrl, formData);
+    return this.http.put(avatarUrl, formData, {observe: 'response'});
   }
 
   register(
