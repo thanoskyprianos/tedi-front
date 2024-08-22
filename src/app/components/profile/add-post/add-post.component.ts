@@ -15,7 +15,7 @@ import {NgIf} from "@angular/common";
 
 export class AddPostComponent {
   @Input() text: string = '';
-  selectedFiles!: File[];
+  selectedFiles: File[] = [];
 
   showSuccessMessage: boolean = false;
 
