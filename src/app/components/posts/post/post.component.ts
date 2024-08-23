@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {PostModule} from "../../../modules/post.module";
-import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {PostService} from "../../../services/post.service";
 import {UserModule} from "../../../modules/user.module";
 import {UserFetcherService} from "../../../services/user-fetcher.service";
@@ -12,8 +12,7 @@ import {UserSessionService} from "../../../services/user-session.service";
   standalone: true,
   imports: [
     NgIf,
-    NgForOf,
-    NgOptimizedImage
+    NgForOf
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
@@ -24,6 +23,7 @@ export class PostComponent implements OnChanges {
 
   media: {url: string, type: string}[] = [];
   avatarUrl: string = '';
+  overflown: boolean = false;
 
   constructor(
     private host: ElementRef,
@@ -140,8 +140,10 @@ export class PostComponent implements OnChanges {
     })
   }
 
-  checkOverflow(wrapper: any) {
-    return wrapper.offsetWidth < wrapper.scrollWidth;
+  checkOverflow() {
+    const wrapper: any = document.querySelector('.media-wrapper.id' + this.post!.id);
+    if (!wrapper) { return; }
+    this.overflown = wrapper.offsetWidth < wrapper.scrollWidth;
   }
 
   goToUser(event: any) {

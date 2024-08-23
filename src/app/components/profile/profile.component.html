@@ -1,6 +1,13 @@
 <main *ngIf="user">
     <div class="profile-bar">
-      <div class="main-prof">
+      <div class="avatar-input" *ngIf="user.id === session.user.id">
+        <app-avatar-input [(selectedFile)]="selectedFile" (selectedFileChange)="updateAvatar()" [verbose]="false" />
+        <div class="add-button">
+          <img src="/resource/edit.svg" alt="edit">
+        </div>
+      </div>
+
+      <div class="main-prof" *ngIf="user.id !== session.user.id">
         <img [src]="avatarUrl || 'resource/user.png' " alt="Profile Picture" class="profile-pic">
       </div>
 

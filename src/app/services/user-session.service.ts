@@ -36,7 +36,6 @@ export class UserSessionService {
       this.fetcher.self().subscribe(
         (res: any) => {
           this.setUser(res.body);
-          console.log(this.user);
           this.subj.next('ok');
         }
       ))

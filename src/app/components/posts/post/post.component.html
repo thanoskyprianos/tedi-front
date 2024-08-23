@@ -27,6 +27,7 @@
           *ngIf="file.type.startsWith('image')"
           (click)="viewImage($event)"
           loading="lazy"
+          (load)="checkOverflow()"
         />
 
         <video
@@ -34,15 +35,16 @@
           *ngIf="file.type.startsWith('video')"
           preload="metadata"
           controls
+          (load)="checkOverflow()"
         ></video>
       </div>
     </div>
 
-    <button *ngIf="checkOverflow(wrapper)" class="back" (click)="scrollBack($event)">
+    <button *ngIf="overflown" class="back" (click)="scrollBack($event)">
       <img src="/resource/arrow-left.svg" alt="<-">
     </button>
 
-    <button *ngIf="checkOverflow(wrapper)" class="front" (click)="scrollFront($event)">
+    <button *ngIf="overflown" class="front" (click)="scrollFront($event)">
       <img src="/resource/arrow-right.svg" alt="->">
     </button>
   </div>

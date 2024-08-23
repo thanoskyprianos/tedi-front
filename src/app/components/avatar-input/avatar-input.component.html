@@ -1,10 +1,10 @@
 <div class="upload-container">
-  <div id="avatar-label-wrapper">
+  <div id="avatar-label-wrapper" *ngIf="verbose">
     <label for="image-upload">Upload an Image or</label>
     <a (click)="avatarClear()">clear</a>
   </div>
   <div id="avatar-input" onclick="document.getElementById('image-upload').click()">
-    <img src="resource/user.png" alt="avatar" id="avatar-display">
+    <img [src]="avatarUrl || 'resource/user.png'" alt="avatar" id="avatar-display">
     <input type="file" id="image-upload" name="imageUpload" accept="image/*" (change)="avatarSet($event)">
   </div>
 </div>

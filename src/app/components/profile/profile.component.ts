@@ -1,20 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserSessionService} from "../../services/user-session.service";
 import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {UserFetcherService} from "../../services/user-fetcher.service";
 import {ProfileData, UserModule} from "../../modules/user.module";
 import {NgIf} from "@angular/common";
 import {PostsComponent} from "../posts/posts.component";
+import {AvatarInputComponent} from "../avatar-input/avatar-input.component";
+import {UserUpdaterService} from "../../services/user-updater.service";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterModule, NgIf, PostsComponent],
+  imports: [RouterModule, NgIf, PostsComponent, AvatarInputComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
   aboutMe: ProfileData = new ProfileData (
     null,
     null,
@@ -22,6 +24,8 @@ export class ProfileComponent implements OnInit{
     null,
     null
   )
+
+  @Input() selectedFile: File | null = null;
   avatarUrl: string = '';
 
   user: UserModule | undefined;
@@ -30,6 +34,7 @@ export class ProfileComponent implements OnInit{
   constructor(
     protected session: UserSessionService,
     private fetcher: UserFetcherService,
+    private updater: UserUpdaterService,
     private router: Router
   ) {
     const id
@@ -67,6 +72,15 @@ export class ProfileComponent implements OnInit{
     });
   }
 
+  updateAvatar() {
+    if (!this.selectedFile) { return; }
+
+    this.updater.uploadImage(
+      this.session.user._links.avatar.href,
+      this.selectedFile
+    ).subscribe();
+  }
+
   setDetails(user: UserModule) {
     this.getAboutMe(user);
     this.getAvatar(user);
@@ -99,6 +113,7 @@ export class ProfileComponent implements OnInit{
       this.fetcher.avatar(avatarUrl.href).subscribe(
         (res: any) => {
           if (res.status === 200) {
+            this.selectedFile = res.body;
             this.avatarSet(res.body);
           }
         }
