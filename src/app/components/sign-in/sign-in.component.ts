@@ -31,7 +31,7 @@ export class SignInComponent {
       return;
     }
 
-    this.session.login(this.email, this.password).subscribe({
+    this.session.login(this.email.trim(), this.password.trim()).subscribe({
       next: (res: any) => {
         this.session.setToken(res.body.token);
         this.session.setUser(res.body);
@@ -41,10 +41,7 @@ export class SignInComponent {
       },
       error: (err) => {
         this.errorIndication(err.error.message);
-
-        if (err.status === 401) {
-          document.forms[0].reset();
-        }
+        document.forms[0].reset();
       }
     });
   }

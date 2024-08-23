@@ -1,15 +1,27 @@
 <main>
-  <form (ngSubmit)="onSubmitSettings()">
-    <div class="gradient-text">Settings</div>
-
-    <div class="email">
-    <input type="text" placeholder="enter new email">
-    <button>Change Email</button>
+  <div id="wrapper">
+    <div class="title">
+      <div class="gradient-text">Settings</div>
+      <div id="msg">{{ message || '&nbsp;'}}</div>
     </div>
 
-    <div class="password">
-      <input type="text" placeholder="enter new password">
-      <button>Change Password</button>
-    </div>
-  </form>
+    <label for="email">New Email (Logs you out)</label>
+    <form (submit)="updateEmail($event)" class="email">
+      <input [(ngModel)]="email" type="text"
+             id="email" name="email"
+             [placeholder]="session.user.email">
+      <button type="submit">Update</button>
+    </form>
+
+    <label for="password">New Password</label>
+    <form (submit)="updatePassword($event)" class="password">
+      <input [(ngModel)]="password"
+             type="password" id="password"
+             name="password" placeholder="(New password)">
+      <input [(ngModel)]="retypePassword"
+             type="password" id="retype-password"
+             name="retype-password" placeholder="(Retype password)">
+      <button type="submit" id="password-button">Update</button>
+    </form>
+  </div>
 </main>

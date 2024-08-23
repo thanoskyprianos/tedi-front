@@ -52,8 +52,8 @@ export class SignUpComponent {
     this.session.register(
       this.firstName,
       this.lastName,
-      this.email,
-      this.password,
+      this.email.trim(),
+      this.password.trim(),
       this.phoneNumber
     ).subscribe({
       next: (res: any) => {

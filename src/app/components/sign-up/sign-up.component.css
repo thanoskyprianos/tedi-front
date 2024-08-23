@@ -15,13 +15,13 @@ main {
 
 @keyframes background-animation {
   0% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
   50% {
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 }
 
@@ -84,7 +84,7 @@ input {
   height: 25px;
 
   padding: 5px;
-  border: 1.5px solid #ff7701;
+  border: 2px solid #ff7701;
 
   background-color: transparent;
   border-radius: 1px;
@@ -93,7 +93,7 @@ input {
 }
 
 input:focus {
-  border: 1px solid #102b65;
+  border: 2px solid #102b65;
 }
 
 button {
@@ -216,7 +216,7 @@ h2:hover {
 }
 
 #errorMsg {
-  background-image: linear-gradient(to right, #ff7701, #248eff);
+  background-image: var(--orange-blue);
   color: transparent;
   background-clip: text;
 

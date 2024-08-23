@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserSessionService} from "./user-session.service";
 import {Router} from "@angular/router";
-import {info, infoPrivacy, properties} from "../config/properties.file";
+import {info, infoPrivacy} from "../config/properties.file";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,7 @@ import {info, infoPrivacy, properties} from "../config/properties.file";
 export class UserUpdaterService {
 
   constructor(
-    private http: HttpClient,
-    private session: UserSessionService,
-    private router: Router
+    private http: HttpClient
   ) { }
 
   updateAboutMe(userId: number, aboutMe: any) {
@@ -30,12 +28,10 @@ export class UserUpdaterService {
   }
 
   updateEmail(UrlEmail: string, newEmail: string) {
-    this.http.put(UrlEmail ,newEmail);
-    this.session.removeToken();
-    this.router.navigate(['/login']);
+    return this.http.put(UrlEmail ,newEmail);
   }
 
   updatePassword(UrlPassword: string, newPassword: string) {
-    this.http.put(UrlPassword ,newPassword);
+    return this.http.put(UrlPassword ,newPassword);
   }
 }
