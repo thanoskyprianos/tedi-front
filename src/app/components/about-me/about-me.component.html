@@ -1,0 +1,139 @@
+<main>
+  <form (submit)="onSubmitAboutMe($event)" *ngIf="placeHolders">
+    <div class="gradient-text">Update About Me information</div>
+
+    <label for="professionalPosition">Professional position
+      <label for="professionalPositionPrivacyPrivate">Private</label>
+      <input [(ngModel)]="professionalPositionPrivacy"
+             [value]="Privacy.PRIVATE"
+             type="radio"
+             name="professionalPositionPrivacy"
+             id="professionalPositionPrivacyPrivate">
+
+      <label for="professionalPositionPrivacyPublic">Public</label>
+      <input [(ngModel)]="professionalPositionPrivacy"
+             [value]="Privacy.PUBLIC"
+             type="radio"
+             name="professionalPositionPrivacy"
+             id="professionalPositionPrivacyPublic">
+    </label>
+    <input [(ngModel)]="professionalPosition"
+           [placeholder]="placeHolders.professionalPosition || '(Not set)'"
+           type="text"
+           name="professionalPosition"
+           id="professionalPosition">
+
+    <label for="employmentAgency">Employment Agency
+      <label for="employmentAgencyPrivacyPrivate">Private</label>
+      <input [(ngModel)]="employmentAgencyPrivacy"
+             [value]="Privacy.PRIVATE"
+             type="radio"
+             name="employmentAgencyPrivacy"
+             id="employmentAgencyPrivacyPrivate">
+
+      <label for="employmentAgencyPrivacyPublic">Public</label>
+      <input [(ngModel)]="employmentAgencyPrivacy"
+             [value]="Privacy.PUBLIC"
+             type="radio"
+             name="employmentAgencyPrivacy"
+             id="employmentAgencyPrivacyPublic">
+    </label>
+    <input [(ngModel)]="employmentAgency"
+           [placeholder]="placeHolders.employmentAgency || '(Not set)'"
+           type="text"
+           name="employmentAgency"
+           id="employmentAgency">
+
+    <label for="experience">Experience
+      <label for="experiencePrivacyPrivate">Private</label>
+      <input [(ngModel)]="experiencePrivacy"
+             [value]="Privacy.PRIVATE"
+             type="radio"
+             name="experiencePrivacy"
+             id="experiencePrivacyPrivate">
+
+      <label for="experiencePrivacyPublic">Public</label>
+      <input [(ngModel)]="experiencePrivacy"
+             [value]="Privacy.PUBLIC"
+             type="radio"
+             name="experiencePrivacy"
+             id="experiencePrivacyPublic">
+    </label>
+    <input [(ngModel)]="experience"
+           [placeholder]="placeHolders.experience || '(Not set)'"
+           type="text"
+           name="experience"
+           id="experience">
+
+    <label for="education">Education
+      <label for="educationPrivacyPrivate">Private</label>
+      <input [(ngModel)]="educationPrivacy"
+             [value]="Privacy.PRIVATE"
+             type="radio"
+             name="educationPrivacy"
+             id="educationPrivacyPrivate">
+
+      <label for="educationPrivacyPublic">Public</label>
+      <input [(ngModel)]="educationPrivacy"
+             [value]="Privacy.PUBLIC"
+             type="radio"
+             name="educationPrivacy"
+             id="educationPrivacyPublic">
+    </label>
+    <input [(ngModel)]="education"
+           [placeholder]="placeHolders.education || '(Not set)'"
+           type="text"
+           name="education"
+           id="education">
+
+    <label for="skills">Skills (Separated by commas)
+      <label for="skillsPrivacyPrivate">Private</label>
+      <input [(ngModel)]="skillsPrivacy"
+             [value]="Privacy.PRIVATE"
+             type="radio"
+             name="skillsPrivacy"
+             id="skillsPrivacyPrivate">
+
+      <label for="skillsPrivacyPublic">Public</label>
+      <input [(ngModel)]="skillsPrivacy"
+             [value]="Privacy.PUBLIC"
+             type="radio"
+             name="skillsPrivacy"
+             id="skillsPrivacyPublic">
+    </label>
+    <input [(ngModel)]="skills"
+           [placeholder]="placeHolders.skills || '(Not set)'"
+           type="text"
+           name="skills"
+           id="skills">
+
+<!--        <div class="gradient-text">Preferences</div>-->
+
+<!--        <div>-->
+<!--            <input type="checkbox" id="xpinfo-checkbox" [(ngModel)]="showXpInfo" name="showXpInfo">-->
+<!--            <label for="xpinfo-checkbox">Show Experience Info</label>-->
+<!--        </div>-->
+
+<!--        <div>-->
+<!--            <input type="checkbox" id="edinfo-checkbox" [(ngModel)]="showEdInfo" name="showEdInfo">-->
+<!--            <label for="edinfo-checkbox">Show Education Info</label>-->
+<!--        </div>-->
+
+<!--        <div>-->
+<!--            <input type="checkbox" id="skinfo-checkbox" [(ngModel)]="showSkInfo" name="showSkInfo">-->
+<!--            <label for="skinfo-checkbox">Show Skills Info</label>-->
+<!--        </div>-->
+
+<!--        <div class="gradient-text">New Profile Picture</div>-->
+
+<!--        <label for="media-upload" id="media-upload-label">Upload New Profile Picture</label>-->
+<!--        <input type="file" id="media-upload" accept="image/*">-->
+
+        <div class="bottom">
+          <button type="submit" class="update-about-me">Update</button>
+          <div id="success">{{ showSuccessMessage ? 'About me got updated!' : '&nbsp;'}}</div>
+        </div>
+
+
+    </form>
+</main>

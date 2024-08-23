@@ -17,3 +17,11 @@ export const postsOf = (userId: number) => {
 export const postsFor = (userId: number) => {
   return `${postsOf(userId)}/for`
 }
+
+export const info = (userId: number) => {
+  return `${properties.user}${userId}/info`
+}
+
+export const infoPrivacy = (userId: number) => {
+  return `${info(userId)}/privacy`;
+}

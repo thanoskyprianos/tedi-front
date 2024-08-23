@@ -1,19 +1,19 @@
 import { Routes } from '@angular/router';
-import {WelcomeComponent} from "./components/welcome/welcome.component";
-import {SignInComponent} from "./components/sign-in/sign-in.component";
-import {SignUpComponent} from "./components/sign-up/sign-up.component";
-import {HomePageComponent} from "./components/home-page/home-page.component";
-import {ErrorComponent} from "./components/error/error.component";
-import {ProfileComponent} from "./components/profile/profile.component";
-import {NetworkComponent} from "./components/network/network.component";
-import {MessagesComponent} from "./components/messages/messages.component";
-import {NotificationsComponent} from "./components/notifications/notifications.component";
-import {SettingsComponent} from "./components/settings/settings.component";
-import {AdsComponent} from "./components/ads/ads.component";
-import {IsLoggedInGuardService} from "./guards/is-logged-in-guard.service";
-import {IsLoggedOutService} from "./guards/is-logged-out.service";
-import { AboutMeComponent } from './components/profile/about-me/about-me.component';
-import { AddPostComponent } from "./components/profile/add-post/add-post.component";
+import { WelcomeComponent } from "./components/welcome/welcome.component";
+import { SignInComponent } from "./components/sign-in/sign-in.component";
+import { SignUpComponent } from "./components/sign-up/sign-up.component";
+import { HomePageComponent } from "./components/home-page/home-page.component";
+import { ErrorComponent } from "./components/error/error.component";
+import { ProfileComponent } from "./components/profile/profile.component";
+import { NetworkComponent } from "./components/network/network.component";
+import { MessagesComponent } from "./components/messages/messages.component";
+import { NotificationsComponent } from "./components/notifications/notifications.component";
+import { SettingsComponent } from "./components/settings/settings.component";
+import { AdsComponent } from "./components/ads/ads.component";
+import { IsLoggedInGuardService } from "./guards/is-logged-in-guard.service";
+import { IsLoggedOutService } from "./guards/is-logged-out.service";
+import { AboutMeComponent } from './components/about-me/about-me.component';
+import { AddPostComponent } from "./components/add-post/add-post.component";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },

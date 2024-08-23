@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import { PostService } from '../../../services/post.service';
-import { UserSessionService } from '../../../services/user-session.service';
+import { PostService } from '../../services/post.service';
+import { UserSessionService } from '../../services/user-session.service';
 import { FormsModule } from '@angular/forms';
-import {PostModule} from "../../../modules/post.module";
+import {PostModule} from "../../modules/post.module";
 import {NgIf} from "@angular/common";
 
 @Component({

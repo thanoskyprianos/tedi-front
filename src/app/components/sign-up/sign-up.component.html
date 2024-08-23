@@ -26,16 +26,7 @@
         <label for="phoneNumber">Phone Number</label>
         <input [(ngModel)]="phoneNumber" type="tel" id="phoneNumber" name="phoneNumber" required>
       </div>
-      <div class="upload-container">
-        <div id="avatar-label-wrapper">
-          <label for="image-upload">Upload an Image or</label>
-          <a (click)="avatarClear()">clear</a>
-        </div>
-        <div id="avatar-input" onclick="document.getElementById('image-upload').click()">
-          <img src="resource/user.png" alt="avatar" id="avatar-display">
-          <input type="file" id="image-upload" name="imageUpload" accept="image/*" (change)="avatarSet($event)">
-        </div>
-      </div>
+      <app-avatar-input [(selectedFile)]="selectedFile"/>
       <button type="submit">Sign Up</button>
     </form>
   </div>

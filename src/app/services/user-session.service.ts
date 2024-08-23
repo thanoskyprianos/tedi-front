@@ -43,16 +43,6 @@ export class UserSessionService {
     }
   }
 
-  updateAboutMe(userId: number, aboutMetext: any) {
-    return this.http.put(`${properties.user}${userId}/about-me`, aboutMetext, {observe: 'response'});
-  }
-
-  uploadImage(avatarUrl: string, file: File) {
-    const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
-    return this.http.put(avatarUrl, formData, {observe: 'response'});
-  }
-
   register(
     firstName: string,
     lastName: string,
@@ -69,22 +59,6 @@ export class UserSessionService {
       };
 
       return this.http.post(properties.register, registerBody, { observe: 'response' });
-  }
-
-  updateSettings(UrlBoth: string, newSettings: any) {
-    this.http.put(UrlBoth ,newSettings);
-    this.removeToken();
-    this.router.navigate(['/login']);
-  }
-
-  updateEmail(UrlEmail: string, newEmail: string) {
-    this.http.put(UrlEmail ,newEmail);
-    this.removeToken();
-    this.router.navigate(['/login']);
-  }
-
-  updatePassword(UrlPassword: string, newPassword: string) {
-    this.http.put(UrlPassword ,newPassword);
   }
 
   login(email: string, password: string) {

@@ -141,10 +141,9 @@ video, img {
   overflow: hidden;
 
   .avatar {
-    height: inherit;
-
     object-fit: cover;
-    overflow: hidden;
+    width: inherit;
+    height: inherit;
   }
 }
 

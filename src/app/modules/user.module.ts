@@ -18,4 +18,25 @@ export class ProfileData {
     public skills: string | null
   ) {
   }
+
+  toPlainObj(): any {
+    return {...this};
+  }
 }
+
+export class ProfileDataPrivacy {
+  constructor(
+    public professionalPositionPrivacy: Privacy | null,
+    public employmentAgencyPrivacy: Privacy | null,
+    public experiencePrivacy: Privacy | null,
+    public educationPrivacy: Privacy | null,
+    public skillsPrivacy: Privacy | null
+  ) {
+  }
+
+  toPlainObj(): any {
+    return {...this};
+  }
+}
+
+export enum Privacy { PUBLIC = "PUBLIC", PRIVATE = "PRIVATE" }

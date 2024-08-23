@@ -18,9 +18,11 @@ main {
   border: 4px solid var(--orange-blue-shadow);
   overflow: hidden;
 
+
   .profile-pic {
-    height: inherit;
     object-fit: cover;
+    width: inherit;
+    height: inherit;
   }
 }
 

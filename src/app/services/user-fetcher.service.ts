@@ -30,5 +30,4 @@ export class UserFetcherService {
   aboutMe(url: string) {
     return this.http.get(url, {observe: 'response'});
   }
-
 }
