@@ -5,8 +5,24 @@ main {
   flex-direction: column;
   height: 100vh;
   margin: 0;
-  background: #2f2f32;
+  background: linear-gradient(90deg, #00437d, #7c4200);
+  background-size: 300% 100%;
   color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  animation: background-animation 17s infinite;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .logo {

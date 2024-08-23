@@ -4,7 +4,8 @@
 }
 
 .main {
-  background: #2f2f32;
+  background: linear-gradient(90deg, #00437d, #7c4200);
+  background-size: 300% 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +14,19 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  animation: background-animation 17s infinite;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 h1 {
@@ -40,17 +54,37 @@ button {
   font-size: 18px;
   cursor: pointer;
   border: 2px solid;
-  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
-  border-radius: 7px; /* Rounded corners */
-  background: #1c1c1e;
+  border-image: linear-gradient(to right, #959ba8, #878787) 1;
+  border-radius: 7px;
+  background: linear-gradient(to right, #333336, #2c2c2e);
   background-size: 200% 200%;
   color: #ffffff;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(23, 23, 23, 0));
+  transition: all 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
 }
 
 button:hover {
-  border-image: linear-gradient(to right, #ffdf88, #ffa203) 1;
+  border-image: linear-gradient(to right, #ffdf88, #ffb433) 1;
   color: #ffffff;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.005);
+  background-position: right center;
 }
 
 h2 {
@@ -64,8 +98,12 @@ h2 {
   left: 0;
   white-space: nowrap;
   font-size: 2rem;
-  color: #ff7701;
+  color: #dbdbdb;
   line-height: 1.5;
+  animation: text-blur 5s infinite;
+  background: linear-gradient(90deg, #adadad, #ffd1a9, #bfdbfa);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .background-text2 {
@@ -73,7 +111,22 @@ h2 {
   right: 0;
   white-space: nowrap;
   font-size: 2rem;
-  color: #248eff;
+  color: #dbdbdb;
   line-height: 1.5;
   text-align: right;
+  animation: text-blur 5s infinite;
+  background: linear-gradient(90deg, #adadad, #ffd1a9, #bfdbfa);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@keyframes text-blur {
+  0%, 100% {
+    filter: blur(0);
+    background-position: 0% 50%;
+  }
+  50% {
+    filter: blur(1px);
+    background-position: 50% 50%;
+  }
 }
