@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {UserSessionService} from "../../services/user-session.service";
 import {NavigationEnd, Router, RouterModule} from '@angular/router';
 import {UserFetcherService} from "../../services/user-fetcher.service";
@@ -16,7 +16,7 @@ import {UserUpdaterService} from "../../services/user-updater.service";
   styleUrl: './profile.component.css'
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   aboutMe: ProfileData = new ProfileData (
     null,
     null,
@@ -72,6 +72,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    if (this.avatarUrl) {
+      URL.revokeObjectURL(this.avatarUrl);
+    }
+  }
+
   updateAvatar() {
     if (!this.selectedFile) { return; }
 
@@ -122,18 +128,7 @@ export class ProfileComponent implements OnInit {
   }
 
   avatarSet(file: Blob) {
-    const reader = new FileReader();
-    const avatarDisplay = document.querySelector(".profile-pic");
-
-    if (avatarDisplay) {
-      reader.onloadend = (event) => {
-        if (event.target && typeof event.target.result === "string") {
-          this.avatarUrl = event.target.result;
-        }
-      }
-
-      reader.readAsDataURL(file);
-    }
+    this.avatarUrl = URL.createObjectURL(file);
   }
 
   addFriend() {

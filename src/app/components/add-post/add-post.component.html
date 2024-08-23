@@ -1,6 +1,6 @@
 <main>
 
-  <form (ngSubmit)="onSubmitPost()">
+  <form (submit)="onSubmitPost($event)">
     <div class="gradient-text">Add New Post</div>
     <div id="success">{{ showSuccessMessage ? 'Post created!' : '&nbsp;'}}</div>
 

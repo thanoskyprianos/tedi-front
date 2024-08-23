@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {PostModule} from "../../../modules/post.module";
 import {NgForOf, NgIf} from "@angular/common";
 import {PostService} from "../../../services/post.service";
@@ -17,7 +17,7 @@ import {UserSessionService} from "../../../services/user-session.service";
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
 })
-export class PostComponent implements OnChanges {
+export class PostComponent implements OnChanges, OnDestroy {
   @Input() post: PostModule | undefined;
   user: UserModule | undefined;
 
@@ -38,6 +38,14 @@ export class PostComponent implements OnChanges {
       this.getUser();
       this.getMedia();
     }
+  }
+
+  ngOnDestroy() {
+    if (this.avatarUrl) {
+      URL.revokeObjectURL(this.avatarUrl);
+    }
+
+    this.media.forEach(({url, type}) => URL.revokeObjectURL(url))
   }
 
   getMedia() {
@@ -66,16 +74,7 @@ export class PostComponent implements OnChanges {
     this.fetcher.avatar(this.user!._links.avatar.href).subscribe({
       next: (res) => {
         if (!res.body) return;
-
-        const reader = new FileReader();
-
-        reader.onloadend = (event) => {
-          if (event.target && typeof event.target.result === "string") {
-            this.avatarUrl = event.target.result;
-          }
-        }
-
-        reader.readAsDataURL(res.body);
+        this.avatarUrl = URL.createObjectURL(res.body);
       }
     })
   }
@@ -90,15 +89,7 @@ export class PostComponent implements OnChanges {
   }
 
   displayMedia(file: Blob) {
-    const reader = new FileReader();
-
-    reader.onloadend = (event) => {
-      if (event.target && typeof event.target.result === "string") {
-        this.media.push({url: event.target.result, type: file.type});
-      }
-    }
-
-    reader.readAsDataURL(file);
+    this.media.push({url: URL.createObjectURL(file), type: file.type});
   }
 
   viewImage(event: any) {
