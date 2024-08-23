@@ -34,12 +34,12 @@ export class SettingsComponent {
 
     if (this.newEmail.trim() !== '')
     {
-      this.session.updateEmail(UrlEmail, this.newEmail);
+      //this.session.updateEmail(UrlEmail, this.newEmail);
     }
 
     if (this.newPassword.trim() !== '')
     {
-      this.session.updatePassword(UrlPassword, this.newPassword);
+      //this.session.updatePassword(UrlPassword, this.newPassword);
     }
 
   }
