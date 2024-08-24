@@ -1,51 +1,57 @@
-<main class="post-wrapper" *ngIf="post">
-  <div class="top-bar" *ngIf="user">
-    <div class="user-details" (click)="goToUser($event)">
-      <div class="avatar-wrapper">
-        <img [src]="avatarUrl || 'resource/user.png'" class="avatar" alt="avatar" />
+<main>
+  <div class="post-wrapper" *ngIf="post">
+    <div class="top-bar" *ngIf="user">
+      <div class="user-details" (click)="goToUser($event)">
+        <div class="avatar-wrapper">
+          <img [src]="avatarUrl || 'resource/user.png'" class="avatar" alt="avatar" />
+        </div>
+        <p>{{user.firstName}} {{user.lastName}}</p>
       </div>
-      <p>{{user.firstName}} {{user.lastName}}</p>
-    </div>
-    <div
-      class="delete"
-      *ngIf="user.id === session.user.id"
-      title="Delete" (click)="deletePost()">
-        <img src="/resource/trash-2.svg" alt="delete" >
-    </div>
-  </div>
-
-  <p>{{ post.text }}</p>
-
-  <div class="media-and-buttons">
-    <div [class]="'media-wrapper id' + post.id" #wrapper>
-
-      <div class="media" *ngFor="let file of media">
-        <img
-          [src]="file.url"
-          class="image"
-          alt="image"
-          *ngIf="file.type.startsWith('image')"
-          (click)="viewImage($event)"
-          loading="lazy"
-          (load)="checkOverflow()"
-        />
-
-        <video
-          [src]="file.url"
-          *ngIf="file.type.startsWith('video')"
-          preload="metadata"
-          controls
-          (load)="checkOverflow()"
-        ></video>
+      <div
+        class="delete"
+        *ngIf="user.id === session.user.id"
+        title="Delete" (click)="deletePost()">
+          <img src="/resource/trash-2.svg" alt="delete" >
       </div>
     </div>
 
-    <button *ngIf="overflown" class="back" (click)="scrollBack($event)">
-      <img src="/resource/arrow-left.svg" alt="<-">
-    </button>
+    <p>{{ post.text }}</p>
 
-    <button *ngIf="overflown" class="front" (click)="scrollFront($event)">
-      <img src="/resource/arrow-right.svg" alt="->">
-    </button>
+    <div class="media-and-buttons">
+      <div [class]="'media-wrapper id' + post.id" #wrapper>
+
+        <div class="media" *ngFor="let file of media">
+          <img
+            [src]="file.url"
+            class="image"
+            alt="image"
+            *ngIf="file.type.startsWith('image')"
+            (click)="viewImage($event)"
+            loading="lazy"
+            (load)="checkOverflow()"
+          />
+
+          <video
+            [src]="file.url"
+            *ngIf="file.type.startsWith('video')"
+            preload="metadata"
+            controls
+            (load)="checkOverflow()"
+          >
+            <source [src]="file.url" [type]="file.type">
+          </video>
+        </div>
+      </div>
+
+      <button *ngIf="overflown" class="back" (click)="scrollBack($event)">
+        <img src="/resource/arrow-left.svg" alt="<-">
+      </button>
+
+      <button *ngIf="overflown" class="front" (click)="scrollFront($event)">
+        <img src="/resource/arrow-right.svg" alt="->">
+      </button>
+    </div>
   </div>
+
+
 </main>

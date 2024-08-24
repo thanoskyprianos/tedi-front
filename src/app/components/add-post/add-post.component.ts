@@ -4,6 +4,7 @@ import { UserSessionService } from '../../services/user-session.service';
 import { FormsModule } from '@angular/forms';
 import {PostModule} from "../../modules/post.module";
 import {NgIf} from "@angular/common";
+import {lastValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-add-post',
@@ -24,37 +25,34 @@ export class AddPostComponent {
     protected session: UserSessionService)
     { }
 
-  onSubmitPost() {
+  onSubmitPost(event: any) {
     let post = {
       "text": this.text
     }
 
     this.postService.addPost(this.session.user.id, post).subscribe({
-        next: (res: any) => {
+        next: async (res: any) => {
           const post = new PostModule(0, res.body.text, res.body._links);
 
           const addMediaUrl = post._links.add_media;
           if (addMediaUrl) {
-            this.addMedia(addMediaUrl);
+            await this.addMedia(addMediaUrl);
+            this.clearForm(event);
+            this.showSuccess();
           }
+        },
+        error: (err: any) => {
+          this.clearForm(event);
+          console.log(err)
         }
       }
     )
-
-    if (this.selectedFiles.length === 0) {
-      this.showSuccess();
-    }
   }
 
-  addMedia(addMediaUrl: any) {
-    Array.from(this.selectedFiles).forEach((file, idx) => {
-      this.postService.addMedia(addMediaUrl.href, file).subscribe((_res) => {
-        if (idx === this.selectedFiles.length - 1) {
-          this.showSuccess();
-          this.clearForm();
-        }
-      });
-    });
+  async addMedia(addMediaUrl: any) {
+    for (let file of this.selectedFiles) {
+      await lastValueFrom(this.postService.addMedia(addMediaUrl.href, file)).then();
+    }
   }
 
   getMedia(event: any) {
@@ -66,9 +64,8 @@ export class AddPostComponent {
     setTimeout(() => this.showSuccessMessage = false, 2000);
   }
 
-  clearForm() {
-    const form = document.forms[0];
-    if (form)
-      form.reset();
+  clearForm(event: any) {
+    event.target.reset();
+    this.text = "";
   }
 }

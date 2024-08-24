@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges} from '@angular/core';
 import {NgIf} from "@angular/common";
 
 @Component({
@@ -10,7 +10,7 @@ import {NgIf} from "@angular/common";
   templateUrl: './avatar-input.component.html',
   styleUrl: './avatar-input.component.css'
 })
-export class AvatarInputComponent implements OnChanges {
+export class AvatarInputComponent implements OnChanges, OnDestroy {
   @Input() selectedFile: File | null = null;
   @Output() selectedFileChange: EventEmitter<File | null> = new EventEmitter();
 
@@ -24,6 +24,12 @@ export class AvatarInputComponent implements OnChanges {
     }
   }
 
+  ngOnDestroy() {
+    if (this.avatarUrl) {
+      URL.revokeObjectURL(this.avatarUrl);
+    }
+  }
+
   avatarSet(event: any) {
     this.displayAvatar(event.target.files[0]);
     this.selectedFile = event.target.files[0];
@@ -31,18 +37,7 @@ export class AvatarInputComponent implements OnChanges {
   }
 
   displayAvatar(file: Blob) {
-    const reader = new FileReader();
-    const avatarDisplay = document.querySelector("#avatar-display");
-
-    if (avatarDisplay) {
-      reader.onloadend = (event) => {
-        if (event.target && typeof event.target.result === "string") {
-          this.avatarUrl = event.target.result;
-        }
-      }
-
-      reader.readAsDataURL(file);
-    }
+    this.avatarUrl = URL.createObjectURL(file);
   }
 
   avatarClear() {

@@ -5,6 +5,8 @@
   margin: 15px 0;
   width: 800px;
 
+  min-height: 400px;
+
   background-color: var(--dark-grey)
 }
 
