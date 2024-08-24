@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 
 export class MessagesService {
-  
-  private socket: WebSocket;
+
+  //private socket: WebSocket;
 
   constructor() { }
 
