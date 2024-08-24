@@ -6,13 +6,15 @@ import {UserModule} from "../../../modules/user.module";
 import {UserFetcherService} from "../../../services/user-fetcher.service";
 import {NavigationExtras, Router} from "@angular/router";
 import {UserSessionService} from "../../../services/user-session.service";
+import {CommentSectionComponent} from "../../comment-section/comment-section.component";
 
 @Component({
   selector: 'app-post',
   standalone: true,
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    CommentSectionComponent
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'

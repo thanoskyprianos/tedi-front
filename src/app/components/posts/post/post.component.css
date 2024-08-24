@@ -1,3 +1,7 @@
+main {
+  display: flex;
+}
+
 .post-wrapper {
   border: 5px solid white;
   border-image: var(--orange-blue) 1;
@@ -5,9 +9,7 @@
   margin: 15px 0;
   width: 800px;
 
-  min-height: 400px;
-
-  background-color: var(--dark-grey)
+  background-color: var(--dark-grey);
 }
 
 @media (max-width: 800px) {
@@ -96,7 +98,7 @@ video, img {
 
   color: black;
 
-  background: var(--lighter-grey);
+  background: rgba(168, 168, 168, 0.3);
   opacity: 0.75;
 
   display: flex;
@@ -155,21 +157,31 @@ video, img {
   align-items: center;
 }
 
-.delete {
-  height: 20px;
-  width: 20px;
+.icons-wrapper {
+  display: flex;
+  align-items: center;
 
-  margin-right: 15px;
-  padding: 10px;
+  margin: 15px;
+  border-radius: 15px;
+}
+
+.icons-wrapper > * {
   border-radius: 50%;
+  padding: 10px;
 
   cursor: pointer;
 
+  height: 20px;
+  width: 20px;
+
+  margin: 0 5px;
+
   img {
     height: inherit;
+    width: auto;
   }
 }
 
-.delete:hover {
+.icons-wrapper > *:hover {
   background-color: rgba(168, 168, 168, 0.3);
 }

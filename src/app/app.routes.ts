@@ -14,6 +14,7 @@ import { IsLoggedInGuardService } from "./guards/is-logged-in-guard.service";
 import { IsLoggedOutService } from "./guards/is-logged-out.service";
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { AddPostComponent } from "./components/add-post/add-post.component";
+import {MessageByUserComponent} from "./components/messages/message-by-user/message-by-user.component";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },
@@ -25,7 +26,9 @@ export const routes: Routes = [
 
   { path: 'profile-page', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] } ,
   { path: 'network-page', component: NetworkComponent, title: 'Network', canActivate: [IsLoggedInGuardService] } ,
-  { path: 'messages-page', component: MessagesComponent, title: 'Messages', canActivate: [IsLoggedInGuardService] } ,
+  { path: 'messages-page', component: MessagesComponent, title: 'Messages', canActivate: [IsLoggedInGuardService], children: [
+    { path: ':id', component: MessageByUserComponent },
+    ]} ,
   { path: 'notification-page', component: NotificationsComponent, title: 'Notifications', canActivate: [IsLoggedInGuardService] } ,
   { path: 'settings-page', component: SettingsComponent, title: 'Settings', canActivate: [IsLoggedInGuardService] } ,
   { path: 'profile-page/:id', component: ProfileComponent, title: 'Profile', canActivate: [IsLoggedInGuardService] },

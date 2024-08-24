@@ -1,4 +1,4 @@
-<main>
+<main #postWrapper>
   <div class="post-wrapper" *ngIf="post">
     <div class="top-bar" *ngIf="user">
       <div class="user-details" (click)="goToUser($event)">
@@ -7,11 +7,26 @@
         </div>
         <p>{{user.firstName}} {{user.lastName}}</p>
       </div>
-      <div
-        class="delete"
-        *ngIf="user.id === session.user.id"
-        title="Delete" (click)="deletePost()">
-          <img src="/resource/trash-2.svg" alt="delete" >
+
+      <div class="icons-wrapper">
+        <div
+          class="like"
+          title="Like"
+        >
+          <img src="/resource/heart-empty.svg" alt="like">
+        </div>
+        <div
+          class="comment"
+          title="Comment"
+        >
+          <img src="/resource/comment.svg" alt="comment">
+        </div>
+        <div
+          class="delete"
+          *ngIf="user.id === session.user.id"
+          title="Delete" (click)="deletePost()">
+            <img src="resource/trash.svg" alt="delete" >
+        </div>
       </div>
     </div>
 
@@ -52,6 +67,4 @@
       </button>
     </div>
   </div>
-
-
 </main>

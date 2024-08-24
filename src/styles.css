@@ -21,7 +21,7 @@
   --darker-purple: #0e0e35;
   --dark-purple-blue: linear-gradient(to bottom, var(--dark-purple), #121247);
 
-  --lighter-grey: rgba(168, 168, 168);
+  --lighter-grey: rgb(168, 168, 168);
   --light-grey: #575757;
   --dark-grey: #2a2a2b;
   --darker-grey: #222121;
