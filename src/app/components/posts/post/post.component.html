@@ -1,4 +1,4 @@
-<main #postWrapper>
+<main>
   <div class="post-wrapper" *ngIf="post">
     <div class="top-bar" *ngIf="user">
       <div class="user-details" (click)="goToUser($event)">
@@ -51,10 +51,19 @@
             *ngIf="file.type.startsWith('video')"
             preload="metadata"
             controls
-            (loadstart)="checkOverflow()"
+            (loadedmetadata)="checkOverflow()"
+            loop
           >
             <source [src]="file.url" [type]="file.type">
           </video>
+
+          <app-audio-player
+            class="audio"
+            *ngIf="file.type.startsWith('audio')"
+            [src]="file.url"
+            [type]="file.type"
+            (loading)="checkOverflow()" />
+
         </div>
       </div>
 

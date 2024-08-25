@@ -7,6 +7,7 @@ import {UserFetcherService} from "../../../services/user-fetcher.service";
 import {NavigationExtras, Router} from "@angular/router";
 import {UserSessionService} from "../../../services/user-session.service";
 import {CommentSectionComponent} from "../../comment-section/comment-section.component";
+import {AudioPlayerComponent} from "../../audio-player/audio-player.component";
 
 @Component({
   selector: 'app-post',
@@ -14,7 +15,8 @@ import {CommentSectionComponent} from "../../comment-section/comment-section.com
   imports: [
     NgIf,
     NgForOf,
-    CommentSectionComponent
+    CommentSectionComponent,
+    AudioPlayerComponent
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'

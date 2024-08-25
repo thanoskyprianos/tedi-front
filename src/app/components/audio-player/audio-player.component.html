@@ -1,0 +1,69 @@
+<main>
+  <button
+    class="play-button"
+    *ngIf="!playing"
+    (click)="playAudio()"
+    id="play"
+  >
+    <img src="resource/play-fill.svg" alt="play">
+  </button>
+
+  <button
+    class="play-button"
+    *ngIf="playing"
+    (click)="pauseAudio()"
+    id="pause"
+  >
+    <img src="resource/pause-fill.svg" alt="pause">
+  </button>
+
+  <p>
+    {{ currentTimeStr }} | {{ durationStr }}
+  </p>
+
+  <div class="time-audio">
+    <div class="audio-range">
+      <input
+        type="range"
+        name="duration"
+        id="duration"
+        min="0"
+        [max]="maxDuration"
+        (input)="changeTime($event)"
+        (change)="changeTime($event)"
+        [(ngModel)]="currentTime"
+      >
+    </div>
+
+    <div class="volume-range">
+      <input
+        type="range"
+        name="volume"
+        id="volume"
+        min="0"
+        max="100"
+        value="100"
+        (input)="changeVolume($event)"
+        (change)="changeVolume($event)"
+      >
+
+      <button class="mute" *ngIf="muted" (click)="unmute()">
+        <img src="resource/volume-mute.svg" alt="mute">
+      </button>
+
+      <button class="unmute" *ngIf="!muted" (click)="mute()">
+        <img src="resource/volume-up.svg" alt="unmute">
+      </button>
+    </div>
+  </div>
+
+  <audio
+    [src]="src"
+    preload="metadata"
+    loop
+    (loadedmetadata)="checkOverflow()"
+    (timeupdate)="timeUpdated($event)"
+  >
+    <source [src]="src" [type]="type"/>
+  </audio>
+</main>

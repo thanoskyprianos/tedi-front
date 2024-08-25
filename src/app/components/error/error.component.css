@@ -1,0 +1,37 @@
+main {
+  height: calc(var(--height-minus-nav-bar) - 200px);
+  padding-top: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  background: linear-gradient(90deg, #2b2b2b, #272e3c, #26272a);
+  animation: background-animation 17s infinite;
+  background-size: 300% 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+h1 {
+  font-size: 5em;
+}
+
+h1, h3 {
+  background: linear-gradient(to right, #ff7701, #248eff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
