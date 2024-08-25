@@ -51,7 +51,7 @@
             *ngIf="file.type.startsWith('video')"
             preload="metadata"
             controls
-            (load)="checkOverflow()"
+            (loadstart)="checkOverflow()"
           >
             <source [src]="file.url" [type]="file.type">
           </video>

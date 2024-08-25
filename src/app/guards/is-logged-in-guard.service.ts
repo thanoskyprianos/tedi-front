@@ -24,7 +24,7 @@ export class IsLoggedInGuardService implements CanActivate {
     state: RouterStateSnapshot):
     MaybeAsync<GuardResult> {
 
-    if (this.session.token) {
+    if (this.session.accessToken) {
       return true;
     }
 

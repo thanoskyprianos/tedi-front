@@ -33,7 +33,7 @@ export class SignInComponent {
 
     this.session.login(this.email.trim(), this.password.trim()).subscribe({
       next: (res: any) => {
-        this.session.setToken(res.body.token);
+        this.session.setToken(res.body.tokens.accessToken, res.body.tokens.refreshToken);
         this.session.setUser(res.body);
         this.session.subj.next('ok');
 

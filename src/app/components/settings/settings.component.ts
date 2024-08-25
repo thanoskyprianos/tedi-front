@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserSessionService } from '../../services/user-session.service';
 import {UserUpdaterService} from "../../services/user-updater.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-settings',
@@ -23,7 +22,6 @@ export class SettingsComponent {
   constructor(
     protected session: UserSessionService,
     private updater: UserUpdaterService,
-    private router: Router
   ) { }
 
   updateEmail(event: any) {
@@ -43,7 +41,8 @@ export class SettingsComponent {
     ).subscribe({
       next: (res: any) => {
         this.session.logout().subscribe(() => {
-          this.router.navigate(['']);
+          this.session.removeToken();
+          location.reload();
         });
       },
       error: (err: any) => {

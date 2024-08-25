@@ -5,16 +5,17 @@ import {properties} from "../config/properties.file";
 import {UserFetcherService} from "./user-fetcher.service";
 import {mockUser} from "../config/mock.user";
 import {BehaviorSubject} from "rxjs";
-import { Router } from '@angular/router';
 
 // ability to ignore auth errors (checked by interceptor)
 export const IGNORE_AUTH = new HttpContextToken(() => false)
+export const DID_REFRESH = new HttpContextToken(() => false);
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserSessionService {
-  token: string = '';
+  accessToken: string = '';
+  refreshToken: string = '';
   user!: UserModule;
 
   subj = new BehaviorSubject('');
@@ -23,11 +24,13 @@ export class UserSessionService {
   constructor(
     private http: HttpClient,
     private fetcher: UserFetcherService,
-    private router: Router
   ) {
-    let token = localStorage.getItem("token");
-    if (token) {
-      this.token = token;
+    let accessToken = localStorage.getItem("accessToken");
+    let refreshToken = localStorage.getItem("refreshToken");
+
+    if (accessToken && refreshToken) {
+      this.accessToken = accessToken;
+      this.refreshToken = refreshToken;
 
       // todo: delete in prod
       this.setUser(mockUser);
@@ -74,18 +77,39 @@ export class UserSessionService {
   }
 
   logout() {
-    this.removeToken()
-    return this.http.get(properties.endpoint + '/users/logout',  { observe: 'response'});
+    const tokens = {
+      accessToken: this.accessToken,
+      refreshToken: this.refreshToken
+    }
+
+    return this.http.post(properties.endpoint + '/users/logout', tokens, { observe: 'response'});
   }
 
-  setToken(token: string) {
-    this.token = token;
-    localStorage.setItem('token', this.token);
+  refresh() {
+    const tokens = {
+      accessToken: this.accessToken,
+      refreshToken: this.refreshToken
+    }
+
+    return this.http.post(properties.endpoint + '/users/refresh', tokens, {
+      observe: 'response',
+      context: new HttpContext().set(DID_REFRESH, true)
+    });
+  }
+
+  setToken(accessToken: string, refreshToken: string) {
+    this.accessToken = accessToken;
+    this.refreshToken = refreshToken;
+
+    localStorage.setItem('accessToken', this.accessToken);
+    localStorage.setItem('refreshToken', this.refreshToken);
   }
 
   removeToken() {
-    this.token = '';
-    localStorage.removeItem('token');
+    this.accessToken = '';
+    this.refreshToken = '';
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken')
   }
 
   setUser(userObj: any) {

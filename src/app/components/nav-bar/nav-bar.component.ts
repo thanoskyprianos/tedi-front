@@ -29,7 +29,10 @@ export class NavBarComponent implements OnInit{
   ) { this.setPage(); } // sets page on refresh
 
   logout() {
-    this.session.logout().subscribe(() => location.reload());
+    this.session.logout().subscribe(() => {
+      this.session.removeToken();
+      location.reload();
+    });
   }
 
   ngOnInit(): void {

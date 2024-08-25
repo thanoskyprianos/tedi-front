@@ -22,7 +22,7 @@ export class IsLoggedOutService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):
     MaybeAsync<GuardResult> {
-    if (!this.session.token) {
+    if (!this.session.accessToken) {
       return true;
     }
 
