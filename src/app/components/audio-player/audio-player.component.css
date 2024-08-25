@@ -16,6 +16,10 @@ main {
   background-color: rgba(168, 168, 168, 0.1);
 }
 
+button, input {
+  cursor: pointer;
+}
+
 button {
   padding: 0;
   margin: 0;
