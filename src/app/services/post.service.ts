@@ -48,4 +48,8 @@ export class PostService {
   deletePost(deleteUrl: string) {
     return this.http.delete(deleteUrl, {observe: 'response'});
   }
+
+  likePost(likeUrl: string) {
+    return this.http.post(likeUrl, {observe: 'response'});
+  }
 }

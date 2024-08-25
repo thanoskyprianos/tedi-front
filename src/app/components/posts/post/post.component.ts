@@ -29,6 +29,8 @@ export class PostComponent implements OnChanges, OnDestroy {
   avatarUrl: string = '';
   overflown: boolean = false;
 
+  liked: boolean = false;
+
   constructor(
     private host: ElementRef,
     protected session: UserSessionService,
@@ -41,6 +43,7 @@ export class PostComponent implements OnChanges, OnDestroy {
     if (changes['post'].firstChange && this.post) {
       this.getUser();
       this.getMedia();
+      this.isLiked();
     }
   }
 
@@ -89,6 +92,32 @@ export class PostComponent implements OnChanges, OnDestroy {
         if (!res.body) return;
         this.displayMedia(res.body);
       }
+    })
+  }
+
+  isLiked() {
+    const likeLink = this.post!._links.like;
+    const dislikeLink = this.post!._links.dislike;
+
+    if (likeLink) {
+      this.liked = false;
+    }
+    else if (dislikeLink) {
+      this.liked = true;
+    }
+  }
+
+  like() {
+    const likeLink = this.post!._links.like;
+    const dislikeLink = this.post!._links.dislike;
+
+    const url = likeLink ? likeLink : dislikeLink;
+
+    this.postService.likePost(url.href).subscribe({
+      next: (res) => {
+        this.liked = !this.liked;
+      },
+      error: (err) => { console.log(err) }
     })
   }
 

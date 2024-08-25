@@ -12,8 +12,10 @@
         <div
           class="like"
           title="Like"
+          (click)="like()"
         >
-          <img src="/resource/heart-empty.svg" alt="like">
+          <img *ngIf="!liked" src="/resource/heart-empty.svg" alt="like">
+          <img *ngIf="liked" src="/resource/heart-fill.svg" alt="like">
         </div>
         <div
           class="comment"
