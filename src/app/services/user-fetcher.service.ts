@@ -30,4 +30,8 @@ export class UserFetcherService {
   aboutMe(url: string) {
     return this.http.get(url, {observe: 'response'});
   }
+
+  getReceived(receivedUrl: string) {
+    return this.http.get(receivedUrl, {observe: 'response'});
+  }
 }

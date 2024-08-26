@@ -7,6 +7,8 @@ import {NgIf} from "@angular/common";
 import {PostsComponent} from "../posts/posts.component";
 import {AvatarInputComponent} from "../avatar-input/avatar-input.component";
 import {UserUpdaterService} from "../../services/user-updater.service";
+import {CardType} from "../user-card/user-card.component";
+import {ConnectionService} from "../../services/connection.service";
 
 @Component({
   selector: 'app-profile',
@@ -28,14 +30,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
   @Input() selectedFile: File | null = null;
   avatarUrl: string = '';
 
-  user: UserModule | undefined;
-  connected: boolean | undefined;
+  user!: UserModule;
+  type!: CardType | undefined;
 
   constructor(
     protected session: UserSessionService,
     private fetcher: UserFetcherService,
     private updater: UserUpdaterService,
-    private router: Router
+    private router: Router,
+    private connection: ConnectionService,
   ) {
     const id
       = parseInt(this.router.url.substring(this.router.url.lastIndexOf('/') + 1));
@@ -50,6 +53,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
             next: (res: any) => {
               this.user = res.body as UserModule;
               this.setDetails(this.user);
+
+              const acceptUrl = this.user._links.accept;
+              const addUrl = this.user._links.add;
+              const cancelUrl = this.user._links.cancel;
+              const removeUrl = this.user._links.remove;
+
+              this.type = acceptUrl ?
+                CardType.REQUEST : addUrl ?
+                CardType.ADD : cancelUrl?
+                CardType.CANCEL : removeUrl ?
+                CardType.REMOVE : undefined;
             },
             error: (err: any) => { this.router.navigate(['/error']); }
           })
@@ -132,10 +146,83 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   addFriend() {
+    const url = this.user._links.add;
+    if (!url) return;
 
+    this.connection.add(url.href).subscribe({
+      next: (res) => {
+        this.type = CardType.CANCEL;
+        location.reload();
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
   }
 
   removeFriend() {
+    const url = this.user._links.remove;
+    if (!url) return;
+
+    this.connection.cancel(url.href).subscribe({
+      next: (res) => {
+        this.type = CardType.ADD;
+        location.reload();
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
+  }
+
+  messageFriend() {
 
   }
+
+  accept() {
+    const url = this.user._links.accept;
+    if (!url) return;
+
+    this.connection.accept(url.href).subscribe({
+      next: (res) => {
+        this.type = CardType.REMOVE;
+        location.reload();
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
+  }
+
+  reject() {
+    const url = this.user._links.reject;
+    if (!url) return;
+
+    this.connection.reject(url.href).subscribe({
+      next: (res) => {
+        this.type = CardType.ADD;
+        location.reload();
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
+  }
+
+  cancel() {
+    const url = this.user._links.cancel;
+    if (!url) return;
+
+    this.connection.cancel(url.href).subscribe({
+      next: (res) => {
+        this.type = CardType.ADD;
+        location.reload();
+      },
+      error: (err: any) => {
+        console.log(err)
+      }
+    })
+  }
+
+  protected readonly CardType = CardType;
 }

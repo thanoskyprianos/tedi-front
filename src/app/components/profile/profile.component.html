@@ -21,15 +21,26 @@
       </div>
 
       <div *ngIf="user.id !== session.user.id" class="others-options">
-        <button *ngIf="!connected"
+        <button *ngIf="type == CardType.ADD"
                 class="add-friend"
                 (click)="addFriend()">Add Friend</button>
-        <button *ngIf="connected"
+        <button *ngIf="type == CardType.REMOVE"
                 class="remove-friend"
                 (click)="removeFriend()">Remove Friend</button>
-        <button *ngIf="connected"
+        <button *ngIf="type == CardType.REMOVE"
                 class="message"
-                (click)="removeFriend()">Message</button>
+                (click)="messageFriend()">Message</button>
+
+        <button *ngIf="type == CardType.REQUEST"
+                class="request"
+                (click)="accept()">Accept Friend</button>
+        <button *ngIf="type == CardType.REQUEST"
+                class="request"
+                (click)="reject()">Reject Friend</button>
+
+        <button *ngIf="type == CardType.CANCEL"
+                class="request"
+                (click)="cancel()">Cancel request</button>
       </div>
 
       <div class="display-about-me">
@@ -41,7 +52,7 @@
       </div>
     </div>
 
-    <div *ngIf="user.id === session.user.id || connected" class="posts">
+    <div *ngIf="user.id === session.user.id || type == CardType.REMOVE" class="posts">
       <app-posts type="of" [id] ="user.id"></app-posts>
     </div>
 </main>

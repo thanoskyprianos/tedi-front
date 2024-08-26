@@ -1,3 +1,5 @@
-<main>
-    
+<main *ngIf="requests">
+  <div class="request" *ngFor="let request of requests">
+    <app-user-card [user]="request" />
+  </div>
 </main>

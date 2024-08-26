@@ -1,0 +1,32 @@
+<main *ngIf="user">
+  <div class="details" [routerLink]="'/profile-page/' + this.user.id">
+    <div class="image-wrapper">
+      <img [src]="avatarUrl || 'resource/user.png'" alt="avatar">
+    </div>
+    <p>{{ user.firstName }} {{ user.lastName }}</p>
+
+  </div>
+
+  <div class="buttons">
+    <div class="request" *ngIf="type == CardType.REQUEST">
+      <button (click)="accept()">
+        <img src="resource/check.svg" alt="accept" id="check">
+      </button>
+      <button (click)="reject()">
+        <img src="resource/x.svg" alt="reject">
+      </button>
+    </div>
+
+    <div class="request" *ngIf="type == CardType.ADD">
+      <button (click)="add()">
+        <img src="resource/plus.svg" alt="accept">
+      </button>
+    </div>
+
+    <div class="request" *ngIf="type == CardType.CANCEL">
+      <button (click)="cancel()">
+        <img src="resource/x.svg" alt="accept">
+      </button>
+    </div>
+  </div>
+</main>

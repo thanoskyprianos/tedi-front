@@ -41,6 +41,21 @@ export class NavBarComponent implements OnInit{
         this.setPage();
       }
     });
+
+    const notificationIcon = document.getElementById('not')
+    if (!notificationIcon) return;
+
+    this.session.userObs.subscribe({
+      next: (x) => {
+        if (x === 'ok') {
+          if (this.session.user._links.received) {
+            notificationIcon.id = 'not-has'
+          } else {
+            notificationIcon.id = 'not'
+          }
+        }
+      }
+    })
   }
 
   setPage() {
