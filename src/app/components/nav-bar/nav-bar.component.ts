@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import {RouterLink} from "@angular/router";
 import {UserSessionService} from "../../services/user-session.service";
 import {NgIf} from "@angular/common";
+import {UserModule} from "../../modules/user.module";
+import {UserFetcherService} from "../../services/user-fetcher.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -23,9 +25,13 @@ export class NavBarComponent implements OnInit{
   isHomePage: boolean = false;
   isNotificationPage: boolean = false;
   isProfilePage: boolean = false;
+  @Input() selectedFile: File | null = null;
+  avatarUrl: string = '';
+  user!: UserModule;
 
   constructor(protected session: UserSessionService
-    ,private router: Router
+    ,private router: Router,
+              private fetcher: UserFetcherService
   ) { this.setPage(); } // sets page on refresh
 
   logout() {
@@ -44,7 +50,7 @@ export class NavBarComponent implements OnInit{
 
     const notificationIcon = document.getElementById('not')
     if (!notificationIcon) return;
-
+    
     this.session.userObs.subscribe({
       next: (x) => {
         if (x === 'ok') {
@@ -56,6 +62,28 @@ export class NavBarComponent implements OnInit{
         }
       }
     })
+
+    this.user = this.session.user;
+    this.getAvatar(this.user);
+    
+  }
+
+  getAvatar(user: UserModule) {
+    const avatarUrl = user._links.avatar;
+    if (avatarUrl) {
+      this.fetcher.avatar(avatarUrl.href).subscribe(
+        (res: any) => {
+          if (res.status === 200) {
+            this.selectedFile = res.body;
+            this.avatarSet(res.body);
+          }
+        }
+      );
+    }
+  }
+
+  avatarSet(file: Blob) {
+    this.avatarUrl = URL.createObjectURL(file);
   }
 
   setPage() {

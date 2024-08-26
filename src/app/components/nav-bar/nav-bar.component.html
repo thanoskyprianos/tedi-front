@@ -29,8 +29,8 @@
     </button>
 
     <button [routerLink]="'/profile-page/' + session.user.id" class="nav-profile" id="prof">
-      <img src="resource/user.png" alt="Profile" class="button-icon">
-      <p> {{session.user?.firstName}} {{session.user?.lastName}} sdfsdfs lo </p>
+      <img [src]="avatarUrl || 'resource/user.png'" alt="Profile" class="button-icon">
+      <p> {{session.user?.firstName}} {{session.user?.lastName}} </p>
     </button>
 
     <button (click)="logout()" class="nav-button" id="logout">
