@@ -1,47 +1,58 @@
 <main *ngIf="user">
-    <div class="profile-bar">
-      <div class="avatar-input" *ngIf="user.id === session.user.id">
-        <app-avatar-input [(selectedFile)]="selectedFile" (selectedFileChange)="updateAvatar()" [verbose]="false" />
-        <div class="add-button">
-          <img src="/resource/edit.svg" alt="edit">
-        </div>
-      </div>
-
-      <div class="main-prof" *ngIf="user.id !== session.user.id">
-        <img [src]="avatarUrl || 'resource/user.png' " alt="Profile Picture" class="profile-pic">
-      </div>
-
-      <p class="name-display">
-        {{user.firstName}} {{user.lastName}}
-      </p>
-
-      <div *ngIf="user.id === session.user.id" class="self-options">
-        <button routerLink="/add-post" class="add-post">Add Post</button>
-        <button routerLink="/about-me" class="about-me" >About Me</button>
-      </div>
-
-      <div *ngIf="user.id !== session.user.id" class="others-options">
-        <button *ngIf="!connected"
-                class="add-friend"
-                (click)="addFriend()">Add Friend</button>
-        <button *ngIf="connected"
-                class="remove-friend"
-                (click)="removeFriend()">Remove Friend</button>
-        <button *ngIf="connected"
-                class="message"
-                (click)="removeFriend()">Message</button>
-      </div>
-
-      <div class="display-about-me">
-        <p *ngIf="aboutMe.professionalPosition"><strong>Professional Position: </strong>{{aboutMe.professionalPosition}}</p>
-        <p *ngIf="aboutMe.employmentAgency"><strong>Employment Agency: </strong>{{aboutMe.employmentAgency}}</p>
-        <p *ngIf="aboutMe.experience"><strong>Experience: </strong>{{aboutMe.experience}}</p>
-        <p *ngIf="aboutMe.education"><strong>Education: </strong>{{aboutMe.education}}</p>
-        <p *ngIf="aboutMe.skills"><strong>Skills: </strong>{{aboutMe.skills}}</p>
+  <div class="profile-bar">
+    <div class="avatar-input" *ngIf="user.id === session.user.id">
+      <app-avatar-input [(selectedFile)]="selectedFile" (selectedFileChange)="updateAvatar()" [verbose]="false" />
+      <div class="add-button">
+        <img src="/resource/edit.svg" alt="edit">
       </div>
     </div>
 
-    <div *ngIf="user.id === session.user.id || connected" class="posts">
-      <app-posts type="of" [id] ="user.id"></app-posts>
+    <div class="main-prof" *ngIf="user.id !== session.user.id">
+      <img [src]="avatarUrl || 'resource/user.png' " alt="Profile Picture" class="profile-pic">
     </div>
+
+    <p class="name-display">
+      {{user.firstName}} {{user.lastName}}
+    </p>
+
+    <div *ngIf="user.id === session.user.id" class="self-options">
+      <button routerLink="/add-post" class="add-post">Add Post</button>
+      <button routerLink="/about-me" class="about-me" >About Me</button>
+    </div>
+
+    <div *ngIf="user.id !== session.user.id" class="others-options">
+      <button *ngIf="type == CardType.ADD"
+              class="add-friend"
+              (click)="addFriend()">Add Friend</button>
+      <button *ngIf="type == CardType.REMOVE"
+              class="remove-friend"
+              (click)="removeFriend()">Remove Friend</button>
+      <button *ngIf="type == CardType.REMOVE"
+              class="message"
+              (click)="messageFriend()">Message</button>
+
+      <button *ngIf="type == CardType.REQUEST"
+              class="request"
+              (click)="accept()">Accept Friend</button>
+      <button *ngIf="type == CardType.REQUEST"
+              class="request"
+              (click)="reject()">Reject Friend</button>
+
+      <button *ngIf="type == CardType.CANCEL"
+              class="request"
+              (click)="cancel()">Cancel request</button>
+    </div>
+
+    <div class="display-about-me">
+      <p *ngIf="aboutMe.professionalPosition"><strong>Professional Position: </strong>{{aboutMe.professionalPosition}}</p>
+      <p *ngIf="aboutMe.employmentAgency"><strong>Employment Agency: </strong>{{aboutMe.employmentAgency}}</p>
+      <p *ngIf="aboutMe.experience"><strong>Experience: </strong>{{aboutMe.experience}}</p>
+      <p *ngIf="aboutMe.education"><strong>Education: </strong>{{aboutMe.education}}</p>
+      <p *ngIf="aboutMe.skills"><strong>Skills: </strong>{{aboutMe.skills}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="user.id === session.user.id || type == CardType.REMOVE" class="posts">
+    <app-posts type="of" [id] ="user.id"></app-posts>
+  </div>
 </main>
