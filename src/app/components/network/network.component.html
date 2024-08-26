@@ -1,15 +1,12 @@
 <main>
-    <button class="profile-bar" data-name="Ioannis Ioannakis">
-        Ioannis Ioannakis
-        Photo:
-        Job:
-        Foreas Apasxolisis:
-    </button>
 
-  <button class="profile-bar" data-name="Ioannis Ioannakis">
-    Ioannis Ioannakis
-    Photo:
-    Job:
-    Foreas Apasxolisis:
-  </button>
+  <div class="header">Your Connections</div>
+
+  <section *ngFor="let user of connectedWithMe">
+    <button class="net-user" (click)="goToUser($event, user.id)">
+      {{ user.firstName }} {{ user.lastName }}
+      <img [src]="avatarUrl || 'resource/user.png'" class="avatar" alt="avatar" />
+    </button>
+  </section>
+
 </main>

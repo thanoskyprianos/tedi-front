@@ -24,6 +24,7 @@ main {
     width: inherit;
     height: inherit;
   }
+
 }
 
 .display-about-me {
@@ -73,7 +74,7 @@ button {
   color: #ffffff;
   font-size: 1em;
   margin-left: 10px;
-  width: 120px;
+  width: 130px;
   height: 40px;
   cursor: pointer;
   border: 3px solid;

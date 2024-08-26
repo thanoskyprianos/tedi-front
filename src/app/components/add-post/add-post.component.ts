@@ -34,7 +34,7 @@ export class AddPostComponent {
 
     this.postService.addPost(this.session.user.id, post).subscribe({
         next: async (res: any) => {
-          const post = new PostModule(0, res.body.text, res.body._links, this.postType);
+          const post = new PostModule(0, res.body.text, res.body._links);
 
           const addMediaUrl = post._links.add_media;
           if (addMediaUrl) {

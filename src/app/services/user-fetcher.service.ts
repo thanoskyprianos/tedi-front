@@ -34,4 +34,9 @@ export class UserFetcherService {
   getReceived(receivedUrl: string) {
     return this.http.get(receivedUrl, {observe: 'response'});
   }
+
+  connections(connectedUrl: string) {
+    return this.http.get(connectedUrl, {observe: 'response'});
+  }
+
 }
