@@ -16,6 +16,7 @@ import {lastValueFrom} from "rxjs";
 
 export class AddPostComponent {
   @Input() text: string = '';
+  postType: string = 'post';
   selectedFiles: File[] = [];
 
   showSuccessMessage: boolean = false;
@@ -27,12 +28,13 @@ export class AddPostComponent {
 
   onSubmitPost(event: any) {
     let post = {
-      "text": this.text
+      "text": this.text,
+      "type": this.postType
     }
 
     this.postService.addPost(this.session.user.id, post).subscribe({
         next: async (res: any) => {
-          const post = new PostModule(0, res.body.text, res.body._links);
+          const post = new PostModule(0, res.body.text, res.body._links, this.postType);
 
           const addMediaUrl = post._links.add_media;
           if (addMediaUrl) {
@@ -68,4 +70,9 @@ export class AddPostComponent {
     event.target.reset();
     this.text = "";
   }
+
+  async typeOfPost() {
+
+  }
+
 }

@@ -18,6 +18,7 @@ import {Router} from "@angular/router";
 export class PostsComponent {
   @Input() type: 'of' | 'for' | undefined;
   @Input() id: number | undefined;
+  @Input() postType!: string;
   posts: PostModule[] = [];
 
 
@@ -48,6 +49,7 @@ export class PostsComponent {
     next: (res: any) => { this.posts = res.body._embedded.postList as PostModule[] },
     error: (err: any) => { this.router.navigate(['/error']) }
   };
+
 
   getPostsFor(id: number) {
     this.postService.getPostsFor(id).subscribe(this.action)
