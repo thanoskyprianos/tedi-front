@@ -1,28 +1,35 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { MessagesService} from "../../services/messages.service";
-import {RouterOutlet} from "@angular/router";
+import { UserModule } from '../../modules/user.module';
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-messages',
   standalone: true,
   imports: [
-    RouterOutlet
+    NgIf
   ],
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.css'
 })
 export class MessagesComponent {
+  user: UserModule | undefined;
   message: string = '';
+  @Input() userName: string = '';
+  @Input() lastName: string = '';
+
+  get fullName(): string {
+    return `${this.userName} ${this.lastName}`;
+  }
 
   constructor(private messageService: MessagesService) {}
 
-  ngOnInit() {
-
-  }
-
   onSendMessage() {
+
     if (this.message.trim()) {
       this.messageService.sendMessage(this.message);
     }
+
   }
+
 }

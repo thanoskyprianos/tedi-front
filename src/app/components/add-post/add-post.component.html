@@ -15,6 +15,17 @@
     <label for="media-upload" id="media-upload-label">Upload Media</label>
     <input type="file" id="media-upload" accept="image/*, video/*, audio/*" multiple (change)="getMedia($event)">
 
+    <div>
+      <label>
+        <input type="radio" name="postType" [(ngModel)]="postType" value="post" required>
+        Post
+      </label>
+      <label>
+        <input type="radio" name="postType" [(ngModel)]="postType" value="jobOffer">
+        Job Offer
+      </label>
+    </div>
+
     <button type="submit" id="submit-button">Submit Post</button>
   </form>
 </main>

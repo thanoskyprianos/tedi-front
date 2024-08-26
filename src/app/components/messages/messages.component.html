@@ -1,20 +1,16 @@
 <main>
   <div class="container">
-    <div class="user-selection">
-        <h2 class="inbox-title">Inbox</h2>
-    </div>
     <div class="message-box">
-<!--      <div class="message-navigation">-->
+      <div class="chat-header">
+        {{ fullName }}
+      </div>
+      <div class="message-input">
+        <input type="text" placeholder="Type your message here..." />
+        <button type="button" (click)="onSendMessage()">
+            <img src="resource/sending.png" alt="Send" />
+        </button>
+      </div>
 
-<!--      </div>-->
-<!--      <div class="message-input">-->
-<!--        <input type="text" placeholder="Type your message here..." />-->
-<!--        <button type="button" (click)="onSendMessage()">-->
-<!--            <img src="resource/sending.png" alt="Send" />-->
-<!--        </button>-->
-<!--      </div>-->
-
-      <router-outlet />
     </div>
   </div>
 </main>

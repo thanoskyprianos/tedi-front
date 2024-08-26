@@ -127,6 +127,11 @@ button:hover {
   box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
+.messages-page #mes {
+  background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
+}
+
 #not-has {
   background: var(--orange-blue);
   box-shadow: 0 0 100px var(--orange-blue-shadow);

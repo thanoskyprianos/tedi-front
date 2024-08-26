@@ -15,13 +15,13 @@
     box-shadow: 0 0 10px var(--purple-magenta-shadow);
   }
 
-  #net, #mes, #not-has {
+  #net, #mes {
     background: var(--gold-orange);
     box-shadow: 0 0 100px var(--gold-orange-shadow);
   }
 }
 
-#net:hover, #mes:hover, .network-page #not-has:hover {
+#net:hover, #mes:hover {
   background: var(--gold-orange);
   box-shadow: 0 0 10px var(--gold-orange-shadow);
 }
