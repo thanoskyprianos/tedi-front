@@ -4,13 +4,13 @@ import { UserSessionService } from '../../services/user-session.service';
 import { FormsModule } from "@angular/forms";
 import {PostComponent} from "./post/post.component";
 import {PostModule} from "../../modules/post.module";
-import {NgForOf} from "@angular/common";
+import {NgClass, NgForOf} from "@angular/common";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-posts',
   standalone: true,
-  imports: [FormsModule, PostComponent, NgForOf],
+  imports: [FormsModule, PostComponent, NgForOf, NgClass],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.css'
 })
@@ -46,7 +46,7 @@ export class PostsComponent {
   }
 
   action = {
-    next: (res: any) => { this.posts = res.body._embedded.postList as PostModule[] },
+    next: (res: any) => { this.posts = res.body._embedded.postList as PostModule[]; console.log(this.posts); },
     error: (err: any) => { this.router.navigate(['/error']) }
   };
 
@@ -58,4 +58,5 @@ export class PostsComponent {
   getPostsOf(id: number) {
     this.postService.getPostsOf(id).subscribe(this.action)
   }
+
 }

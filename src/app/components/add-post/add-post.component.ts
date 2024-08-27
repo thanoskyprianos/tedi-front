@@ -27,14 +27,28 @@ export class AddPostComponent {
     { }
 
   onSubmitPost(event: any) {
-    let post = {
-      "text": this.text,
-      "type": this.postType
+    let isPost = false;
+    let isJobOffer = false;
+    console.log('postType:', this.postType);
+    if (this.postType === 'post') {
+      isPost = true;
+    } else {
+      isJobOffer = true;
     }
 
+    let post = {
+      "text": this.text,
+      "type": this.postType,
+      isPost: isPost,
+      isJobOffer: isJobOffer
+    }
+    
     this.postService.addPost(this.session.user.id, post).subscribe({
         next: async (res: any) => {
-          const post = new PostModule(0, res.body.text, res.body._links);
+
+          const post = new PostModule(
+            0, res.body.text, res.body._links,
+          isPost, isJobOffer);
 
           const addMediaUrl = post._links.add_media;
           if (addMediaUrl) {
