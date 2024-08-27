@@ -136,3 +136,11 @@ button:hover {
   background: var(--orange-blue);
   box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
+
+#prof-pic {
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+}

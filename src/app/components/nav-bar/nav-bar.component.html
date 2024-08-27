@@ -29,7 +29,7 @@
     </button>
 
     <button [routerLink]="'/profile-page/' + session.user.id" class="nav-profile" id="prof">
-      <img [src]="avatarUrl || 'resource/user.png'" alt="Profile" class="button-icon">
+      <img [src]="avatarUrl || 'resource/user.png'" alt="Profile" class="button-icon" id="prof-pic">
       <p> {{session.user?.firstName}} {{session.user?.lastName}} </p>
     </button>
 
