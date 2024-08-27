@@ -1,7 +1,7 @@
 <main [ngClass]="{'network-page': isNetworkPage, 'messages-page': isMessagesPage
   , 'settings-page': isSettingsPage, 'ads-page' : isAdsPage,
   'home-page': isHomePage, 'notification-page': isNotificationPage,
-  'profile-page': isProfilePage
+  'profile-page': isProfilePage, 'search': isSearchPage
 }">
 
   <div class="home-page-container">
@@ -15,9 +15,8 @@
   </div>
 
   <div class="main-home-container">
-    <button type="button" class="search-container">
+    <button routerLink="/search" class="search-container" id="ser">
       <img src="resource/search-interface-symbol.png" alt="Search" class="button-icon">
-      <input class="search-input" type="search" placeholder="Search">
     </button>
 
     <button routerLink="/messages-page" class="nav-button" id="mes">

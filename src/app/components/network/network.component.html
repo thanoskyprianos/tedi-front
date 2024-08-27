@@ -1,5 +1,9 @@
 <main>
-
+  <button type="button" class="search-container" (click)="clickToSearch()">
+    <img src="resource/search-interface-symbol.png" alt="Search" class="button-icon">
+    Search for all users. 
+  </button>
+  
   <div class="header">Your Connections</div>
 
   <section *ngFor="let user of connectedWithMe">

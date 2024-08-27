@@ -75,7 +75,7 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 260px;
+  width: 40px;
 }
 
 .search-input {
@@ -132,8 +132,15 @@ button:hover {
   box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
-#not-has {
+.search #ser {
   background: var(--orange-blue);
+  box-shadow: 0 0 100px var(--orange-blue-shadow);
+}
+
+#not-has {
+  border: 1px solid;
+  border-image: linear-gradient(to right, #ff0000, #ae6b00) 1;
+  background: linear-gradient(to right, #ff4b4b, #ff9d00);
   box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 

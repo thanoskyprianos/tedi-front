@@ -14,6 +14,7 @@ import { IsLoggedInGuardService } from "./guards/is-logged-in-guard.service";
 import { IsLoggedOutService } from "./guards/is-logged-out.service";
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { AddPostComponent } from "./components/add-post/add-post.component";
+import { SearchComponent } from "./components/search/search.component";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },
@@ -32,6 +33,7 @@ export const routes: Routes = [
   { path: 'ads-page', component: AdsComponent, title: 'Ads', canActivate: [IsLoggedInGuardService] } ,
   { path: 'about-me', component: AboutMeComponent, title: 'About Me', canActivate: [IsLoggedInGuardService]} ,
   { path: 'add-post', component: AddPostComponent, title: 'Add Post', canActivate: [IsLoggedInGuardService]},
+  { path: 'search', component:SearchComponent, title:'Search', canActivate: [IsLoggedInGuardService]},
 
   { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];

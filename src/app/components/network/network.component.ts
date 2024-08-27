@@ -118,4 +118,8 @@ export class NetworkComponent {
     })
   }
 
+  clickToSearch() {
+    this.router.navigate(['/search']);
+  }
+
 }

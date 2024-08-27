@@ -21,6 +21,14 @@ export class MessagesService {
       console.log('Connection opened');
     };
 
+    this.socket.onerror = (error) => {
+      console.error('WebSocket Error:', error);
+    };
+  
+    this.socket.onclose = (event) => {
+      console.log('WebSocket connection closed:', event);
+    };
+
   }
 
   async openChatRoom(userId1: number, userId2: number): Promise<void> {

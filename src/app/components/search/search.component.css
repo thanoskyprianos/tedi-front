@@ -1,0 +1,110 @@
+main {
+    background: var(--darkest-grey);
+    color: white;
+  
+    padding-top: 15px;
+    min-height: calc(var(--height-minus-nav-bar) - 15px);
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container {
+    margin-top: 20px;
+    width: 700px;
+    height: 50px;
+    border: 4px solid;
+    border-image: linear-gradient(to right, #248eff, #ff7701) 1;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    font-size: 1.5em;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    font-size: medium;
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    padding: 0 10px;
+}
+
+.search-button {
+    font-size: 0.7em;
+    height: 100%;
+    padding: 0 20px;
+    background: linear-gradient(to right, #ff7701, #767f88);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.search-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s;
+    z-index: -1;
+}
+
+.search-button:hover::before {
+    left: 100%;
+}
+
+.search-button:hover {
+    background: linear-gradient(to right, #767f88, #ff7701);
+    box-shadow: 0 0 100px rgba(33, 126, 184, 0.5);
+    transform: scale(1.001);
+}
+
+@keyframes hoverEffect {
+    from {
+        transform: scale(1);
+        box-shadow: none;
+    }
+    to {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.result-item {
+    background: #a6acb3;
+    font-size: medium;
+    margin-top: 20px;
+    border: 4px solid;
+    border-image: linear-gradient(to right, #248eff, #ff7701) 1;
+    width: 700px;
+    height: 50px;
+    animation: fadeIn 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-item:hover {
+    background: linear-gradient(to right, #248eff, #ff7701);
+    animation: hoverEffect 0.3s ease-in-out forwards;
+}

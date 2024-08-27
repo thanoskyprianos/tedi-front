@@ -27,9 +27,10 @@
       <button *ngIf="type == CardType.REMOVE"
               class="remove-friend"
               (click)="removeFriend()">Remove Friend</button>
+
       <button *ngIf="type == CardType.REMOVE"
               class="message"
-              (click)="messageFriend()">Message</button>
+              (click)="messageFriend(session.user.id, user.id)">Message</button>
 
       <button *ngIf="type == CardType.REQUEST"
               class="request"

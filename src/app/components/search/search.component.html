@@ -1,0 +1,16 @@
+<main>
+  <div class="search-container">
+      <input type="text" placeholder="Search for all users..." class="search-input" [(ngModel)]="searchQuery" (keydown.enter)="searchResults(searchQuery)"/>
+      <button class="search-button" (click)="searchResults(searchQuery)">
+        Search
+      </button>
+    </div>
+
+    <div *ngIf="resultsFromSearch.length > 0" class="results-container" >
+      <button *ngFor="let result of resultsFromSearch" class="result-item"
+      (click)="goToUser($event, result.id)">
+        {{ result.firstName }} {{ result.lastName }}
+      </button>
+    </div>
+
+</main>

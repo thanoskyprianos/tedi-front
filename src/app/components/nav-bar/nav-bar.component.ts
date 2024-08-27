@@ -25,6 +25,7 @@ export class NavBarComponent implements OnInit{
   isHomePage: boolean = false;
   isNotificationPage: boolean = false;
   isProfilePage: boolean = false;
+  isSearchPage: boolean = false;
   @Input() selectedFile: File | null = null;
   avatarUrl: string = '';
   user!: UserModule;
@@ -45,12 +46,13 @@ export class NavBarComponent implements OnInit{
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.setPage();
+
       }
     });
 
     const notificationIcon = document.getElementById('not')
     if (!notificationIcon) return;
-    
+
     this.session.userObs.subscribe({
       next: (x) => {
         if (x === 'ok') {
@@ -59,13 +61,14 @@ export class NavBarComponent implements OnInit{
           } else {
             notificationIcon.id = 'not'
           }
+          this.user = this.session.user;
+          this.getAvatar(this.user);
         }
       }
     })
 
-    this.user = this.session.user;
-    this.getAvatar(this.user);
-    
+
+
   }
 
   getAvatar(user: UserModule) {
@@ -94,5 +97,7 @@ export class NavBarComponent implements OnInit{
     this.isHomePage = this.router.url.includes('/home-page');
     this.isNotificationPage = this.router.url.includes('/notification-page');
     this.isProfilePage = this.router.url.includes('/profile-page');
+    this.isSearchPage = this.router.url.includes('/search');
   }
+
 }
