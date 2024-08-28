@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {postsFor, postsOf} from "../config/properties.file";
+import {postOf, postsFor, postsOf} from "../config/properties.file";
+import {CommentModule} from "../modules/comment.module";
 
 export interface posted {
   post_id: number;
@@ -22,6 +23,10 @@ export class PostService {
   constructor(
     private http: HttpClient,
   ) { }
+
+  getPost(userId: number, postId: number) {
+    return this.http.get(postOf(userId, postId), {observe: 'response'});
+  }
 
   getPostsFor(id: number) {
     return this.http.get(postsFor(id), {observe: 'response'});
@@ -52,5 +57,17 @@ export class PostService {
 
   likePost(likeUrl: string) {
     return this.http.post(likeUrl, {observe: 'response'});
+  }
+
+  getComments(commentsUrl: string) {
+    return this.http.get(commentsUrl, {observe: 'response'});
+  }
+
+  addComment(commentUrl: string, comment: any) {
+    return this.http.post(commentUrl, comment, {observe: 'response'});
+  }
+
+  deleteComment(deleteUrl: string) {
+    return this.http.delete(deleteUrl, {observe: 'response'});
   }
 }

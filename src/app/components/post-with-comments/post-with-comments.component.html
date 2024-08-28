@@ -1,0 +1,15 @@
+<main *ngIf="post">
+  <app-post [post]="post"/>
+  <form (submit)="addComment($event)">
+    <textarea
+      class="comment-input"
+      [(ngModel)]="comment"
+      type="text"
+      name="add-comment"
+      id="add-comment"></textarea>
+    <button
+      class="comment-button"
+      type="submit">Add Comment</button>
+  </form>
+  <app-comment-section [post]="post"/>
+</main>

@@ -15,6 +15,7 @@ import { IsLoggedOutService } from "./guards/is-logged-out.service";
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { AddPostComponent } from "./components/add-post/add-post.component";
 import { SearchComponent } from "./components/search/search.component";
+import {PostWithCommentsComponent} from "./components/post-with-comments/post-with-comments.component";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: 'about-me', component: AboutMeComponent, title: 'About Me', canActivate: [IsLoggedInGuardService]} ,
   { path: 'add-post', component: AddPostComponent, title: 'Add Post', canActivate: [IsLoggedInGuardService]},
   { path: 'search', component:SearchComponent, title:'Search', canActivate: [IsLoggedInGuardService]},
+  { path: 'post/:userId/:postId', component: PostWithCommentsComponent, title: 'Post', canActivate: [IsLoggedInGuardService]},
 
   { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];

@@ -1,0 +1,20 @@
+<main *ngIf="comment">
+  <div class="top-bar">
+    <div class="author-details" *ngIf="author" [routerLink]="'/profile-page/' + author.id">
+      <div class="image-wrapper">
+        <img [src]="avatarUrl || 'resource/user.png'" alt="">
+      </div>
+      <p>{{author.firstName}} {{author.lastName}}</p>
+    </div>
+    <button
+      class="delete-button"
+      *ngIf="comment._links.delete"
+      (click)="deleteComment()"
+    >
+      <img src="resource/trash.svg" alt="delete">
+    </button>
+  </div>
+  <div class="comment-text">
+    {{ comment.text }}
+  </div>
+</main>

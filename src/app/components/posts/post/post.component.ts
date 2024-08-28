@@ -4,9 +4,8 @@ import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {PostService} from "../../../services/post.service";
 import {UserModule} from "../../../modules/user.module";
 import {UserFetcherService} from "../../../services/user-fetcher.service";
-import {NavigationExtras, Router} from "@angular/router";
+import {NavigationExtras, Router, RouterLink} from "@angular/router";
 import {UserSessionService} from "../../../services/user-session.service";
-import {CommentSectionComponent} from "../../comment-section/comment-section.component";
 import {AudioPlayerComponent} from "../../audio-player/audio-player.component";
 
 @Component({
@@ -15,9 +14,9 @@ import {AudioPlayerComponent} from "../../audio-player/audio-player.component";
   imports: [
     NgIf,
     NgForOf,
-    CommentSectionComponent,
     AudioPlayerComponent,
-    NgClass
+    NgClass,
+    RouterLink
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
@@ -189,5 +188,5 @@ export class PostComponent implements OnChanges, OnDestroy {
       error: (err: any) => {console.error(err)}
     })
   }
-  
+
 }

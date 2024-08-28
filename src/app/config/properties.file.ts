@@ -10,6 +10,10 @@ export const properties = {
   self: `${endpoint}/users/self`,
 }
 
+export const postOf = (userId: number, postId: number) => {
+  return `${postsOf(userId)}/${postId}`
+}
+
 export const postsOf = (userId: number) => {
   return `${properties.user}${userId}/posts`
 }
@@ -25,3 +29,4 @@ export const info = (userId: number) => {
 export const infoPrivacy = (userId: number) => {
   return `${info(userId)}/privacy`;
 }
+

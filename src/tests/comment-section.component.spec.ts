@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommentSectionComponent } from '../app/components/comment-section/comment-section.component';
+import { CommentSectionComponent } from '../app/components/post-with-comments/comment-section/comment-section.component';
 
 describe('CommentSectionComponent', () => {
   let component: CommentSectionComponent;

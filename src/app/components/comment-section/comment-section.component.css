@@ -1,9 +1,0 @@
-main {
-  min-height: 450px;
-
-  margin: 15px 0;
-
-  border: 5px solid;
-  border-image: var(--orange-blue) 1;
-  background-color: var(--dark-grey);
-}
