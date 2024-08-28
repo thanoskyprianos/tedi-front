@@ -4,7 +4,7 @@ main {
 }
 
 .post-wrapper {
-  border: 4px solid white;
+  border: 3px solid white;
   border-image: var(--orange-blue) 1;
 
   margin: 10px 0;
@@ -136,7 +136,7 @@ video, img, .audio {
 }
 
 .avatar-wrapper {
-  border: 2px solid var(--orange-blue-shadow);
+  border: 2px solid #46464a;
   border-radius: 50%;
 
   height: 50px;

@@ -17,11 +17,9 @@
 
   #net {
     background: var(--gold-orange);
-    box-shadow: 0 0 100px var(--gold-orange-shadow);
   }
 }
 
 #net:hover {
   background: var(--gold-orange);
-  box-shadow: 0 0 10px var(--gold-orange-shadow);
 }

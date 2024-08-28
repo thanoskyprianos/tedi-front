@@ -10,7 +10,7 @@ main {
 .comment-input {
   outline: none;
 
-  min-height: 50px;
+  min-height: 20px;
   max-width: 500px;
   min-width: 500px;
   color: #ffffff;
@@ -34,7 +34,7 @@ main {
   background: transparent;
   color: white;
   width: 120px;
-  height: 40px;
+  height: 46px;
   cursor: pointer;
   border: 3px solid;
   border-image: linear-gradient(to right, #ff7701, #248eff) 1;
@@ -53,8 +53,8 @@ form {
 
   gap: 15px;
   width: 770px;
-  border: 5px solid;
-  border-image: var(--orange-blue) 1;
+  border: 3px solid;
+  border-image: linear-gradient(to right, #3e3e42, #292929, #3e3e42) 1;
 
   padding: 15px;
 }
@@ -63,4 +63,15 @@ form {
   form {
     width: 95vw;
   }
+}
+
+.gradient-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 2em;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff7701, #248eff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
 }

@@ -41,7 +41,6 @@ button {
 
 button:hover {
   background: var(--orange-blue);
-  box-shadow: 0 0 10px var(--orange-blue-shadow);
 }
 
 .button-icon {
@@ -104,44 +103,36 @@ button:hover {
 
 .settings-page #set {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .ads-page #ad {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .home-page #home {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .notification-page #not {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .profile-page #prof {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .messages-page #mes {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 .search #ser {
   background: var(--orange-blue);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 #not-has {
   border: 1px solid;
   border-image: linear-gradient(to right, #ff0000, #ae6b00) 1;
   background: linear-gradient(to right, #ff4b4b, #ff9d00);
-  box-shadow: 0 0 100px var(--orange-blue-shadow);
 }
 
 #prof-pic {
