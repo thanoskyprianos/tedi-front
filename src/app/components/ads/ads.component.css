@@ -1,3 +1,4 @@
 main {
-    background-color: var(--darker-grey);
+    background: var(--darkest-grey);
+    min-height: var(--height-minus-nav-bar);
 }

@@ -4,10 +4,10 @@ main {
 }
 
 .post-wrapper {
-  border: 5px solid white;
+  border: 4px solid white;
   border-image: var(--orange-blue) 1;
 
-  margin: 15px 0;
+  margin: 10px 0;
   width: 800px;
 
   background-color: var(--dark-grey);
@@ -188,9 +188,9 @@ video, img, .audio {
 }
 
 .job-offer {
-  border-image: linear-gradient(to right, #38a003, #26be00) 1;
+  border-image: linear-gradient(to right, #f1e509, #5d00ff) 1;
 }
 
 #offer {
-  color:#50ff24;
+  color:#f1e509;
 }

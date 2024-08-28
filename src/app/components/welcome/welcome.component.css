@@ -4,7 +4,7 @@
 }
 
 .main {
-  background: linear-gradient(90deg, #2b2b2b, #272e3c, #26272a);
+  background: linear-gradient(90deg, #2b2b2b, #272e3c, #26272a); 
   background-size: 300% 100%;
   display: flex;
   justify-content: center;

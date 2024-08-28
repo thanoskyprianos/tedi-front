@@ -26,6 +26,11 @@
       </label>
     </div>
 
+    <div *ngIf="postType === 'jobOffer'">
+      <label for="skills-required"></label>
+      <input type="text" id="skills-required" name="skillsRequired" [(ngModel)]="skillsRequired" placeholder="Enter required skills">
+    </div>
+
     <button type="submit" id="submit-button">Submit Post</button>
   </form>
 </main>

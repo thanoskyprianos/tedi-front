@@ -1,9 +1,25 @@
 main {
-  background-color: var(--darker-purple);
+  background: linear-gradient(90deg, #2b2b2b, #0f044a, #26272a);
   height: var(--height-minus-nav-bar);
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  animation: background-animation 17s infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .header {

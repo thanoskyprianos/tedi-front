@@ -189,4 +189,5 @@ export class PostComponent implements OnChanges, OnDestroy {
       error: (err: any) => {console.error(err)}
     })
   }
+  
 }

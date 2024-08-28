@@ -18,6 +18,7 @@ export interface posted {
 
 export class PostService {
 
+
   constructor(
     private http: HttpClient,
   ) { }

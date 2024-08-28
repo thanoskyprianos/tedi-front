@@ -21,7 +21,6 @@ export class PostsComponent {
   @Input() postType!: string;
   posts: PostModule[] = [];
 
-
   constructor(
     private postService: PostService,
     protected session: UserSessionService,
@@ -38,7 +37,7 @@ export class PostsComponent {
       })
     }
     else if (this.type === 'of' && this.id) {
-      this.getPostsOf(this.id)
+      this.getPostsOf(this.id);
     }
     else {
       this.router.navigate(['/error']);
@@ -49,7 +48,6 @@ export class PostsComponent {
     next: (res: any) => { this.posts = res.body._embedded.postList as PostModule[]; console.log(this.posts); },
     error: (err: any) => { this.router.navigate(['/error']) }
   };
-
 
   getPostsFor(id: number) {
     this.postService.getPostsFor(id).subscribe(this.action)
