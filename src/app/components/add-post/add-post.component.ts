@@ -29,7 +29,7 @@ export class AddPostComponent {
   onSubmitPost(event: any) {
     let isPost = false;
     let isJobOffer = false;
-    console.log('postType:', this.postType);
+    
     if (this.postType === 'post') {
       isPost = true;
     } else {

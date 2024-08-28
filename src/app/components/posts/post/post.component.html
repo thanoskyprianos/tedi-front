@@ -1,5 +1,5 @@
 <main>
-  <div class="post-wrapper" *ngIf="post">
+  <div class="post-wrapper" *ngIf="post" [ngClass]="{'job-offer': post.isJobOffer}">
     <div class="top-bar" *ngIf="user">
       <div class="user-details" (click)="goToUser($event)">
         <div class="avatar-wrapper">
@@ -7,6 +7,8 @@
         </div>
         <p>{{user.firstName}} {{user.lastName}}</p>
       </div>
+
+      <span *ngIf="post.isJobOffer" id="offer">Job Offer</span>
 
       <div class="icons-wrapper">
         <div
@@ -32,7 +34,7 @@
       </div>
     </div>
 
-    <p><strong>Is Job Offer:</strong> <span *ngIf="post.isJobOffer">TRUEEE</span></p>
+    
     <p>{{ post.text }}</p>
 
     <div class="media-and-buttons">

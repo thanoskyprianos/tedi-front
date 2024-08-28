@@ -186,3 +186,11 @@ video, img, .audio {
 .icons-wrapper > *:hover {
   background-color: rgba(168, 168, 168, 0.3);
 }
+
+.job-offer {
+  border-image: linear-gradient(to right, #38a003, #26be00) 1;
+}
+
+#offer {
+  color:#50ff24;
+}

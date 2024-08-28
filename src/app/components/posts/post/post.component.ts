@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {PostModule} from "../../../modules/post.module";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {PostService} from "../../../services/post.service";
 import {UserModule} from "../../../modules/user.module";
 import {UserFetcherService} from "../../../services/user-fetcher.service";
@@ -16,7 +16,8 @@ import {AudioPlayerComponent} from "../../audio-player/audio-player.component";
     NgIf,
     NgForOf,
     CommentSectionComponent,
-    AudioPlayerComponent
+    AudioPlayerComponent,
+    NgClass
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
