@@ -41,6 +41,11 @@ main {
 
   p {
     font-size: 2em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    max-width: 300px;
   }
 }
 

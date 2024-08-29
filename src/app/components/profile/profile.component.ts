@@ -9,7 +9,6 @@ import {AvatarInputComponent} from "../avatar-input/avatar-input.component";
 import {UserUpdaterService} from "../../services/user-updater.service";
 import {CardType} from "../user-card/user-card.component";
 import {ConnectionService} from "../../services/connection.service";
-import {MessagesService} from "../../services/messages.service";
 
 @Component({
   selector: 'app-profile',
@@ -39,8 +38,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private fetcher: UserFetcherService,
     private updater: UserUpdaterService,
     private router: Router,
-    private connection: ConnectionService,
-    private messages: MessagesService
+    private connection: ConnectionService
   ) {
     const id
       = parseInt(this.router.url.substring(this.router.url.lastIndexOf('/') + 1));
@@ -225,11 +223,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         location.reload();
       }
     })
-  }
-
-  messageFriend(myUserId: number, friendUserId: number) {
-    this.messages.ConnectToSocket('wss://localhost:8080/ws');
-    this.messages.openChatRoom(myUserId, friendUserId);
   }
 
   protected readonly CardType = CardType;

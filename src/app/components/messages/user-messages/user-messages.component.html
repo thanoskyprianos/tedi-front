@@ -1,0 +1,14 @@
+<main *ngIf="user">
+  <div class="messages">
+    <app-message
+      [message]="message"
+      *ngFor="let message of messages.reverse()"/>
+  </div>
+  <form
+    (submit)="sendMessage($event)"
+    autocomplete="off"
+  >
+    <input [(ngModel)]="message" type="text" name="send-message" id="message-input">
+    <button type="submit">Send</button>
+  </form>
+</main>

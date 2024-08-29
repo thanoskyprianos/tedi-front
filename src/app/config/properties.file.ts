@@ -30,3 +30,7 @@ export const infoPrivacy = (userId: number) => {
   return `${info(userId)}/privacy`;
 }
 
+export const messages = (friendId: number) => {
+  return `${endpoint}/messages/${friendId}`;
+}
+

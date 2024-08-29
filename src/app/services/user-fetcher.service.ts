@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {properties} from "../config/properties.file";
+import {messages, properties} from "../config/properties.file";
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +39,7 @@ export class UserFetcherService {
     return this.http.get(connectedUrl, {observe: 'response'});
   }
 
+  messages(userId: number) {
+    return this.http.get(messages(userId), {observe: 'response'});
+  }
 }

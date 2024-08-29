@@ -30,7 +30,7 @@
 
       <button *ngIf="type == CardType.REMOVE"
               class="message"
-              (click)="messageFriend(session.user.id, user.id)">Message</button>
+              [routerLink]="'/messages-page/' + user.id" >Message</button>
 
       <button *ngIf="type == CardType.REQUEST"
               class="request"

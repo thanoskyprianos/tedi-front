@@ -1,0 +1,64 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: calc(var(--height-minus-nav-bar) - 95px);
+}
+
+.messages {
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow-anchor: auto;
+  gap: 15px;
+  padding: 15px;
+}
+
+button {
+  background: transparent;
+  color: white;
+  font-size: 1.1em;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  border: 3px solid;
+  border-image: linear-gradient(to right, #ff7701, #248eff) 1;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #ff7701, #248eff);
+  box-shadow: 0 0 10px rgb(24, 89, 129);
+}
+
+input[type='text'] {
+  outline: none;
+
+  height: 25px;
+  width: 500px;
+
+  color: #ffffff;
+
+
+  padding: 5px;
+
+  border: 3px solid #ff7701;
+
+  background-color: transparent;
+  border-radius: 1px;
+
+  transition: border 0.15s;
+}
+
+input[type='text']:focus {
+  border: 3px solid #102b65;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+}
