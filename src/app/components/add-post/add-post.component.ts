@@ -16,6 +16,7 @@ import {lastValueFrom} from "rxjs";
 
 export class AddPostComponent {
   @Input() text: string = '';
+  @Input() skills: string = '';
   skillsRequired: string = '';
   postType: string = 'post';
   selectedFiles: File[] = [];
@@ -41,15 +42,19 @@ export class AddPostComponent {
       "text": this.text,
       "type": this.postType,
       isPost: isPost,
-      isJobOffer: isJobOffer
+      isJobOffer: isJobOffer,
+      skills: this.skillsRequired
     }
+
+    console.log('Skills Required:', this.skillsRequired);
 
     this.postService.addPost(this.session.user.id, post).subscribe({
         next: async (res: any) => {
 
+          console.log(res.body.skills);
           const post = new PostModule(
             0, res.body.text, res.body._links,
-          isPost, isJobOffer);
+          isPost, isJobOffer, res.body.skills);
 
           const addMediaUrl = post._links.add_media;
           if (addMediaUrl) {
@@ -84,10 +89,6 @@ export class AddPostComponent {
   clearForm(event: any) {
     event.target.reset();
     this.text = "";
-  }
-
-  async typeOfPost() {
-
   }
 
 }

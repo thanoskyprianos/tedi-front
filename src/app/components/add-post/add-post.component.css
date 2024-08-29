@@ -120,3 +120,8 @@ form > * {
   background: linear-gradient(to right, #ff7701, #248eff);
   box-shadow: 0 0 10px rgb(24, 89, 129);
 }
+
+.instr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

@@ -38,6 +38,12 @@
 
     <p>{{ post.text }}</p>
 
+
+    <div class="skills" *ngIf="post.isJobOffer">
+      <span class="skills-label">Skills required:</span>
+      <span class="skills-text"> {{ post.skills }}</span>
+    </div>
+
     <div class="media-and-buttons">
       <div [class]="'media-wrapper id' + post.id" #wrapper>
 

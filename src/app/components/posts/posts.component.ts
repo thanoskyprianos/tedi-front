@@ -45,7 +45,10 @@ export class PostsComponent {
   }
 
   action = {
-    next: (res: any) => { this.posts = res.body._embedded.postList as PostModule[]; console.log(this.posts); },
+    next: (res: any) => {
+      this.posts = res.body._embedded.postList as PostModule[];
+      console.log(this.posts);
+    },
     error: (err: any) => { this.router.navigate(['/error']) }
   };
 

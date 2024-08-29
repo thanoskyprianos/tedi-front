@@ -25,8 +25,9 @@
         Job Offer
       </label>
     </div>
-
+    
     <div *ngIf="postType === 'jobOffer'">
+      <div class="instr">Don't use commas (,) and use unified words (ex. ElectricalEngineering)</div>
       <label for="skills-required"></label>
       <input type="text" id="skills-required" name="skillsRequired" [(ngModel)]="skillsRequired" placeholder="Enter required skills">
     </div>

@@ -4,6 +4,7 @@ export class PostModule {
     public text: string,
     public _links: any,
     public isPost: boolean,
-    public isJobOffer: boolean
+    public isJobOffer: boolean,
+    public skills: string
   ) {}
 }

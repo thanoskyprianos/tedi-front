@@ -194,3 +194,19 @@ video, img, .audio {
 #offer {
   color:#f1e509;
 }
+
+.skills {
+  font-size: medium;
+  margin-left: 20px;
+}
+
+.skills-label {
+  border: 1px;
+  background: yellow;
+  width: auto;
+  color: rgb(0, 0, 0);
+}
+
+.skills-text {
+  color: yellow;
+}
