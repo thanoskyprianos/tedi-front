@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { PostsComponent } from "../posts/posts.component";
 import {NgClass, NgIf} from "@angular/common";
+import {PostModule} from "../../modules/post.module";
 
 @Component({
   selector: 'app-ads',
@@ -12,5 +13,4 @@ import {NgClass, NgIf} from "@angular/common";
 })
 
 export class AdsComponent {
-
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {postOf, postsFor, postsOf} from "../config/properties.file";
+import {jobOff, postOf, postsFor, postsOf} from "../config/properties.file";
 import {CommentModule} from "../modules/comment.module";
 
 export interface posted {
@@ -35,6 +35,12 @@ export class PostService {
   getPostsOf(id: number) {
     return this.http.get(postsOf(id), {observe: 'response'});
   }
+
+  // CHECK ------------------
+  getJobOffers(id: number) {
+    return this.http.get(jobOff(id), {observe: 'response'});
+  }
+  // CHECK ------------------
 
   addPost(userId: number, postText: any): Observable<any> {
     return this.http.post(postsOf(userId), postText, {observe: 'response'});

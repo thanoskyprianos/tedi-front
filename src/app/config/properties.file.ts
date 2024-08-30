@@ -22,6 +22,10 @@ export const postsFor = (userId: number) => {
   return `${postsOf(userId)}/for`
 }
 
+export const jobOff = (userId: number) => {
+  return `${postsOf(userId)}/job-offers`
+}
+
 export const info = (userId: number) => {
   return `${properties.user}${userId}/info`
 }

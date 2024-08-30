@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { UserSessionService } from '../../services/user-session.service';
 import { FormsModule } from "@angular/forms";
@@ -19,7 +19,10 @@ export class PostsComponent {
   @Input() type: 'of' | 'for' | undefined;
   @Input() id: number | undefined;
   @Input() postType!: string;
+  @Input() onlyJobOffers: boolean = false;
+  @Output() jobOfferStatus = new EventEmitter<PostModule[]>();
   posts: PostModule[] = [];
+  jobOffers: PostModule[] = [];
 
   constructor(
     private postService: PostService,
@@ -29,10 +32,14 @@ export class PostsComponent {
   }
 
   ngOnInit() {
+    if (this.onlyJobOffers) {
+      this.getJobOffers(this.session.user.id);
+    }
     if (this.type === 'for') {
       this.session.userObs.subscribe(x => {
         if (x === 'ok') {
           this.getPostsFor(this.session.user.id);
+
         }
       })
     }
@@ -58,6 +65,16 @@ export class PostsComponent {
 
   getPostsOf(id: number) {
     this.postService.getPostsOf(id).subscribe(this.action)
+  }
+
+  getJobOffers(id: number) {
+    this.postService.getJobOffers(id).subscribe({
+      next: (res: any) => {
+        this.jobOffers = res.body._embedded.postList as PostModule[];
+        console.log(res);
+      },
+      //error: (err: any) => { this.router.navigate(['/error']); }
+    });
   }
 
 }
