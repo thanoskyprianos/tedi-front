@@ -6,6 +6,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 15px;
 
   min-height: var(--height-minus-nav-bar);
   background-color: var(--darkest-grey);
@@ -26,7 +27,6 @@ main {
 .user {
   display: flex;
   justify-content: left;
-  align-items: left;
 
   padding: 15px;
   cursor: pointer;
@@ -42,7 +42,6 @@ main {
 
 .user:hover {
   background: linear-gradient(to right, #685f56, #3e4e57);
-  border-color: var(--primary-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
