@@ -27,6 +27,14 @@ main {
 
 }
 
+.self-options {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 .display-about-me {
   text-align: center;
 }
@@ -64,10 +72,7 @@ main {
   margin: 0;
 }
 
-.self-options {
-  margin-top: 10px;
-  display: flex;
-}
+
 
 button {
   background-color: transparent;

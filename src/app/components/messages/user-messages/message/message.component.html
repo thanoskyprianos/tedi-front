@@ -12,10 +12,9 @@
     [style.border-radius]=
       "(message.sender.id === user.id) ?
       '15px 0 15px 15px' : '0 15px 15px 15px'"
-    [style.background-color]=
+    [style.background]=
       "(message.sender.id === user.id) ?
-      'var(--orange-blue-shadow)' : 'var(--light-grey)'"
-
+      'linear-gradient(to right, #111, #111)' : 'var(--light-grey)'"
   >
     <p>
       {{ message.message }}

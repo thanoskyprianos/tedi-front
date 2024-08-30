@@ -41,7 +41,10 @@ main {
 }
 
 .user:hover {
-  background-color: var(--light-grey);
+  background: linear-gradient(to right, #685f56, #3e4e57);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .image-wrapper {

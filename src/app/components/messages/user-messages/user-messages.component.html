@@ -1,4 +1,9 @@
 <main *ngIf="user">
+  
+  <div class="name">
+  {{ user.firstName }} {{ user.lastName }}
+  </div>
+
   <div class="messages">
     <app-message
       [message]="message"
