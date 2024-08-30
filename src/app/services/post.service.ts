@@ -36,11 +36,9 @@ export class PostService {
     return this.http.get(postsOf(id), {observe: 'response'});
   }
 
-  // CHECK ------------------
   getJobOffers(id: number) {
     return this.http.get(jobOff(id), {observe: 'response'});
   }
-  // CHECK ------------------
 
   addPost(userId: number, postText: any): Observable<any> {
     return this.http.post(postsOf(userId), postText, {observe: 'response'});

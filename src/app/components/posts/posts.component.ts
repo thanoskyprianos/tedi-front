@@ -22,7 +22,6 @@ export class PostsComponent {
   @Input() onlyJobOffers: boolean = false;
   @Output() jobOfferStatus = new EventEmitter<PostModule[]>();
   posts: PostModule[] = [];
-  jobOffers: PostModule[] = [];
 
   constructor(
     private postService: PostService,
@@ -32,14 +31,14 @@ export class PostsComponent {
   }
 
   ngOnInit() {
-    if (this.onlyJobOffers) {
-      this.getJobOffers(this.session.user.id);
-    }
     if (this.type === 'for') {
       this.session.userObs.subscribe(x => {
         if (x === 'ok') {
-          this.getPostsFor(this.session.user.id);
-
+          if (this.onlyJobOffers) {
+            this.getJobOffers(this.session.user.id);
+          } else {
+            this.getPostsFor(this.session.user.id);
+          }
         }
       })
     }
@@ -68,13 +67,7 @@ export class PostsComponent {
   }
 
   getJobOffers(id: number) {
-    this.postService.getJobOffers(id).subscribe({
-      next: (res: any) => {
-        this.jobOffers = res.body._embedded.postList as PostModule[];
-        console.log(res);
-      },
-      //error: (err: any) => { this.router.navigate(['/error']); }
-    });
+    this.postService.getJobOffers(id).subscribe(this.action);
   }
 
 }
