@@ -1,6 +1,5 @@
 <main *ngIf="user">
-  
-  <div class="name">
+  <div class="name" [routerLink]="'/profile-page/' + user.id">
   {{ user.firstName }} {{ user.lastName }}
   </div>
 

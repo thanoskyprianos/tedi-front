@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserFetcherService} from "../../../services/user-fetcher.service";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {UserModule} from "../../../modules/user.module";
 import {NgForOf, NgIf} from "@angular/common";
 import {MessageModule} from "../../../modules/message.module";
@@ -15,7 +15,8 @@ import {MessageComponent} from "./message/message.component";
     NgIf,
     NgForOf,
     FormsModule,
-    MessageComponent
+    MessageComponent,
+    RouterLink
   ],
   templateUrl: './user-messages.component.html',
   styleUrl: './user-messages.component.css'

@@ -63,9 +63,10 @@ form {
 .name {
   font-size: 2em;
   font-weight: bold;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin: 10px;
   background: linear-gradient(to right, #ff7701, #248eff, #248eff, #248eff);
   -webkit-background-clip: text;
   color: transparent;
+
+  cursor: pointer;
 }

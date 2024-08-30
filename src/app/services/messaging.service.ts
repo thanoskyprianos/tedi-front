@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {UserSessionService} from "./user-session.service";
-import {Client} from "@stomp/stompjs";
 import {RxStomp} from "@stomp/rx-stomp";
 
 @Injectable({
@@ -21,7 +20,7 @@ export class MessagingService {
       connectHeaders: {
         Authorization: 'Bearer ' + this.session.accessToken
       },
-      beforeConnect: () => {console.log("Connected to chat")}
+      beforeConnect: () => {console.log("Trying to connect")},
     });
 
     this.rxStomp.activate();
