@@ -1,25 +1,25 @@
 .network-page {
-  background: var(--dark-purple-blue);
-  border-image: var(--purple-magenta) 1;
+  background: var(--dark-grey);
+  border-image: var(--orange-blue) 1;
 
   button {
     background: var(--purple);
   }
 
   .logo-button {
-    background: var(--dark-purple);
+    background: var(--dark-grey);
   }
 
   button:hover {
-    background: var(--purple-magenta);
-    box-shadow: 0 0 10px var(--purple-magenta-shadow);
+    background: var(--orange-blue);
+    box-shadow: 0 0 10px var(--orange-blue);
   }
 
   #net {
-    background: var(--gold-orange);
+    background: var(--orange-blue);
   }
 }
 
 #net:hover {
-  background: var(--gold-orange);
+  background: var(--orange-blue);
 }

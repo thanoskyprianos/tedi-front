@@ -13,9 +13,9 @@
   --gold-orange: linear-gradient(to right, #ffdf88, #ffa203);
   --gold-orange-shadow: rgb(243, 239, 126);
 
-  --purple: #4d4df0;
+  --purple: #535353;
   --purple-magenta: linear-gradient(to right, var(--purple), #7171de);
-  --purple-magenta-shadow: #3d3de2;
+  --purple-magenta-shadow: #d63f15;
 
   --dark-purple: #1a1a55;
   --darker-purple: #0e0e35;
