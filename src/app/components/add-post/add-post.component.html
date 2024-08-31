@@ -2,7 +2,7 @@
 
   <form (submit)="onSubmitPost($event)">
     <div class="gradient-text">Add New Post</div>
-    <div id="success">{{ showSuccessMessage ? 'Post created!' : '&nbsp;'}}</div>
+    <div id="success">{{ showSuccessMessage ? 'Post created!' : showLoadingMessage ? loadingMessage : '&nbsp;'}}</div>
 
     <textarea
       type="text"
@@ -17,7 +17,7 @@
 
     <div>
       <label>
-        <input type="radio" name="postType" [(ngModel)]="postType" value="post">
+        <input type="radio" name="postType" [(ngModel)]="postType" value="post" checked>
         Post
       </label>
       <label>
@@ -25,7 +25,7 @@
         Job Offer
       </label>
     </div>
-    
+
     <div *ngIf="postType === 'jobOffer'">
       <div class="instr">Don't use commas (,) and use unified words (ex. ElectricalEngineering)</div>
       <label for="skills-required"></label>

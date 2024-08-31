@@ -1,0 +1,25 @@
+<main *ngIf="activity" [class]="activity.read ? 'activity-read' : 'activity'">
+  <div class="image-wrapper">
+    <img
+      [src]="activity.notificationType == 'LIKE' ? '/resource/heart-fill.svg' : '/resource/person-badge.svg'"
+      alt="action"
+    >
+  </div>
+
+  <p [routerLink]="'/profile-page/' + activity.sender.id">
+    {{ activity.sender.firstName }} {{ activity.sender.lastName }}
+  </p>
+
+  <div class="image-wrapper action" [routerLink]="'/post/' + activity.receiver.id + '/' + activity.post.id">
+    <img src="/resource/file-post.svg" alt="post">
+  </div>
+
+  <div class="image-wrapper action" (click)="readNotification()">
+    <img [src]="activity.read ? '/resource/eye-slash.svg' : '/resource/eye.svg'"
+         alt="read">
+  </div>
+
+  <div class="image-wrapper action" (click)="deleteNotification()">
+    <img src="/resource/trash.svg" alt="delete">
+  </div>
+</main>

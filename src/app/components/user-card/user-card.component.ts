@@ -49,8 +49,6 @@ export class UserCardComponent implements OnChanges, OnDestroy {
           CardType.REQUEST : addUrl ?
           CardType.ADD : cancelUrl || removeUrl?
           CardType.CANCEL : undefined;
-
-      console.log(this.user);
     }
   }
 

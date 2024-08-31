@@ -34,7 +34,6 @@ export class SearchComponent {
     this.searchService.search(searchUrl, searchInput)
     .subscribe(results => {
       this.resultsFromSearch = results;
-      console.log(results);
     });
 
   }

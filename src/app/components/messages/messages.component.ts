@@ -39,8 +39,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
           next: (res: any) => {
             console.log(res.body);
 
-            this.users = res.body._embedded.userList;
-            this.getAvatars();
+            try {
+              this.users = res.body._embedded.userList;
+              this.getAvatars();
+            } catch (e) { }
           }
         })
       }

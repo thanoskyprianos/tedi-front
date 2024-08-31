@@ -16,8 +16,10 @@
           title="Like"
           (click)="like()"
         >
-          <img *ngIf="!liked" src="/resource/heart-empty.svg" alt="like">
-          <img *ngIf="liked" src="/resource/heart-fill.svg" alt="like">
+          <img *ngIf="!liked && post.isPost" src="/resource/heart-empty.svg" alt="like">
+          <img *ngIf="liked && post.isPost" src="/resource/heart-fill.svg" alt="like">
+          <img *ngIf="!liked && post.isJobOffer" src="/resource/person-badge.svg" alt="like">
+          <img *ngIf="liked && post.isJobOffer" src="/resource/person-badge-fill.svg" alt="like">
         </div>
         <div
           class="comment"

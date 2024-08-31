@@ -21,6 +21,10 @@ export class AddPostComponent {
   postType: string = 'post';
   selectedFiles: File[] = [];
 
+  interval!: number;
+
+  loadingMessage: string = 'Uploading'
+  showLoadingMessage: boolean = false;
   showSuccessMessage: boolean = false;
 
   constructor(
@@ -46,18 +50,16 @@ export class AddPostComponent {
       skills: this.skillsRequired
     }
 
-    console.log('Skills Required:', this.skillsRequired);
-
     this.postService.addPost(this.session.user.id, post).subscribe({
         next: async (res: any) => {
 
-          console.log(res.body.skills);
           const post = new PostModule(
             0, res.body.text, res.body._links,
           isPost, isJobOffer, res.body.skills);
 
           const addMediaUrl = post._links.add_media;
           if (addMediaUrl) {
+            this.showLoading();
             await this.addMedia(addMediaUrl);
             this.clearForm(event);
             this.showSuccess();
@@ -81,14 +83,30 @@ export class AddPostComponent {
     this.selectedFiles = event.target.files;
   }
 
+  showLoading() {
+    this.showLoadingMessage = true;
+    this.interval = setInterval(() => {
+      if (this.loadingMessage === 'Uploading...') {
+        this.loadingMessage = 'Uploading';
+      }
+      else {
+        this.loadingMessage += '.';
+      }
+    }, 250);
+  }
+
   showSuccess() {
     this.showSuccessMessage = true;
+    this.showLoadingMessage = false;
+    clearInterval(this.interval);
+
     setTimeout(() => this.showSuccessMessage = false, 2000);
   }
 
   clearForm(event: any) {
-    event.target.reset();
+    event.target.reset({'defaultProp': true});
     this.text = "";
+    this.postType = 'post';
   }
 
 }

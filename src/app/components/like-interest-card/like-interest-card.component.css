@@ -1,0 +1,51 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  background: var(--dark-grey);
+  padding: 5px;
+
+  border: 2px solid;
+  border-image: var(--orange-blue) 1;
+}
+
+.image-wrapper {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 10px;
+
+  img {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+p {
+  width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+p:hover {
+  background: var(--light-grey);
+}
+
+.action {
+  cursor: pointer;
+}
+
+.action:hover {
+  background: var(--light-grey);
+}
+
+.activity-read {
+  opacity: 0.5;
+}

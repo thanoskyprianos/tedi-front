@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {jobOff, postOf, postsFor, postsOf} from "../config/properties.file";
-import {CommentModule} from "../modules/comment.module";
 
 export interface posted {
   post_id: number;
@@ -26,6 +25,10 @@ export class PostService {
 
   getPost(userId: number, postId: number) {
     return this.http.get(postOf(userId, postId), {observe: 'response'});
+  }
+
+  getPostByUrl(url: string) {
+    return this.http.get(url, {observe: 'response'});
   }
 
   getPostsFor(id: number) {

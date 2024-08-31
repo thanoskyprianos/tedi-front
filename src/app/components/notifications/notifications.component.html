@@ -1,5 +1,23 @@
-<main *ngIf="requests">
-  <div class="request" *ngFor="let request of requests">
-    <app-user-card [user]="request" />
+<main>
+  <div class="tab">
+    <p>Friend Requests</p>
+    <div class="requests">
+<!-- todo: change this -->
+        <app-user-card [user]="request" *ngFor="let request of requests"/>
+    </div>
+  </div>
+  <div class="activities">
+    <div class="tab">
+      <p>Likes / Interests</p>
+      <div class="likes-interests">
+        <app-like-interest-card [activity]="activity" *ngFor="let activity of like_interests"/>
+      </div>
+    </div>
+    <div class="tab">
+      <p>Comments</p>
+      <div class="comments">
+        <app-comment-card [activity]="activity" *ngFor="let activity of comments" />
+      </div>
+    </div>
   </div>
 </main>

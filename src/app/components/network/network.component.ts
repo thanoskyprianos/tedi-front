@@ -53,10 +53,7 @@ export class NetworkComponent {
       this.fetcher.connections(connectedUrl.href).subscribe(
         (res: any) => {
           if (res.status === 200 && res.body) {
-            console.log('Response body:', res.body);
             this.connectionsSet(res.body)
-          } else {
-            console.log('No connections yet');
           }
         }
       )
@@ -87,7 +84,6 @@ export class NetworkComponent {
       this.fetcher.aboutMe(infoUrl.href).subscribe(
         (res: any) => {
           if (res.status === 200) {
-            console.log('About Me data:', res.body);
             this.aboutMeSet(user.id, res.body);
           }
         }
@@ -111,9 +107,7 @@ export class NetworkComponent {
       next: (res) => {
         if (!res.body) return;
 
-        const newAvatarUrl = URL.createObjectURL(res.body);
-        this.avatarUrls[userId] = newAvatarUrl;
-        console.log('Avatar obtained:', newAvatarUrl);
+        this.avatarUrls[userId] = URL.createObjectURL(res.body);
       }
     })
   }

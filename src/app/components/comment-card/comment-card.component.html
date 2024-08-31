@@ -1,0 +1,26 @@
+<main *ngIf="activity" [class]="activity.read ? 'activity-read' : 'activity'">
+  <div class="image-wrapper">
+    <img src="/resource/comment.svg" alt="comment">
+  </div>
+  <div class="comment">
+    <p [routerLink]="'/profile-page/' + activity.sender.id">
+      {{ activity.sender.firstName }} {{ activity.sender.lastName }}
+    </p>
+    <p>{{ activity.comment.text }}</p>
+  </div>
+
+  <div class="buttons">
+    <div class="image-wrapper action" (click)="gotoPost()">
+      <img src="/resource/file-post.svg" alt="post">
+    </div>
+
+    <div class="image-wrapper action" (click)="readNotification()">
+      <img [src]="activity.read ? '/resource/eye-slash.svg' : '/resource/eye.svg'"
+           alt="read">
+    </div>
+
+    <div class="image-wrapper action" (click)="deleteNotification()">
+      <img src="/resource/trash.svg" alt="delete">
+    </div>
+  </div>
+</main>
