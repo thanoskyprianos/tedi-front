@@ -8,6 +8,8 @@ export const properties = {
 
   user: `${endpoint}/users/`,
   self: `${endpoint}/users/self`,
+
+  admin: `${endpoint}/admin`,
 }
 
 export const postOf = (userId: number, postId: number) => {

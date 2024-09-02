@@ -18,7 +18,6 @@ import {NavigationExtras, Router} from "@angular/router";
 
 export class NetworkComponent {
   user!: UserModule;
-  displayUser!: UserModule;
   connectedWithMe: any[] = [];
   avatarUrl: string = '';
   avatarUrls: string[] = [];
@@ -40,9 +39,10 @@ export class NetworkComponent {
     private router: Router) {
 
     this.session.userObs.subscribe((x) => {
-      if (x === 'ok')
-      this.user = this.session.user;
-      this.getAllConnectedUsers(this.user);
+      if (x === 'ok') {
+        this.user = this.session.user;
+        this.getAllConnectedUsers(this.user);
+      }
     })
 
   }
@@ -61,11 +61,14 @@ export class NetworkComponent {
   }
 
   connectionsSet(info: any) {
-    this.connectedWithMe = info._embedded.userList as UserModule[];
-    this.connectedWithMe.forEach(user => {
-      this.getAboutMe(user);
-      this.setAvatar(user, user.id);
-    });
+    try {
+      this.connectedWithMe = info._embedded.userList as UserModule[];
+
+      this.connectedWithMe.forEach(user => {
+        this.getAboutMe(user);
+        this.setAvatar(user, user.id);
+      });
+    } catch (e) { }
   }
 
   goToUser(event: any, userId: number) {
@@ -115,5 +118,4 @@ export class NetworkComponent {
   clickToSearch() {
     this.router.navigate(['/search']);
   }
-
 }

@@ -119,6 +119,7 @@ export class UserSessionService {
       userObj.lastName,
       userObj.email,
       userObj.phoneNumber,
+      userObj.role,
       userObj._links
     )
   }

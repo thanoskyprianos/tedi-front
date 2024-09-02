@@ -15,6 +15,10 @@
   </div>
 
   <div class="main-home-container">
+    <button routerLink="/admin" class="nav-button" id="adm" *ngIf="session.user.role.name === 'ADMIN'">
+      <img src="resource/person-gear.svg" alt="Admin" class="admin">
+    </button>
+
     <button routerLink="/search" class="search-container" id="ser">
       <img src="resource/search-interface-symbol.png" alt="Search" class="button-icon">
     </button>

@@ -47,6 +47,10 @@ button:hover {
   width: 20px;
 }
 
+.admin {
+  width: 25px;
+}
+
 .logo-button {
   width: 60px;
   padding: 0;

@@ -5,6 +5,7 @@ export class UserModule {
     public lastName: string,
     public email: string,
     public phoneNumber: string,
+    public role: any,
     public _links: any) {
   }
 }

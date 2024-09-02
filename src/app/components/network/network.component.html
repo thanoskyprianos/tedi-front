@@ -1,17 +1,17 @@
 <main>
   <button type="button" class="search-container" (click)="clickToSearch()">
     <img src="resource/search-interface-symbol.png" alt="Search" class="button-icon">
-    Search for all users. 
+    Search for all users.
   </button>
-  
+
   <div class="header">Your Connections</div>
 
   <section *ngFor="let user of connectedWithMe">
     <button class="net-user" (click)="goToUser($event, user.id)">
       <img [src]="avatarUrls[user.id]" alt="Avatar" class="profile-image">
-      {{ user.firstName }} {{ user.lastName }},
-      {{ aboutMeData[user.id].employmentAgency }}
-      {{ aboutMeData[user.id].professionalPosition }}
+      {{ user.firstName }} {{ user.lastName }}
+      {{ aboutMeData[user.id].employmentAgency ? ', ' + aboutMeData[user.id].employmentAgency : '' }}
+      {{ aboutMeData[user.id].professionalPosition ? ', ' + aboutMeData[user.id].professionalPosition : ''}}
     </button>
   </section>
 

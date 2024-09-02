@@ -17,6 +17,8 @@ import { AddPostComponent } from "./components/add-post/add-post.component";
 import { SearchComponent } from "./components/search/search.component";
 import {PostWithCommentsComponent} from "./components/post-with-comments/post-with-comments.component";
 import {UserMessagesComponent} from "./components/messages/user-messages/user-messages.component";
+import {AdminPageComponent} from "./components/admin-page/admin-page.component";
+import {IsAdminGuardService} from "./guards/is-admin-guard.service";
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, title: 'NetWork', canActivate: [IsLoggedOutService] },
@@ -38,6 +40,8 @@ export const routes: Routes = [
   { path: 'add-post', component: AddPostComponent, title: 'Add Post', canActivate: [IsLoggedInGuardService]},
   { path: 'search', component:SearchComponent, title:'Search', canActivate: [IsLoggedInGuardService]},
   { path: 'post/:userId/:postId', component: PostWithCommentsComponent, title: 'Post', canActivate: [IsLoggedInGuardService]},
+
+  { path: 'admin', component: AdminPageComponent, title: 'Admin', canActivate: [IsLoggedInGuardService, IsAdminGuardService] },
 
   { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];

@@ -42,4 +42,12 @@ export class UserFetcherService {
   messages(userId: number) {
     return this.http.get(messages(userId), {observe: 'response'});
   }
+
+  adminGetUsers() {
+    return this.http.get(properties.admin + '/users/all', {observe: 'response'});
+  }
+
+  adminGetUsersByList(ids: number[]) {
+    return this.http.post(properties.admin + '/users', ids, {observe: 'response'});
+  }
 }
