@@ -38,7 +38,7 @@ export class SignInComponent {
         this.session.subj.next('ok');
 
         if (this.session.user.role.name === 'PROFESSIONAL') {
-          this.router.navigate(['/home-page']);
+          this.router.navigate(['/home-page'], {queryParams: { page: 1 }});
         } else if (this.session.user.role.name === 'ADMIN') {
           this.router.navigate(['/admin']);
         }

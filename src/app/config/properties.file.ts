@@ -20,12 +20,12 @@ export const postsOf = (userId: number) => {
   return `${properties.user}${userId}/posts`
 }
 
-export const postsFor = (userId: number) => {
-  return `${postsOf(userId)}/for`
+export const postsFor = (userId: number, page: number) => {
+  return `${postsOf(userId)}/for?page=${page}`
 }
 
-export const jobOff = (userId: number) => {
-  return `${postsOf(userId)}/job-offers`
+export const jobOff = (userId: number, page: number) => {
+  return `${postsOf(userId)}/job-offers?page=${page}`
 }
 
 export const info = (userId: number) => {

@@ -8,10 +8,10 @@
     <button type="button" class="logo-button">
       <img src="resource/network-favicon-color.png" alt="NetWork Logo" class="logo">
     </button>
-    <button routerLink="/home-page" class="nav-button" id="home">Home Page</button>
+    <button routerLink="/home-page" [queryParams]="{page: 1}" class="nav-button" id="home">Home Page</button>
     <button routerLink="/network-page" class="nav-button" id="net">Network</button>
     <button routerLink="/settings-page" class="nav-button" id="set">Settings</button>
-    <button routerLink="/ads-page" class="nav-button" id="ad">Job Offers</button>
+    <button routerLink="/ads-page" [queryParams]="{page: 1}" class="nav-button" id="ad">Job Offers</button>
   </div>
 
   <div class="main-home-container">

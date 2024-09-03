@@ -49,6 +49,8 @@ export class AdminPageComponent implements OnInit, OnDestroy {
       if (avatarUrl) {
         this.fetcher.avatar(avatarUrl.href).subscribe({
           next: (res: any) => {
+            if (!res.body) return;
+
             this.avatars[user.id] = URL.createObjectURL(res.body);
           }
         })

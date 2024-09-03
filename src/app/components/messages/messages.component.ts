@@ -37,8 +37,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
         this.fetcher.connections(url.href).subscribe({
           next: (res: any) => {
-            console.log(res.body);
-
             try {
               this.users = res.body._embedded.userList;
               this.getAvatars();

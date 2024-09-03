@@ -11,7 +11,7 @@
       <input type="checkbox" [name]="user.id">
       <div class="details" [routerLink]="'/profile-page/' + user.id">
         <div class="image-wrapper">
-          <img [src]="avatars[user.id]" alt="avatar" loading="lazy">
+          <img [src]="avatars[user.id] || '/resource/user.png'" alt="avatar" loading="lazy">
         </div>
         <p>{{ user.firstName }} {{ user.lastName }}</p>
       </div>

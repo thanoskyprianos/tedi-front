@@ -1,3 +1,8 @@
-<main>
-  <app-posts type="for"></app-posts>
+<main *ngIf="page">
+  <app-posts type="for" [page]="page"></app-posts>
+
+  <div class="page-buttons">
+    <button (click)="prevPage()">Previous</button>
+    <button (click)="nextPage()">Next</button>
+  </div>
 </main>

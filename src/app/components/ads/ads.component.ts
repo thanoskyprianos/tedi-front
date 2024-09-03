@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import { PostsComponent } from "../posts/posts.component";
 import {NgClass, NgIf} from "@angular/common";
-import {PostModule} from "../../modules/post.module";
 
 @Component({
   selector: 'app-ads',
@@ -13,4 +12,41 @@ import {PostModule} from "../../modules/post.module";
 })
 
 export class AdsComponent {
+  page!: number;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+  }
+
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe({
+      next: (params) => {
+        this.page = parseInt(params['page']);
+
+        if (!this.page) {
+          this.page = 1;
+        }
+      }
+    })
+  }
+
+  prevPage() {
+    let goto = this.page - 1;
+    if (goto <= 0) {
+      goto = 1;
+    }
+
+    this.page = goto;
+
+    this.router.navigate(['/ads-page'], { queryParams: { page: goto } });
+  }
+
+  nextPage() {
+    const goto = this.page + 1;
+    this.page = goto;
+
+    this.router.navigate(['/ads-page'], { queryParams: { page: goto } });
+  }
 }

@@ -82,7 +82,6 @@ export class NotificationsComponent implements OnInit {
   getLikes(url: any) {
     this.fetcher.getReceived(url.href).subscribe({
       next: (res: any) => {
-        console.log(res.body);
         try {
           res.body._embedded.likeNotificationList.forEach((notification: any) => {
             this.like_interests.push(notification as ActivityModule);
@@ -95,7 +94,6 @@ export class NotificationsComponent implements OnInit {
   getInterests(url: any) {
     this.fetcher.getReceived(url.href).subscribe({
       next: (res: any) => {
-        console.log(res.body);
         try {
           res.body._embedded.interestNotificationList.forEach((notification: any) => {
             this.like_interests.push(notification as ActivityModule);
@@ -108,7 +106,6 @@ export class NotificationsComponent implements OnInit {
   getComments(url: any) {
     this.fetcher.getReceived(url.href).subscribe({
       next: (res: any) => {
-        console.log(res.body);
         try {
           res.body._embedded.commentNotificationList.forEach((notification: any) => {
             this.comments.push(notification as ActivityModule);

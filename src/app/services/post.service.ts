@@ -31,16 +31,16 @@ export class PostService {
     return this.http.get(url, {observe: 'response'});
   }
 
-  getPostsFor(id: number) {
-    return this.http.get(postsFor(id), {observe: 'response'});
+  getPostsFor(id: number, page: number) {
+    return this.http.get(postsFor(id, page), {observe: 'response'});
   }
 
   getPostsOf(id: number) {
     return this.http.get(postsOf(id), {observe: 'response'});
   }
 
-  getJobOffers(id: number) {
-    return this.http.get(jobOff(id), {observe: 'response'});
+  getJobOffers(id: number, page: number) {
+    return this.http.get(jobOff(id, page), {observe: 'response'});
   }
 
   addPost(userId: number, postText: any): Observable<any> {
