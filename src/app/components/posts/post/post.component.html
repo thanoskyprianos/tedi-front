@@ -25,6 +25,7 @@
           class="comment"
           title="Comment"
           [routerLink]="'/post/'+user.id+'/'+post.id"
+          (click)="addAsViewer()"
         >
           <img src="/resource/comment.svg" alt="comment">
         </div>

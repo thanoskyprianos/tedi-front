@@ -77,4 +77,8 @@ export class PostService {
   deleteComment(deleteUrl: string) {
     return this.http.delete(deleteUrl, {observe: 'response'});
   }
+
+  addAsViewer(viewerUrl: string) {
+    return this.http.put(viewerUrl, {observe: 'response'});
+  }
 }

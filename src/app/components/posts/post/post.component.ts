@@ -189,4 +189,11 @@ export class PostComponent implements OnChanges, OnDestroy {
     })
   }
 
+  addAsViewer() {
+    const url = this.post!._links.view.href;
+    this.postService.addAsViewer(url).subscribe({
+      error: (err: any) => {console.error(err)}
+    })
+  }
+
 }
