@@ -63,6 +63,7 @@ export class NetworkComponent {
   connectionsSet(info: any) {
     try {
       this.connectedWithMe = info._embedded.userList as UserModule[];
+      this.connectedWithMe.sort((a, b) => a.firstName.localeCompare(b.firstName));
 
       this.connectedWithMe.forEach(user => {
         this.getAboutMe(user);

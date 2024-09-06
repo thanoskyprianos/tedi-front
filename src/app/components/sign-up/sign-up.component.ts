@@ -66,11 +66,11 @@ export class SignUpComponent {
         if (this.selectedFile) {
           this.updater.uploadImage(avatarUrl.href, this.selectedFile).subscribe(() => {
             this.showSuccess();
-            this.router.navigate(['/home-page']);
+            this.router.navigate(['/home-page'], {queryParams: { page: 1 }});
           });
         } else {
           this.showSuccess();
-          this.router.navigate(['/home-page']);
+          this.router.navigate(['/home-page'], {queryParams: { page: 1 }});
         }
       },
       error: err => { if (err.status === 409) this.errorIndication(err.error.message); }
