@@ -14,7 +14,7 @@
     <button routerLink="/ads-page" [queryParams]="{page: 1}" class="nav-button" id="ad">Job Offers</button>
   </div>
 
-  <div class="main-home-container">
+  <div class="main-home-container" *ngIf="session.user">
     <button routerLink="/admin" class="nav-button" id="adm" *ngIf="session.user.role.name === 'ADMIN'">
       <img src="resource/person-gear.svg" alt="Admin" class="admin">
     </button>
@@ -35,7 +35,7 @@
       <span class="image-wrapper">
         <img [src]="avatarUrl || 'resource/user.png'" alt="Profile" class="button-icon" id="prof-pic">
       </span>
-      <p> {{session.user?.firstName}} {{session.user?.lastName}} </p>
+      <p> {{session.user.firstName}} {{session.user.lastName}} </p>
     </button>
 
     <button (click)="logout()" class="nav-button" id="logout">
