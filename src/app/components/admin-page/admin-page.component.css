@@ -6,13 +6,15 @@ main {
   padding-top: 5px;
   min-height: calc(var(--height-minus-nav-bar) - 5px);
   background: var(--darkest-grey);
+}
 
+.user-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   gap: 5px;
 }
+
 
 .buttons {
   display: flex;

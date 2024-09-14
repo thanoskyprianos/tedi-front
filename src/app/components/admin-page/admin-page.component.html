@@ -1,19 +1,21 @@
-<main *ngIf="users">
-  <div class="buttons">
-    <button (click)="getJSON()">JSON</button>
-    <button (click)="getXML()">XML</button>
-  </div>
+<main>
+  <div class="user-wrapper" *ngIf="users">
+    <div class="buttons">
+      <button (click)="getJSON()">JSON</button>
+      <button (click)="getXML()">XML</button>
+    </div>
 
-  <input type="text" placeholder="Name" (keyup)="filterUsers($event)" autocomplete="sdlfsjdfk">
+    <input type="text" placeholder="Name" (keyup)="filterUsers($event)" autocomplete="sdlfsjdfk">
 
-  <div class="users">
-    <div class="user" *ngFor="let user of users">
-      <input type="checkbox" [name]="user.id">
-      <div class="details" [routerLink]="'/profile-page/' + user.id">
-        <div class="image-wrapper">
-          <img [src]="avatars[user.id] || '/resource/user.png'" alt="avatar" loading="lazy">
+    <div class="users">
+      <div class="user" *ngFor="let user of users">
+        <input type="checkbox" [name]="user.id">
+        <div class="details" [routerLink]="'/profile-page/' + user.id">
+          <div class="image-wrapper">
+            <img [src]="avatars[user.id] || '/resource/user.png'" alt="avatar" loading="lazy">
+          </div>
+          <p>{{ user.firstName }} {{ user.lastName }}</p>
         </div>
-        <p>{{ user.firstName }} {{ user.lastName }}</p>
       </div>
     </div>
   </div>
