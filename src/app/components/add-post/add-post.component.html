@@ -27,9 +27,9 @@
     </div>
 
     <div *ngIf="postType === 'jobOffer'">
-      <div class="instr">Don't use commas (,) and use unified words (ex. ElectricalEngineering)</div>
+      <div class="instr">Skills (separated by commas)</div>
       <label for="skills-required"></label>
-      <input type="text" id="skills-required" name="skillsRequired" [(ngModel)]="skillsRequired" placeholder="Enter required skills">
+      <input type="text" id="skills-required" name="skillsRequired" [(ngModel)]="skillsRequired" placeholder="Do not use spaces between commas">
     </div>
 
     <button type="submit" id="submit-button">Submit Post</button>
