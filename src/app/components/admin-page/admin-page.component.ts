@@ -28,10 +28,12 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.fetcher.adminGetUsers().subscribe({
       next: (res: any) => {
-        this.users = res.body._embedded.userList as UserModule[]
-        this.users.sort((a, b) => a.firstName.localeCompare(b.firstName));
+        try {
+          this.users = res.body._embedded.userList as UserModule[]
+          this.users.sort((a, b) => a.firstName.localeCompare(b.firstName));
 
-        this.getAvatars();
+          this.getAvatars();
+        } catch (e) { }
       },
       error: err => console.log(err),
     })
