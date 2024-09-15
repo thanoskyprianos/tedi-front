@@ -10,7 +10,6 @@ main {
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
-  overflow-anchor: auto;
   gap: 15px;
   padding: 15px;
 }
