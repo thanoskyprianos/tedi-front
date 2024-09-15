@@ -43,6 +43,7 @@ export class UserMessagesComponent implements OnInit {
           this.fetcher.messages(this.user.id).subscribe({
             next: (res: any) => {
               this.messages = res.body as MessageModule[];
+              this.messages.reverse();
             }
           })
 
@@ -55,7 +56,7 @@ export class UserMessagesComponent implements OnInit {
 
               if (message.sender.id === this.user.id
                 || message.recipient.id === this.user.id) {
-                this.messages.push(message);
+                this.messages.unshift(message);
               }
             }
           })

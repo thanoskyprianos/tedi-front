@@ -6,7 +6,7 @@
   <div class="messages">
     <app-message
       [message]="message"
-      *ngFor="let message of messages.reverse()"/>
+      *ngFor="let message of messages"/>
   </div>
   <form
     (submit)="sendMessage($event)"
